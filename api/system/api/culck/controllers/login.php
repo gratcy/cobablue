@@ -13,10 +13,12 @@ class login extends controller {
 
 	function logging() {
 		$token = $this -> rg -> post('token');
+		$email = $this -> rg -> post('email');
+		$passwd = $this -> rg -> post('passwd');
 		
 		$res = array(-1 => 'failed');
 		
-		if ($token) {
+		if ($token && $email && $passwd) {
 			$ck = $this -> models_auth -> __check_token($token,2);
 			if (isset($ck[0])) {
 				if (date('Y-m-d H:i:s', $ck['aexpire']) >= date('Y-m-d H:i:s')) {
