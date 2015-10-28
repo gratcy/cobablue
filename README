@@ -1,0 +1,43 @@
+################################# OAuth 2.0 #################################
+# OAuth 2.0 Documentation Project Blue Nexia								# 
+#############################################################################
+
+##### REQUEST TOKEN #####
+http://localhost:3232/?api=culck&act=auth&det=request_token
+
+##### LOGIN #####
+http://localhost:3232/?api=culck&act=login&det=logging
+
+##### GET VPN #####
+http://localhost:3232/?api=culck&act=vpn&det=get_vpn
+
+############################ Introduction API ############################
+
+1.	Post Uniqe Key to request token.
+	- Consumer Key
+	- Main Key
+	- Secret Key
+2.	After get token, keep the token to request something then post to request.
+	- Request VPN
+	- Request Login
+3.	Type Request
+	- Type 1	: To request VPN access
+	- Type 2	: To request Login access 
+
+########################### Tutorial to Use API ###########################
+
+To request something neet post some parameter.
+
+1.	Request Token
+	- ckey (Consumer Key)
+	- key (Main Key)
+	- skey (Secret Key)
+2.	Request VPN
+	- token
+3.	Request Login
+	- token
+	- email
+	- passwd
+
+Notes:	- Token will expire 10 minutes since the request
+		- After you used the token, the token are unusable

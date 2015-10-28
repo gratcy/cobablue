@@ -39,7 +39,7 @@ class controller {
 				}
 				else
 					include_once( $conf['pathmodule']['api'] .'/'. $dir .'/'. 'config/' . $file . EXT );
-				return $$item;
+				return $item;
 			}
 		}
 		else {
@@ -54,7 +54,7 @@ class controller {
 				}
 				else
 					include_once( BASEPATH . 'config/' . $file . EXT );
-				return $$item;
+				return $item;
 			}
 		}
 	}
