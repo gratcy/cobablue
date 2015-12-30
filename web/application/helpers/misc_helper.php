@@ -10,7 +10,7 @@ function __get_error_msg() {
 	$css = (isset($CI -> memcachedlib -> get('__msg')['error']) == '' ? 'success' : 'danger');
 	
 	if (isset($CI -> memcachedlib -> get('__msg')['error']) || isset($CI -> memcachedlib -> get('__msg')['info'])) {
-		$res = '<div class="alert alert-'.$css.' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+		$res = '<div class="alert alert-'.$css.' alert-dismissable" style="margin-top:10px;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
 		$res .= (isset($CI -> memcachedlib -> get('__msg')['error']) ? $CI -> memcachedlib -> get('__msg')['error'] : $CI -> memcachedlib -> get('__msg')['info']);
 		$res .= '</div>';
 		$CI -> memcachedlib -> delete('__msg');
@@ -19,10 +19,29 @@ function __get_error_msg() {
 }
 
 function __get_status($status, $type) {
-	if ($type == 1)
-		return ($status == 1 ? 'Active' : 'Inactive');
-	else
-		return ($status == 1 ? 'Active <input type="radio" checked="checked" name="status" value="1" /> Inactive <input type="radio" name="status" value="0" />' : 'Active <input type="radio" name="status" value="1" /> Inactive <input type="radio" checked="checked" name="status" value="0" />');
+	$data = array('Inactive','Active','Expired','Banned');
+	$res = '';
+	if ($type == 1) {
+		$res = $data[$status];
+	}
+	else {
+		foreach($data as $k => $v)
+			$res .= $v . ' <input type="radio" '.($status == $k ? 'checked="checked"' : '').' name="status" value="'.$k.'" />';
+	}
+	return $res;
+}
+
+function __get_status_transaction($status, $type) {
+	$data = array('Belum Dibayar','Lunas');
+	$res = '';
+	if ($type == 1) {
+		$res = $data[$status];
+	}
+	else {
+		foreach($data as $k => $v)
+			$res .= $v . ' <input type="radio" '.($status == $k ? 'checked="checked"' : '').' name="status" value="'.$k.'" />';
+	}
+	return $res;
 }
 
 function __get_rupiah($num,$type=1) {
@@ -30,85 +49,6 @@ function __get_rupiah($num,$type=1) {
 	elseif ($type == 2) return number_format($num,0,',',',');
 	elseif ($type == 3) return number_format($num,0,',','.');
 	else return "Rp. " . number_format($num,2,',','.');
-}
-
-function __get_roles($key) {
-    $arr = array();
-    $CI =& get_instance();
-    $roles = $CI -> memcachedlib -> sesresult['permission'];
-    foreach($roles as $k => $v)
-        $arr[$v['pname']] = $v['aaccess'];
-    return (isset($arr[$key]) ? $arr[$key] : '');
-}
-
-function __get_roles_by_id($key) {
-    $arr = array();
-    $CI =& get_instance();
-    return $CI -> memcachedlib -> sesresult['gid'] !=  $key ? 'no' : '';
-}
-
-function __get_spelled($num) {
-	$num = (float)$num;
-	$bilangan = array(
-	'',
-	'satu',
-	'dua',
-	'tiga',
-	'empat',
-	'lima',
-	'enam',
-	'tujuh',
-	'delapan',
-	'sembilan',
-	'sepuluh',
-	'sebelas'
-	);
-
-	if ($num < 12) {
-		return strtoupper($bilangan[$num]);
-	}
-	else if ($num < 20) {
-		return strtoupper($bilangan[$num - 10] . ' belas');
-	}
-	else if ($num < 100) {
-		$mod = (int)($num / 10);
-		$hasil_mod = $num % 10;
-		return strtoupper(trim(sprintf('%s puluh %s', $bilangan[$mod], $bilangan[$hasil_mod])));
-	}
-	else if ($num < 200) {
-		return strtoupper(sprintf('seratus %s', __get_spelled($num - 100)));
-	}
-	else if ($num < 1000) {
-		$mod = (int)($num / 100);
-		$hasil_mod = $num % 100;
-		return strtoupper(trim(sprintf('%s ratus %s', $bilangan[$mod], __get_spelled($hasil_mod))));
-	}
-	else if ($num < 2000) {
-		return strtoupper(trim(sprintf('seribu %s', __get_spelled($num - 1000))));
-	}
-	else if ($num < 1000000) {
-		$mod = (int)($num / 1000);
-		$hasil_mod = $num % 1000;
-		return strtoupper(sprintf('%s ribu %s', __get_spelled($mod), __get_spelled($hasil_mod)));
-	}
-	else if ($num < 1000000000) {
-		$mod = (int)($num / 1000000);
-		$hasil_mod = $num % 1000000;
-		return strtoupper(trim(sprintf('%s juta %s', __get_spelled($mod), __get_spelled($hasil_mod))));
-	}
-	else if ($num < 1000000000000) {
-		$mod = (int)($num / 1000000000);
-		$hasil_mod = fmod($num, 1000000000);
-		return strtoupper(trim(sprintf('%s milyar %s', __get_spelled($mod), __get_spelled($hasil_mod))));
-	}
-	else if ($num < 1000000000000000) {
-		$mod = $num / 1000000000000;
-		$hasil_mod = fmod($num, 1000000000000);
-		return strtoupper(trim(sprintf('%s triliun %s', __get_spelled($mod), __get_spelled($hasil_mod))));
-	}
-	else {
-		return 'Wow...';
-	}
 }
 
 function __keyTMP($str) {
@@ -126,4 +66,54 @@ function __get_PTMP() {
     $res = json_encode($CI -> memcachedlib -> get(__keyTMP($_SERVER['REQUEST_URI'])));
     $CI -> memcachedlib -> delete(__keyTMP($_SERVER['REQUEST_URI']));
     return $res;
+}
+
+function __set_pass($upass, $salt) {
+	return sha1(md5(sha1($upass, true)) . md5($salt));
+}
+
+function __get_salt() {
+	 $charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	 $randStringLen = 64;
+	 $randString = "";
+	 for ($i = 0; $i < $randStringLen; $i++) $randString .= $charset[mt_rand(0, strlen($charset) - 1)];
+	 return $randString;
+}
+
+function __get_avatar($avatar,$type) {
+	if ($type == 1)
+		return site_url('upload/avatar/' . $avatar);
+	else
+		return site_url('upload/avatar/small/' . $avatar);
+}
+
+function __get_support_type($id,$type) {
+	$arr = array('Support', 'Marketing');
+	if ($type == 1) {
+		return $arr[$id-1];
+	}
+	else {
+		$res = '<option value="">-- Chose One --</option>';
+		foreach($arr as $k => $v)
+			if (($id-1) == $k) $res .= '<option value="'.($k+1).'" selected>'.$v.'</option>';
+			else $res .= '<option value="'.($k+1).'">'.$v.'</option>';
+		return $res;
+	}
+}
+
+function __get_bank($id,$type,$type2) {
+	if ($type2 == 1)
+		$arr = array('BCA', 'Mandiri', 'BRI', 'CIMB');
+	else
+		$arr = array('BCA', 'Mandiri');
+	if ($type == 1) {
+		return $arr[$id-1];
+	}
+	else {
+		$res = '<option value="">-- Chose Bank --</option>';
+		foreach($arr as $k => $v)
+			if ($id && ($id-1) == $k) $res .= '<option value="'.($k+1).'" selected>'.$v.'</option>';
+			else $res .= '<option value="'.($k+1).'">'.$v.'</option>';
+		return $res;
+	}
 }

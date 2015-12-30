@@ -9,4 +9,4 @@ $conf['pathmodule'] = array('views' => BASEPATH . 'views',
 							'api' => BASEPATH . 'api',
 							);
 $conf['pathview'] = 'default';
-$conf['host'] = 'http://localhost:3232/';
+$conf['host'] = 'http://103.53.194.8/';

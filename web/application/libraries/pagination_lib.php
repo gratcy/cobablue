@@ -52,17 +52,16 @@ class Pagination_lib {
 		$lpm1 = $lastpage - 1;
 
 		if($lastpage > 1) {
-			$pagination = '<div class="pagination">';
-			$pagination .= '<ul>';
+			$pagination = '<ul class="pagination">';
 			if ($this -> page > 1) 
 				$pagination.= '<li><a href="'.$this -> page_name.'/'.$prev.'">&laquo; previous</a></li>';
 			else
-				$pagination.= '<li><span class="disabled">&laquo; previous</span></li>';	
+				$pagination.= '<li><a class="prev disabled">&laquo; previous</a></li>';	
 
 			if ($lastpage < 7 + ($this -> adjacents * 2))	{	
 				for ($counter = 1; $counter <= $lastpage; $counter++) {
 					if ($counter == $this -> page)
-						$pagination.= '<li><span class="current">'.$counter.'</span></li>';
+						$pagination.= '<li class="active"><a>'.$counter.'</a></li>';
 					else
 						$pagination.= '<li><a href="'.$this -> page_name.'/'.$counter.'">'.$counter.'</a></li>';
 				}
@@ -71,35 +70,35 @@ class Pagination_lib {
 				if($this -> page < 1 + ($this -> adjacents * 2)) {
 					for ($counter = 1; $counter < 4 + ($this -> adjacents * 2); $counter++) {
 						if ($counter == $this -> page)
-							$pagination.= '<li><span class="current">'.$counter.'</span></li>';
+							$pagination.= '<li><a>'.$counter.'</a></li>';
 						else
 							$pagination.= '<li><a href="'.$this -> page_name.'/'.$counter.'">'.$counter.'</a></li>';
 					}
-					$pagination.= '<li><span>...</span></li>';
+					$pagination.= '<li><span>...</a></li>';
 					$pagination.= '<li><a href="'.$this -> page_name.'/'.$lpm1.'">'.$lpm1.'</a></li>';
 					$pagination.= '<li><a href="'.$this -> page_name.'/'.$lastpage.'">'.$lastpage.'</a></li>';
 				}
 				else if($lastpage - ($this -> adjacents * 2) > $this -> page && $this -> page > ($this -> adjacents * 2)) {
 					$pagination.= '<li><a href="'.$this -> page_name.'/1">1</a></li>';
 					$pagination.= '<li><a href="'.$this -> page_name.'/2">2</a></li>';
-					$pagination.= '<li><span>...</span></li>';
+					$pagination.= '<li><span>...</a></li>';
 					for ($counter = $this -> page - $this -> adjacents; $counter <= $this -> page + $this -> adjacents; $counter++)	{
 						if ($counter == $this -> page)
-							$pagination.= '<li><span class="current">'.$counter.'</span></li>';
+							$pagination.= '<li><a>'.$counter.'</a></li>';
 						else
 							$pagination.= '<li><a href="'.$this -> page_name.'/'.$counter.'">'.$counter.'</a></li>';
 					}
-					$pagination.= '<li><span>...</span></li>';
+					$pagination.= '<li><span>...</a></li>';
 					$pagination.= '<li><a href="'.$this -> page_name.'/'.$lpm1.'">'.$lpm1.'</a></li>';
 					$pagination.= '<li><a href="'.$this -> page_name.'/'.$lastpage.'">'.$lastpage.'</a></li>';		
 				}
 				else {
 					$pagination.= '<li><a href="'.$this -> page_name.'/1">1</a></li>';
 					$pagination.= '<li><a href="'.$this -> page_name.'/2">2</a></li>';
-					$pagination.= '<li><span>...</span></li>';
+					$pagination.= '<li><span>...</a></li>';
 					for ($counter = $lastpage - (2 + ($this -> adjacents * 2)); $counter <= $lastpage; $counter++) {
 						if ($counter == $this -> page)
-							$pagination.= '<li><span class="current">'.$counter.'</span></li>';
+							$pagination.= '<li><a>'.$counter.'</a></li>';
 						else
 							$pagination.= '<li><a href="'.$this -> page_name.'/'.$counter.'">'.$counter.'</a></li>';					
 					}
@@ -109,10 +108,9 @@ class Pagination_lib {
 			if ($this -> page < $counter - 1) 
 				$pagination.= '<li><a href="'.$this -> page_name.'/'.$next.'">next &raquo;</a></li>';
 			else
-				$pagination.= '<li><span class="disabled">next &raquo;</span></li>';
+				$pagination.= '<li><span class="disabled">next &raquo;</a></li>';
 
 			$pagination.= '</ul>';
-			$pagination.= '</div>';
 			return $pagination;
 		}
 	}

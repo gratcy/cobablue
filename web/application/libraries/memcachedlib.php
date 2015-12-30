@@ -7,7 +7,7 @@ class Memcachedlib {
     function __construct() {
 		$this -> _ci =& get_instance();
         if (!session_id()) {
-            session_name( 'DistPal' );
+            session_name( 'MaxHidden' );
             session_start();
         }
         
@@ -32,13 +32,12 @@ class Memcachedlib {
 
         $this -> sesresult = self::get('__login');
 
-		if (isset($this -> sesresult['uemail']) && isset($this -> sesresult['uid']) && isset($this -> sesresult['ubranchid']) && isset($this -> sesresult['skey']) == md5(sha1($this -> sesresult['ugid'].$this -> sesresult['uemail']) . 'dist'))
+		if (isset($this -> sesresult['uemail']) && isset($this -> sesresult['uid']) && isset($this -> sesresult['ulevel']) && isset($this -> sesresult['skey']) == md5(sha1($this -> sesresult['ulevel'].$this -> sesresult['uemail']) . 'Hidden'))
 			$this -> login = true;
 		else
 			$this -> login = false;
         self::__check_login();
         self::__save_post();
-        //~ self::delete('__request_suggestion', true);
     }
     
     function __save_post() {
@@ -47,12 +46,12 @@ class Memcachedlib {
 	}
 
 	function __check_login() {
-		if ($this -> _ci -> uri -> segment(1) !== 'login') {
-			if (!$this -> login) redirect(site_url('login'));
+		if ($this -> _ci -> uri -> segment(2) !== 'login') {
+			if (!$this -> login) redirect(site_url('panel/login'));
 		}
 		else {
-			if ($this -> _ci -> uri -> segment(2) !== 'logout') {
-				if ($this -> login) redirect(site_url(''));
+			if ($this -> _ci -> uri -> segment(3) !== 'logout') {
+				if ($this -> login) redirect(site_url('panel'));
 			}
 		}
 	}

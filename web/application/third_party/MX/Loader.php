@@ -260,10 +260,13 @@ class MX_Loader extends CI_Loader
 		}
 		if ($this -> memcachedlib -> login) {
 			if ($misc) {
-				$this->_ci_load(array('_ci_view' => 'header', '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
-				$this->_ci_load(array('_ci_view' => 'sidebar', '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
-				$this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
-				$this->_ci_load(array('_ci_view' => 'footer', '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+				if ($this -> uri -> segment(1) == 'panel') $panel = 'panel/';
+				else $panel = '';
+				
+				$this->_ci_load(array('_ci_view' => $panel.'header', '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+				$this->_ci_load(array('_ci_view' => $panel.'sidebar', '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+				$this->_ci_load(array('_ci_view' => $panel.$view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+				$this->_ci_load(array('_ci_view' => $panel.'footer', '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
 			}
 			else
 				$this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
