@@ -7,6 +7,9 @@
                 <div class="mainnav">
                     <ul>
                         <li><a href="<?php echo site_url('panel');?>"><span class="icon16 icomoon-icon-home-6"></span>Dashboard</a></li>
+                        <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 2) : ?>
+                        <li><a href="<?php echo site_url('panel/product');?>" ><span class="icon16 icomoon-icon-quill"></span>Products</a></li>
+                        <?php endif; ?>
                         <li rel="stuff">
                             <a href="#"><span class="icon16 icomoon-icon-cart"></span>Transaction<span class="notification blue">3</span></a>
                             <ul class="sub">

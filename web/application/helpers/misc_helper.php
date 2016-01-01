@@ -18,8 +18,9 @@ function __get_error_msg() {
 	}
 }
 
-function __get_status($status, $type) {
+function __get_status($status, $type, $type2=1) {
 	$data = array('Inactive','Active','Expired','Banned');
+	if ($type2 == 2) unset($data[2],$data[3]);
 	$res = '';
 	if ($type == 1) {
 		$res = $data[$status];
@@ -87,6 +88,46 @@ function __get_avatar($avatar,$type) {
 		return site_url('upload/avatar/small/' . $avatar);
 }
 
+function __imageresize($file, $dir, $fname) {
+	$res = '';
+	if (preg_match('/.jpeg|.jpg/i', substr($fname,-5))) $ext = 1;
+	else if (preg_match('/.gif/i', substr($fname,-5))) $ext = 2;
+	else if (preg_match('/.png/i', substr($fname,-5))) $ext = 3;
+	else return false;
+	
+	if ($ext == 1)
+		$im_src = imagecreatefromjpeg($file);
+	elseif ($ext == 2)
+		$im_src = imagecreatefromgif($file);
+	else
+		$im_src = imagecreatefrompng($file);
+	
+	$src_width = imageSX($im_src);
+	$src_height = imageSY($im_src);
+	
+	$dst_width = 120;
+	$dst_height = $src_height / ($src_width / $dst_width);
+	
+	$im = imagecreatetruecolor($dst_width,$dst_height);
+	imagecopyresampled($im, $im_src, 0, 0, 0, 0, $dst_width, $dst_height, $src_width, $src_height);
+	if ($ext == 1)
+		imagejpeg($im,$dir.$res.$fname);
+	elseif ($ext == 2)
+		imagegif($im,$dir.$res.$fname);
+	else
+		imagepng($im,$dir.$res.$fname);
+}
+
+function __rename_file_upload($str) {
+	$str = preg_replace('/[^\x20-\x7E]/','', $str);
+	$str = str_replace(' ','-',$str);
+	$badchar = array ('\'', '?', '!', ' ', ',', '#', '@', ';', '|', ')', '(', '}', '{', ']', '[', ':', '--', '\'', '%', '+', '\\', '&', '*', '/', '^', '`', '~');
+	$str = strtolower($str);
+	$res = uniqid() . time() . $str;
+	$res = str_replace($badchar,'',$res);
+	return trim($res);
+}
+	
 function __get_support_type($id,$type) {
 	$arr = array('Support', 'Marketing');
 	if ($type == 1) {

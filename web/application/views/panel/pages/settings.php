@@ -78,8 +78,9 @@
                                     </form>
                                     
                                     <hr />
-                                    <form class="form-horizontal" action="<?php echo site_url('panel/settings');?>" role="form" method="post">
+                                    <form class="form-horizontal" action="<?php echo site_url('panel/settings');?>" role="form" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="type" value="2">
+                                    <input type="hidden" name="oldavatar" value="<?php echo $detail[0] -> uavatar; ?>">
 			<?php echo __get_error_msg(); ?>
 			<?php $pdt = explode('*', $detail[0] -> uttl); ?>
                                          <div class="form-group">
@@ -92,7 +93,7 @@
                                             <label class="col-lg-3 control-label" for="placeholder">Place Date of Birth</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" placeholder="Place" value="<?php echo $pdt[0]; ?>" name="place">
-                                                <input type="text" class="form-control" placeholder="Date of Birth" value="<?php echo $pdt[1]; ?>" name="dt">
+                                                <input type="text" id="dt" class="form-control" placeholder="Date of Birth" value="<?php echo date('d/m/Y',$pdt[1]); ?>" name="dt">
                                             </div>
                                         </div>
                                          <div class="form-group">
@@ -122,7 +123,7 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="password">Address</label>
                                             <div class="col-lg-9">
-                                                <textarea id="textarea1" name="desc" rows="3" class="form-control elastic"><?php echo $detail[0] -> uaddr; ?></textarea>
+                                                <textarea id="textarea1" name="addr" rows="3" class="form-control elastic"><?php echo $detail[0] -> uaddr; ?></textarea>
                                             </div>
                                         </div>
                                          <div class="form-group">
@@ -156,6 +157,10 @@
                
 <script type="text/javascript">
 	$("#avatar").uploadPreview(1);
+	
+	$('form#resetpass').submit(function(e){
+		$(this).setPasswordPanel(e);
+	});
 </script>
 
                 <!-- Page end here -->

@@ -8,6 +8,11 @@ class Settings_model extends CI_Model {
 		$this -> db -> select("* FROM users_profiles_tab WHERE uid=" . $uid);
 		return $this -> db -> get() -> result();
 	}
+    
+    function __get_pass($uid) {
+		$this -> db -> select("upass,usalt FROM users_tab WHERE uid=" . $uid);
+		return $this -> db -> get() -> result();
+	}
 	
 	function __update_users($uid, $data, $type) {
 		$this -> db -> where('uid', $uid);

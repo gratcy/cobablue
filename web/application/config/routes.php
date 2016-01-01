@@ -63,5 +63,10 @@ $route['panel/support/?(:num)?'] = 'support/home/index/$1';
 $route['panel/support/ticket'] = 'support/home/ticket';
 $route['panel/support/reply/?(:num)?'] = 'support/home/reply/$1';
 $route['panel/support/delete/(:num)'] = 'support/home/delete/$1';
+
+$route['panel/product/?(:num)?'] = 'product/home/index/$1';
+$route['panel/product/add'] = 'product/home/product_add';
+$route['panel/product/update/?(:num)?'] = 'product/home/product_update/$1';
+$route['panel/product/delete/(:num)'] = 'product/home/product_delete/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

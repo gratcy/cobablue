@@ -1,5 +1,5 @@
 // make console.log safe to use
-window.console||(console={log:function(){}});
+//~ window.console||(console={log:function(){}});
 
 //------------- Options for Supr - admin tempalte -------------//
 var supr_Options = {
@@ -9,19 +9,20 @@ var supr_Options = {
 
 //------------- Modernizr -------------//
 //load some plugins only if is needed
-Modernizr.load({
-  test: Modernizr.placeholder,
-  nope: 'plugins/forms/placeholder/jquery.placeholder.min.js',
-  complete: function () {
-	//------------- placeholder fallback  -------------//
-	$('input[placeholder], textarea[placeholder]').placeholder();
-  }
-});
+//~ Modernizr.load({
+  //~ test: Modernizr.placeholder,
+  //~ nope: 'plugins/forms/placeholder/jquery.placeholder.min.js',
+  //~ complete: function () {
+	//~ //------------- placeholder fallback  -------------//
+	//~ $('input[placeholder], textarea[placeholder]').placeholder();
+  //~ }
+//~ });
 Modernizr.load({
   test: Modernizr.touch,
   yep: ['plugins/fix/ios-fix/ios-orientationchange-fix.js', 'plugins/fix/touch-punch/jquery.ui.touch-punch.min.js']
 });
 
+$("#dt").datepicker();
 //window resize events
 $(window).resize(function(){
 	//get the window size
