@@ -3683,3 +3683,8 @@ body.rtl .support-section .sendMsg {margin-right: 0;}
 #pgboth{padding-top: 20px;width:100%;
   padding-bottom: 20px;
   display: inline-block;}
+
+.top-gotoweb > a > span{background:url(../images/top-gotoweb.png) no-repeat left center; display:block; padding-left:25px;}
+.panel-top-login{position:relative;}
+.panel-top-login > .nav{position:absolute; left:0; top:0;}
+.panel-top-login > .nav > li{float:left;}

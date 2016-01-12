@@ -50,8 +50,14 @@
             <div class="row">
 
                 <div class="navbar">
-                    <div class="container">
+                    <div class="container panel-top-login">
                         <a class="navbar-brand" href="dashboard.html">Max Hidden<span class="slogan">Panel</span></a>
+                        <!--<div class="top-gotoweb top-gotoweb-login"><a href="index.php"><span>Go To Website</span></a></div>-->
+                        <ul class="nav navbar-right usernav clearenter">
+                          <li class="active top-gotoweb">
+                            <a href="index.php"><span>Go To Website</span></a>
+                          </li>
+                        </ul>
                     </div>
                 </div><!-- /navbar -->
 
