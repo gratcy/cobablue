@@ -46,12 +46,14 @@ class Memcachedlib {
 	}
 
 	function __check_login() {
-		if ($this -> _ci -> uri -> segment(2) !== 'login') {
-			if (!$this -> login) redirect(site_url('panel/login'));
-		}
-		else {
-			if ($this -> _ci -> uri -> segment(3) !== 'logout') {
-				if ($this -> login) redirect(site_url('panel'));
+		if ($this -> _ci -> uri -> segment(1) == 'panel') {
+			if ($this -> _ci -> uri -> segment(2) !== 'login') {
+				if (!$this -> login) redirect(site_url('panel/login'));
+			}
+			else {
+				if ($this -> _ci -> uri -> segment(3) !== 'logout') {
+					if ($this -> login) redirect(site_url());
+				}
 			}
 		}
 	}

@@ -52,6 +52,6 @@ class Home extends MY_Controller {
 	
 	function logout() {
 		$this -> memcachedlib -> delete('__login');
-		redirect('panel/login');
+		redirect(site_url());
 	}
 }
