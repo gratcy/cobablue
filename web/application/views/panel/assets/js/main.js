@@ -22,7 +22,7 @@ Modernizr.load({
   yep: ['plugins/fix/ios-fix/ios-orientationchange-fix.js', 'plugins/fix/touch-punch/jquery.ui.touch-punch.min.js']
 });
 
-$("#dt").datepicker();
+$("#dt").datepicker({dateFormat : 'dd-mm-yy'});
 //window resize events
 $(window).resize(function(){
 	//get the window size

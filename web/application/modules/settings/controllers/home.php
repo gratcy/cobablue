@@ -63,7 +63,9 @@ class Home extends MY_Controller {
 					redirect(site_url('panel/settings'));
 				}
 				else {
-					$dt = strtotime(str_replace('/','-',$dt));
+					$wew = explode('-',$dt);
+					$dt = strtotime($wew[2].'-'.$wew[1].'-'.$wew[0]);
+
 					$data = array('ufullname' => $fname, 'ucountry' => $country, 'ucity' => $city, 'upostal' => $postal, 'uaddr' => $addr, 'uphone' => $phone, 'uttl' => $place . '*' . $dt);
 					$avatar_tmp = $_FILES['avatar']['tmp_name'];
 

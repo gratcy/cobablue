@@ -92,8 +92,8 @@
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Place Date of Birth</label>
                                             <div class="col-lg-9">
-                                                <input type="text" class="form-control" placeholder="Place" value="<?php echo $pdt[0]; ?>" name="place">
-                                                <input type="text" id="dt" class="form-control" placeholder="Date of Birth" value="<?php echo date('d/m/Y',$pdt[1]); ?>" name="dt">
+                                                <input type="text" class="form-control" placeholder="Place" value="<?php echo (isset($pdt[0]) ? $pdt[0] : ''); ?>" name="place">
+                                                <input type="text" id="dt" class="form-control" placeholder="Date of Birth" value="<?php echo (isset($pdt[1]) && strlen($pdt[1]) > 0 ? date('d/m/Y',$pdt[1]) : ''); ?>" name="dt">
                                             </div>
                                         </div>
                                          <div class="form-group">

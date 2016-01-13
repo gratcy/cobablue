@@ -158,7 +158,7 @@ CREATE TABLE `users_profiles_tab` (
 
 LOCK TABLES `users_profiles_tab` WRITE;
 /*!40000 ALTER TABLE `users_profiles_tab` DISABLE KEYS */;
-INSERT INTO `users_profiles_tab` VALUES (1,'Gratcy Palma','Indonesia','Jakarta','10213','Duren Tiga','091313121','wew.jpg','Jakarta*1451458723'),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'Support',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users_profiles_tab` VALUES (1,'Gratcy Palma','Indonesia','Jakarta','10213','Duren Tiga','091313121','568409691b9311451493737cetakan-kembang-loyang-kembang-goyang.jpg','Jakarta*1451408400'),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'Support',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'Gratcy Palma','Indonesia','Jakarta','131212','wewewe','081031321313','569594ce785a41452643534pp.jpg','Jakarta*1452618000');
 /*!40000 ALTER TABLE `users_profiles_tab` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +181,7 @@ CREATE TABLE `users_tab` (
   `uexpire` int(10) DEFAULT NULL,
   `ustatus` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +190,7 @@ CREATE TABLE `users_tab` (
 
 LOCK TABLES `users_tab` WRITE;
 /*!40000 ALTER TABLE `users_tab` DISABLE KEYS */;
-INSERT INTO `users_tab` VALUES (1,1,'admin@admin.com','4Bm4JjkL4MCVWLVHxeCdDw2AQqdgpjXlnJkU5tk6LZvYSj9RsvFPUf9AHgarwJ8e','e17ecfff97e9b9b2eb1012e1aa0585100349200d','admin',0,'*1451473694',1451466459,1),(2,1,'palma@palma.com',NULL,NULL,'palma',1,NULL,NULL,1),(3,1,'cumi@cumi.com','',NULL,'cumi',1,NULL,NULL,1),(4,1,'dapur@dapur.com',NULL,NULL,'wew',1,NULL,NULL,0),(5,2,'support@max.com',NULL,NULL,NULL,NULL,NULL,NULL,1);
+INSERT INTO `users_tab` VALUES (1,2,'admin@admin.com','3fbf895c0eb50c03a7a870c9586fba9379a631b6','Q4OZSj0fCb3sJjYZZwEJF6wHEvZ88peJgrDvztfX2cZTQRDAGqJG8adkVAUMcWA9','admin',0,'*1452643248',1451466459,1),(2,2,'palma@palma.com',NULL,NULL,'palma',1,NULL,NULL,1),(3,2,'cumi@cumi.com','',NULL,'cumi',1,NULL,NULL,1),(4,2,'dapur@dapur.com',NULL,NULL,'wew',1,NULL,NULL,0),(5,1,'support@max.com',NULL,NULL,NULL,NULL,NULL,NULL,1),(6,1,'root@max.com','3fbf895c0eb50c03a7a870c9586fba9379a631b6','Q4OZSj0fCb3sJjYZZwEJF6wHEvZ88peJgrDvztfX2cZTQRDAGqJG8adkVAUMcWA9',NULL,NULL,'*1452644084',NULL,1);
 /*!40000 ALTER TABLE `users_tab` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -219,4 +219,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-30 18:19:09
+-- Dump completed on 2016-01-13  7:15:38
