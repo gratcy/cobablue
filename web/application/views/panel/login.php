@@ -55,7 +55,7 @@
                         <!--<div class="top-gotoweb top-gotoweb-login"><a href="index.php"><span>Go To Website</span></a></div>-->
                         <ul class="nav navbar-right usernav clearenter">
                           <li class="active top-gotoweb">
-                            <a href="index.php"><span>Go To Website</span></a>
+                            <a href="<?php echo site_url(); ?>"><span>Go To Website</span></a>
                           </li>
                         </ul>
                     </div>
@@ -90,13 +90,14 @@
                     <div class="col-lg-12 clearfix form-actions">
                         <div class="checkbox left">
                             <label><input type="checkbox" id="keepLoged" value="Value" class="styled" name="remember" /> Keep me logged in</label>
+                            <br />
+                            <label><a href="<?php echo site_url('lostpwd');?>">Lost password!</a></label>
                         </div>
                         <button type="submit" class="btn btn-info right" id="loginBtn"><span class="icon16 icomoon-icon-enter white"></span> Login</button>
                     </div>
                 </div><!-- End .form-group  -->
             </form>
         </div>
-
     </div><!-- End .container -->
 
     <!-- Le javascript

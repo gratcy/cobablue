@@ -25,18 +25,24 @@ class Home extends MY_Controller {
 			else {
 				$login = $this -> login_model -> __get_login($uemail);
 				if ($login) {
-					if (__set_pass($upass,$login[0] -> usalt) == $login[0] -> upass) {
-						$this -> settings_model -> __update_users($login[0] -> uid, array('ulastlogin' => ip2long($_SERVER['REMOTE_ADDR']) . '*' . time()),1);
-						
-						if ($remember == 1)
-							$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar,'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => true), time()+60*60*24*100);
-						else
-							$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar,'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => false), 3600);
+					if ($login[0] -> ustatus == 1) {
+						if (__set_pass($upass,$login[0] -> usalt) == $login[0] -> upass) {
+							$this -> settings_model -> __update_users($login[0] -> uid, array('ulastlogin' => ip2long($_SERVER['REMOTE_ADDR']) . '*' . time()),1);
+							
+							if ($remember == 1)
+								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar,'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => true), time()+60*60*24*100);
+							else
+								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar,'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => false), 3600);
 
-						redirect(site_url('panel'));
+							redirect(site_url('panel'));
+						}
+						else {
+							__set_error_msg(array('error' => 'Password wrong !!!'));
+							redirect(site_url('panel/login'));
+						}
 					}
 					else {
-						__set_error_msg(array('error' => 'Password wrong !!!'));
+						__set_error_msg(array('error' => 'Please complete activation email !!!'));
 						redirect(site_url('panel/login'));
 					}
 				}

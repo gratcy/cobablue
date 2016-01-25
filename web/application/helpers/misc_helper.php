@@ -10,7 +10,8 @@ function __get_error_msg() {
 	$css = (isset($CI -> memcachedlib -> get('__msg')['error']) == '' ? 'success' : 'danger');
 	
 	if (isset($CI -> memcachedlib -> get('__msg')['error']) || isset($CI -> memcachedlib -> get('__msg')['info'])) {
-		$res = '<div class="alert alert-'.$css.' alert-dismissable" style="margin-top:10px;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+		$res = '<div class="alert alert-'.$css.' alert-dismissable" style="margin-top:10px;">';
+		//~ $res = '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
 		$res .= (isset($CI -> memcachedlib -> get('__msg')['error']) ? $CI -> memcachedlib -> get('__msg')['error'] : $CI -> memcachedlib -> get('__msg')['info']);
 		$res .= '</div>';
 		$CI -> memcachedlib -> delete('__msg');
@@ -157,4 +158,12 @@ function __get_bank($id,$type,$type2) {
 			else $res .= '<option value="'.($k+1).'">'.$v.'</option>';
 		return $res;
 	}
+}
+
+function __send_email($to,$subject,$message) {
+	$headers = 'From: noreply@indogamers.com' . "\r\n" .
+		'Reply-To: noreply@indogamers.com' . "\r\n" .
+		'X-Mailer: PHP/' . phpversion();
+
+	return @mail($to, $subject, $message, $headers);
 }

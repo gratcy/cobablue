@@ -97,7 +97,7 @@
                         <a href="<?php echo site_url('panel');?>"><span class="icon16 icomoon-icon-screen-2"></span> <span class="txt">Dashboard</span></a>
                     </li>
                     <li class="active top-gotoweb">
-                      <a href="index.php"><span>Go To Website</span></a>
+                      <a href="<?php echo site_url(); ?>"><span>Go To Website</span></a>
                     </li>
                 </ul>
               
