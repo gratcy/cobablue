@@ -2,7 +2,7 @@
 
 <footer>
   <div class="bottom-copyright">
-    <div class="container">Antiblock &copy;2015 - All Right Reserved</div>
+    <div class="container">Antiblock &copy;2016 - All Right Reserved</div>
   </div>
 </footer>
 

@@ -43,8 +43,9 @@ $route['default_controller'] = "home";
 $route['404_override'] = '';
 
 $route['register'] = 'register/home';
-$route['forgotpwd'] = 'forgotpwd/home';
-$route['setpwd'] = 'setpwd/home';
+$route['confirm'] = 'confirm/home';
+$route['lostpwd'] = 'lostpwd/home/index';
+$route['lostpwd/setpwd'] = 'lostpwd/home/setpwd';
 
 #################################################### PANEL ####################################################
 

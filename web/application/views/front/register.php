@@ -3,14 +3,15 @@
   <div class="form-login form-register">
     <div>
       <h1 class="title">Register Form</h1>
+	<?php echo __get_error_msg(); ?>
       <ul class="clearenter">
         <li>
-          <span>Name</span>
+          <span>Full Name</span>
           <div class="field"><input name="name" type="text" /></div>
         </li>
         <li>
-          <span>Username</span>
-          <div class="field"><input name="uname" type="text" /></div>
+          <span>Phone</span>
+          <div class="field"><input name="phone" type="text" /></div>
         </li>
         <li>
           <span>Email</span>
@@ -19,10 +20,6 @@
         <li>
           <span>Confirm Email</span>
           <div class="field"><input name="cemail" type="text" /></div>
-        </li>
-        <li>
-          <span>Phone</span>
-          <div class="field"><input name="phone" type="text" /></div>
         </li>
         <li>
           <span>Password</span>
