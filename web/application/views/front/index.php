@@ -17,8 +17,8 @@ $(document).ready(function() {
     <div class="bg_cover"></div>
     <div class="bg_overlay"></div>
     <div class="message">
-      <h1 class="title">Welcome To Antiblock</h1>
-      <h5>Lorem ipsum dolor sit amet</h5>
+      <h1 class="title">Welcome To Unblockwebs</h1>
+      <h5>Browse the internet privately, anonymously and securely.</h5>
       <ul class="clearenter">
         <li class="next_btn"><a href="#index-info">Take a Tour</a></li>
         <li class="next_btn"><a href="#index-download">Download</a></li>
@@ -48,7 +48,7 @@ $(document).ready(function() {
   </div>
   
   <div id="index-works">
-    <h1 class="title">How Antiblock Works?</h1>
+    <h1 class="title">How Unblockwebs Works?</h1>
     <ul class="clearenter">
       <li class="without">
         <h5>Without Antiblock</h5>
@@ -67,54 +67,75 @@ $(document).ready(function() {
     </ul>
   </div>
   
-  <div id="index-feature" class="index-feature">
+  <div id="index-feature" class="clearenter">
+    <h1 class="title">Features</h1>
     <ul class="clearenter">
       <li class="image left">
-        <div class="flex_thumb"><img src="<?php echo site_url('application/views/front/images/icon-androidlogo.png'); ?>" /></div>
+        <img src="<?php echo site_url('application/views/front/images/icon-bypass_proxy.png'); ?>" />
       </li>
       <li class="content right">
-        <h5>Feature Title</h5>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+        <h5>Bypass Filters</h5>
+        <p>As every online web proxy, this free proxy service may allow you to access websites anonymously,
+bypass website blocks/filters and browse websites blocked in your computer or mobile device.</p>
       </li>
     </ul>
-  </div>
-  
-  <div class="index-feature">
+    
     <ul class="clearenter">
       <li class="image right">
-        <div class="flex_thumb"><img src="<?php echo site_url('application/views/front/images/icon-androidlogo.png'); ?>" /></div>
+        <img src="<?php echo site_url('application/views/front/images/icon-fast_proxy.png'); ?>" />
       </li>
       <li class="content left">
-        <h5>Feature Title</h5>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+        <h5>Fast Proxy Servers</h5>
+        <p>This proxy runs on very fast web servers that are capable of handling more than 200Mb/s of bandwidth.
+This allows you to browse websites anonymously and very quickly, with almost no delays or slowdowns.</p>
       </li>
     </ul>
-  </div>
-  
-  <div class="index-feature">
+    
     <ul class="clearenter">
       <li class="image left">
-        <div class="flex_thumb"><img src="<?php echo site_url('application/views/front/images/icon-androidlogo.png'); ?>" /></div>
+        <img src="<?php echo site_url('application/views/front/images/icon-friendly.png'); ?>" />
       </li>
       <li class="content right">
-        <h5>Feature Title</h5>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+        <h5>Sysops-Friendly</h5>
+        <p>This free web proxy can be useful not only for regular Internet users, but also for System and Network
+Administrators to test if a website is online, verify if a website is blocked in a network, and much more.</p>
       </li>
     </ul>
-  </div>
-  
-  <div class="index-feature">
+    
     <ul class="clearenter">
       <li class="image right">
-        <div class="flex_thumb"><img src="<?php echo site_url('application/views/front/images/icon-androidlogo.png'); ?>" /></div>
+        <img src="<?php echo site_url('application/views/front/images/icon-anonym.png'); ?>" />
       </li>
       <li class="content left">
-        <h5>Feature Title</h5>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+        <h5>Improve Anonymity</h5>
+        <p>Improve your online anonymity by hiding/obfuscating your real IP address while visiting websites. For
+100% online anonymity we recommend you to buy a professional and reliable VPN service.</p>
+      </li>
+    </ul>
+    
+    <ul class="clearenter">
+      <li class="image left">
+        <img src="<?php echo site_url('application/views/front/images/icon-web_proxy.png'); ?>" />
+      </li>
+      <li class="content right">
+        <h5>Web Proxy Benefits</h5>
+        <p>With a web proxy you can be anonymous online, hide your IP address, hide your traces online, visit
+websites anonymously, save Internet bandwidth. Use this service ethically and read out terms.</p>
+      </li>
+    </ul>
+    
+    <ul class="clearenter">
+      <li class="image right">
+        <img src="<?php echo site_url('application/views/front/images/icon-free_proxy.png'); ?>" />
+      </li>
+      <li class="content left">
+        <h5>Free Web Proxy</h5>
+        <p>Yes, this web proxy is completely free to use and we don't ask you anything in exchange (except to use it
+ethically). If you have found this web proxy useful and cool, please share it with your friends.</p>
       </li>
     </ul>
   </div>
-  
+      
   <div id="index-download">
     <h1 class="title">Download</h1>
     <ul class="clearenter">
