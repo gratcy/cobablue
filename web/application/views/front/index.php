@@ -49,22 +49,19 @@ $(document).ready(function() {
   
   <div id="index-works">
     <h1 class="title">How Unblockwebs Works?</h1>
-    <ul class="clearenter">
-      <li class="without">
-        <h5>Without Antiblock</h5>
-        <ul>
-          <li>teadfasga</li>
-          <li>teadfasga</li>
-        </ul>
-      </li>
-      <li class="with">
-        <h5>With Antiblock</h5>
-        <ul>
-          <li>teadfasga</li>
-          <li>teadfasga</li>
-        </ul>
-      </li>
-    </ul>
+	<div>
+	  <div class="works_image">
+	    <img src="<?php echo site_url('application/views/front/images/icon-works-big.png'); ?>" />
+	  </div>
+	
+      <ul class="clearenter">
+        <li>Using a VPN is like having a PO box on the internet - an address that no one can trace back to you.</li>
+		<li>Instead of giving out its real IP address when you click on a website, your computer gives one of ours.</li>
+		<li>The website's data is delivered to our address - and then we forward it to you, instantly and securely.</li>
+		<li>The result? You appear to be wherever our server is located, allowing you to access the Internet like a local, wherever you are in the world.</li>
+		<li>And snoopers and hackers online can't trace your activity back to your real address and find out who or where you are.</li>
+      </ul>
+	</div>
   </div>
   
   <div id="index-feature" class="clearenter">
