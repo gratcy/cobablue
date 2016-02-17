@@ -42,9 +42,38 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
-$route['login'] = 'login/home';
-$route['login/logging'] = 'login/home/logging';
-$route['login/logout'] = 'login/home/logout';
+$route['register'] = 'register/home';
+$route['confirm'] = 'confirm/home';
+$route['lostpwd'] = 'lostpwd/home/index';
+$route['lostpwd/setpwd'] = 'lostpwd/home/setpwd';
 
+#################################################### PANEL ####################################################
+
+$route['panel'] = 'panel/home';
+
+$route['panel/login'] = 'login/home';
+$route['panel/login/logging'] = 'login/home/logging';
+$route['panel/login/logout'] = 'login/home/logout';
+
+$route['panel/transaction/?(:num)?'] = 'transaction/home/index/$1';
+$route['panel/transaction/topup'] = 'transaction/home/topup';
+$route['panel/transaction/confirm'] = 'transaction/home/confirm';
+
+$route['panel/refferal/?(:num)?'] = 'refferal/home/index/$1';
+
+$route['panel/invite'] = 'invite/home';
+$route['panel/settings'] = 'settings/home';
+
+$route['panel/download'] = 'download/home';
+
+$route['panel/support/?(:num)?'] = 'support/home/index/$1';
+$route['panel/support/ticket'] = 'support/home/ticket';
+$route['panel/support/reply/?(:num)?'] = 'support/home/reply/$1';
+$route['panel/support/delete/(:num)'] = 'support/home/delete/$1';
+
+$route['panel/product/?(:num)?'] = 'product/home/index/$1';
+$route['panel/product/add'] = 'product/home/product_add';
+$route['panel/product/update/?(:num)?'] = 'product/home/product_update/$1';
+$route['panel/product/delete/(:num)'] = 'product/home/product_delete/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

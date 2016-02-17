@@ -4,8 +4,8 @@ $db['config']['multiple'] = true;
 
 $db['default']['dbhost'] = 'localhost';
 $db['default']['dbuser'] = 'root';
-$db['default']['dbpassword'] = '';
-$db['default']['dbdatabase'] = 'bluenexia_db';
+$db['default']['dbpassword'] = 'bluenexia';
+$db['default']['dbdatabase'] = 'bluenexia_api_db';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbdebug'] = true;
 $db['default']['dbpersistant'] = false;

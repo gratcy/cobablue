@@ -10,7 +10,6 @@ class views extends controller {
 		$act = get_var($this -> rg -> get('act'));
 		$det = get_var($this -> rg -> get('det'));
 		$api = $this -> rg -> get('api');
-		$pname = $this -> rg -> get('pname');
 		
 		if ( $api ) {
 			$action = BASEPATH . 'api/' . $api . '/controllers/' . $act. EXT;
