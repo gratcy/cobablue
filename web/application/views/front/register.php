@@ -1,3 +1,16 @@
+
+<script type="text/javascript">
+var captchaContainer = null;
+var captchar = null;
+var loadCaptcha = function() {
+  captchaContainer = grecaptcha.render('captcha_container', {
+	'sitekey' : '6Le2UxkTAAAAAF3MwydlfwgtO-lM-YZoW5-nvowi',
+	'callback' : function(response) {
+		captchar = response;
+	}
+  });
+};
+</script>
 <div class="page-nonindex container">
   <form action="<?php echo site_url('register'); ?>" method="post">
   <div class="form-login form-register">
@@ -29,8 +42,11 @@
           <span>Confirm Password</span>
           <div class="field"><input name="cpass" type="password" /></div>
         </li>
-        <li class="capcha full">
-          Capcha Here
+        <li class="capcha full" style="margin:0 auto;text-align:center">
+			<div style="margin:0 auto;text-align:center;display:inline-block">
+          <div id="captcha_container"></div>
+      <script src="https://www.google.com/recaptcha/api.js?onload=loadCaptcha&render=explicit" async defer></script>
+      </div>
         </li>
         <li class="term full">
           By clicking Sign Up, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Data Policy</a>.
