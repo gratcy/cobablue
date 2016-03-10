@@ -114,6 +114,10 @@ class objectdb {
 			return $sql;
 		}
 	}
+	
+	public function last_id() {
+		return mysql_insert_id();
+	}
 
 	public function error($type) {
 		if ($this -> debug) {

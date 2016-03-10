@@ -151,6 +151,10 @@ class objectdb {
 			}
 		}
 	}
+	
+	public function last_id() {
+		return mysql_insert_id();
+	}
 
 	function __destruct() {
 		if ($this -> reconnect && $this -> conn){
