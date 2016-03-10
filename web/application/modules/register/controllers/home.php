@@ -83,11 +83,11 @@ class Home extends MY_Controller {
 								$to = $email;
 								$subject = "Email Confirmation Activation Account Anti Block";
 								$message = "Email Confirmation Activation Account Anti Block \r\n";
-								$message = "Please click this link below to activation your account anti block \r\n";
-								$message = site_url('confirm?email=' . $cemail . '&key=' . $key) . " \r\n \r\n \r\n \r\n";
-								$message = "Regards, \r\n";
-								$message = " \r\n";
-								$message = "Admin \r\n";
+								$message .= "Please click this link below to activation your account anti block \r\n";
+								$message .= site_url('confirm?email=' . $cemail . '&key=' . $key) . " \r\n \r\n \r\n \r\n";
+								$message .= "Regards, \r\n";
+								$message .= " \r\n";
+								$message .= "Admin \r\n";
 								
 								__send_email($to,$subject,$message);
 								

@@ -58,11 +58,11 @@ class register extends controller {
 									$to = $email;
 									$subject = "Email Confirmation Activation Account Anti Block";
 									$message = "Email Confirmation Activation Account Anti Block \r\n";
-									$message = "Please click this link below to activation your account anti block \r\n";
-									$message = 'http://neverblock.me/confirm?email=' . $email . '&key=' . $key . " \r\n \r\n \r\n \r\n";
-									$message = "Regards, \r\n";
-									$message = " \r\n";
-									$message = "Admin \r\n";
+									$message .= "Please click this link below to activation your account anti block \r\n";
+									$message .= 'http://neverblock.me/confirm?email=' . $email . '&key=' . $key . " \r\n \r\n \r\n \r\n";
+									$message .= "Regards, \r\n";
+									$message .= " \r\n";
+									$message .= "Admin \r\n";
 									
 									__send_email($to,$subject,$message);
 									
