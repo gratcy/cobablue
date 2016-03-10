@@ -50,6 +50,7 @@
 											
 			<?php echo __get_error_msg(); ?>
                                     <form class="form-horizontal" id="resetpass" action="<?php echo site_url('panel/support/reply');?>" role="form" method="post">
+                                    <input type="hidden" name="uid" value="<?php echo $detail[0] -> uid; ?>">
                                     <input type="hidden" name="tto" value="<?php echo $detail[0] -> tto; ?>">
                                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                                     <input type="hidden" name="parent" value="<?php echo $detail[0] -> tparent; ?>">

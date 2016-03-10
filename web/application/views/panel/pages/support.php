@@ -59,28 +59,33 @@
                                           <tr>
                                             <td><?php echo ($page * $i); ?>.</td>
                                             <td><?php echo __get_support_type($v -> tto,1); ?></td>
-                                            <td>You</td>
+                                            <td><?php echo __get_from_support($v -> ufullname, $this -> memcachedlib -> sesresult['ulevel'], 0,1);?></td>
                                             <td><?php echo __get_date($v -> tdate,3); ?></td>
                                             <td class="col-lg-5"><?php echo $v -> tsubject; ?></td>
                                             <td>
                                             <div class="controls center">
+										<?php if ($this -> memcachedlib -> sesresult['ulevel'] != 4) : ?>
+											<a href="<?php echo site_url('panel/support/reply/' . $v -> tid); ?>" title="Reply <?php echo $v -> tsubject; ?>" class="tip"><span class="icon12 icomoon-icon-reply"></span></a>
+										<?php endif; ?>
                                                     <a href="<?php echo site_url('panel/support/delete/' . $v -> tid); ?>" title="Remove Message" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
 												</div>
                                             </td>
                                           </tr>
                                           <?php
-                                          $ptickets = $this -> support_model -> __get_tickets($v -> tid,2);
+                                          $ptickets = $this -> support_model -> __get_tickets($v -> tid,$this -> memcachedlib -> sesresult['ulevel'],2);
                                           foreach($ptickets as $k1 => $v1) :
                                           ?>
                                           <tr>
                                             <td></td>
                                             <td>-- <?php echo __get_support_type($v1 -> tto,1); ?></td>
-                                            <td><?php echo $v1 -> ufullname; ?></td>
+                                            <td><?php echo ($v1 -> truid == $this -> memcachedlib -> sesresult['uid'] ? 'You' : __get_from_support($v1 -> ufullname, $this -> memcachedlib -> sesresult['ulevel'], $v1 -> ulevel,2)); ?></td>
                                             <td><?php echo __get_date($v1 -> tdate,3); ?></td>
                                             <td><?php echo $v1 -> tsubject; ?></td>
                                                                                         <td>
                                                 <div class="controls center">
+													<?php if ($v1 -> truid != $this -> memcachedlib -> sesresult['uid'] && $v1 -> ulevel != $this -> memcachedlib -> sesresult['ulevel']) : ?>
                                                     <a href="<?php echo site_url('panel/support/reply/' . $v1 -> tid); ?>" title="Reply <?php echo $v1 -> tsubject; ?>" class="tip"><span class="icon12 icomoon-icon-reply"></span></a>
+                                                    <?php endif; ?>
                                                     <a href="<?php echo site_url('panel/support/delete/' . $v1 -> tid); ?>" title="Remove Message" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
 												</div>
                                             </td>
@@ -90,9 +95,11 @@
                                         </tbody>
                                     </table>
                                     <div id="pgboth">
+										<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
                         <div class="col-lg-2">
 						<a href="<?php echo site_url('panel/support/ticket'); ?>" class="btn btn-default"><span class="icon16 icomoon-icon-ticket"></span> Add New Ticket</a>
 						</div>
+						<?php endif; ?>
                         <div class="col-lg-10">
 <div class="dataTables_paginate paging_bootstrap pagination right">
 <?php echo $pages; ?>

@@ -28,7 +28,7 @@ class Home extends MY_Controller {
 						$this -> confirm_model -> __update_user($email, array('ustatus' => 1));
 						$this -> confirm_model -> __update_token($token[0] -> tid, array('tstatus' => 0));
 							
-						__set_error_msg(array('info' => 'Account succesfully active, please login.'));
+						__set_error_msg(array('info' => 'Account succesfully activated, please login.'));
 						redirect(site_url('confirm'));
 					}
 					else {

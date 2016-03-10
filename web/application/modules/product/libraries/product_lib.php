@@ -14,9 +14,9 @@ class Product_lib {
 		$res = '<option value="">-- Choose Product --</option>';
 		foreach($city as $k => $v)
 			if ($id == $v -> pid)
-				$res .= '<option value="'.$v -> pid.'" price="'.$v -> pprice.'" selected>'.$v -> pname.'</option>';
+				$res .= '<option value="'.$v -> pid.'" year="'.$v -> pyear.'" price="'.$v -> pprice.'" selected>'.$v -> pname.' - ' . __get_rupiah($v -> pprice,1).'</option>';
 			else
-				$res .= '<option value="'.$v -> pid.'" price="'.$v -> pprice.'">'.$v -> pname.'</option>';
+				$res .= '<option value="'.$v -> pid.'" year="'.$v -> pyear.'" price="'.$v -> pprice.'">'.$v -> pname.' - ' . __get_rupiah($v -> pprice,1).'</option>';
 		return $res;
 	}
 }

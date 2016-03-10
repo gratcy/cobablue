@@ -55,6 +55,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="price">Duration In Year</label>
+                                            <div class="col-lg-9">
+                                                <input type="number" class="form-control" placeholder="Duration In Year" autocomplete="off" name="year" value="<?php echo $detail[0] -> pyear; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-lg-3 control-label" for="desc">Description</label>
                                             <div class="col-lg-9">
                                                 <textarea id="textarea1" name="desc" rows="3" class="form-control elastic"><?php echo $detail[0] -> pdesc; ?></textarea>

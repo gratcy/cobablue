@@ -34,7 +34,7 @@ function __get_status($status, $type, $type2=1) {
 }
 
 function __get_status_transaction($status, $type) {
-	$data = array('Belum Dibayar','Lunas');
+	$data = array('Belum Dibayar','Sudah di Konfirmasi','Lunas');
 	$res = '';
 	if ($type == 1) {
 		$res = $data[$status];
@@ -166,4 +166,17 @@ function __send_email($to,$subject,$message) {
 		'X-Mailer: PHP/' . phpversion();
 
 	return @mail($to, $subject, $message, $headers);
+}
+
+function __get_from_support($name,$level,$clevel,$type) {
+	if ($type == 1) {
+		if ($level == 4) return 'You';
+		else return $name;
+	}
+	else {
+		if ($clevel == 1) return 'Root';
+		else if ($clevel == 2) return 'Support';
+		else if ($clevel == 3) return 'Marketing';
+		else return $name;
+	}
 }

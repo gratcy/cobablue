@@ -43,7 +43,7 @@
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">To</label>
                                             <div class="col-lg-9">
-                                                <select class="form-control" name="to">
+                                                <select class="form-control" name="tto">
                                                 <?php echo __get_support_type(0,2); ?>
                                                 </select>
                                             </div>

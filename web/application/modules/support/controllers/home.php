@@ -9,7 +9,7 @@ class Home extends MY_Controller {
 	}
 
 	function index($page) {
-		$pager = $this -> pagination_lib -> pagination($this -> support_model -> __get_tickets($this -> memcachedlib -> sesresult['uid'],1),3,10,site_url('support'));
+		$pager = $this -> pagination_lib -> pagination($this -> support_model -> __get_tickets($this -> memcachedlib -> sesresult['uid'],$this -> memcachedlib -> sesresult['ulevel'],1),3,10,site_url('panel/support'));
 		$view['tickets'] = $this -> pagination_lib -> paginate();
 		$view['pages'] = $this -> pagination_lib -> pages();
 		$view['page'] = (!$page ? 1 : (int) $page);
@@ -17,24 +17,47 @@ class Home extends MY_Controller {
 	}
 	
 	function ticket() {
-		$this->load->view('pages/ticket', '');
+		if ($_POST) {
+			$tto = (int) $this -> input -> post('tto');
+			$subject = $this -> input -> post('subject');
+			$msg = $this -> input -> post('msg');
+			
+			if (!$tto || !$subject || !$msg) {
+				__set_error_msg(array('error' => 'Data that you entered is incomplete !!!'));
+				redirect(site_url('panel/support/ticket'));
+			}
+			else {
+				if ($this -> support_model -> __insert_tickets(array('tto' => $tto, 'tuid' => $this -> memcachedlib -> sesresult['uid'], 'tdate' => time(), 'tsubject' => $subject, 'tmsg' => $msg, 'tparent' => 0, 'tstatus' => 1))) {
+					__set_error_msg(array('info' => 'Ticket successfully sent !!!'));
+					redirect(site_url('panel/support'));
+				}
+				else {
+					__set_error_msg(array('error' => 'Dissmiss input data !!!'));
+					redirect(site_url('panel/support/ticket'));
+				}
+			}
+		}
+		else {
+			$this->load->view('pages/ticket', '');
+		}
 	}
 	
 	function reply($id) {
 		if ($_POST) {
 			$tto = (int) $this -> input -> post('tto');
 			$id = (int) $this -> input -> post('id');
-			$parent = (int) $this -> input -> post('parent');
+			$uid = (int) $this -> input -> post('uid');
+			$parent = (int) ($this -> memcachedlib -> sesresult['ulevel'] != 4 ? $id : $this -> input -> post('parent'));
 			$subject = $this -> input -> post('subject');
 			$msg = $this -> input -> post('msg');
 			
 			if ($id) {
-				if (!$tto || !$subject || !$msg || !$parent) {
+				if (!$tto || !$subject || !$msg || !$parent || !$uid) {
 					__set_error_msg(array('error' => 'Data that you entered is incomplete !!!'));
 					redirect(site_url('panel/support/reply/' . $id));
 				}
 				else {
-					if ($this -> support_model -> __insert_tickets(array('tto' => $tto, 'tuid' => $this -> memcachedlib -> sesresult['uid'], 'tdate' => time(), 'tsubject' => $subject, 'tmsg' => $msg, 'tparent' => $parent, 'tstatus' => 1))) {
+					if ($this -> support_model -> __insert_tickets(array('tto' => $tto, 'tuid' => $uid, 'truid' => $this -> memcachedlib -> sesresult['uid'], 'tdate' => time(), 'tsubject' => $subject, 'tmsg' => $msg, 'tparent' => $parent, 'tstatus' => 1))) {
 						__set_error_msg(array('info' => 'Ticket successfully sent !!!'));
 						redirect(site_url('panel/support'));
 					}
@@ -51,8 +74,8 @@ class Home extends MY_Controller {
 		}
 		else {
 			$view['id'] = $id;
-			$view['detail'] = $this -> support_model -> __get_tickets_detail($this -> memcachedlib -> sesresult['uid'], $id);
-			
+			$view['detail'] = $this -> support_model -> __get_tickets_detail($this -> memcachedlib -> sesresult['uid'],$this -> memcachedlib -> sesresult['ulevel'], $id);
+
 			if (!$view['detail']) {
 				__set_error_msg(array('error' => 'Dissmiss input data !!!'));
 				redirect(site_url('panel/support'));

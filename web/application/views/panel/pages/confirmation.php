@@ -4,7 +4,7 @@
 
                 <div class="heading">
 
-                    <h3>Transaction</h3>                    
+                    <h3>Confirmation</h3>                    
 
                     <div class="resBtnSearch">
                         <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
@@ -20,7 +20,7 @@
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
                             </span>
                         </li>
-                        <li class="active">Transaction</li>
+                        <li class="active">Confirmation</li>
                     </ul>
 
                 </div><!-- End .heading-->
@@ -33,7 +33,7 @@
                                 <div class="panel-heading">
                                     <h4>
                                         <span class="icon16 icomoon-icon-file"></span>
-                                        <span>Transaction</span>
+                                        <span>Confirmation</span>
                                     </h4>
                                     <a href="#" class="minimize">Minimize</a>
                                 </div>
@@ -50,13 +50,13 @@
                                             <th>Period</th>
                                             <th>Price</th>
                                             <th class="col-lg-2">Status</th>
-                                            <th style="width:5%">Action</th>
+                                            <th style="width:10%">Action</th>
                                           </tr>
                                         </thead>
                                         <tbody>
 											<?php
 											$i=1;
-											foreach($transaction as $k => $v) :
+											foreach($confirmation as $k => $v) :
 											?>
                                           <tr>
                                             <td><?php echo ($page * $i); ?>.</td>
@@ -65,22 +65,20 @@
                                             <td><?php echo __get_date($v -> tdate,3); ?></td>
                                             <td><?php echo __get_date($v -> tfrom,1) .' - ' . __get_date($v -> tto,1); ?></td>
                                             <td><?php echo __get_rupiah($v -> ttotal); ?></td>
-                                            <td><?php echo __get_status_transaction($v -> tstatus,1); ?></td>
+                                            <td><?php echo __get_status_transaction($v -> ttstatus,1); ?></td>
                                             <td>
+												<?php if ($v -> ttstatus == 1) : ?>
                                             <div class="controls center">
-												<?php if ($v -> tstatus == 0) : ?>
-                                                    <a href="<?php echo site_url('panel/transaction/delete/' . $v -> tid); ?>" title="Cancel Transaction" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
-                                                    <?php endif; ?>
+                                                    <a href="<?php echo site_url('panel/confirmation/update/' . $v -> ttid); ?>" title="Update Product" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    <a href="<?php echo site_url('panel/confirmation/delete/' . $v -> ttid); ?>" title="Remove Product" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
 												</div>
+												<?php endif; ?>
                                             </td>
                                           </tr>
                                           <?php ++$i; endforeach; ?>
                                         </tbody>
                                     </table>
                                     <div id="pgboth">
-                        <div class="col-lg-2">
-						<a href="<?php echo site_url('panel/transaction/topup'); ?>" class="btn btn-default"><span class="icon16 icomoon-icon-arrow-up-right"></span> Top Up</a>
-						</div>
                         <div class="col-lg-10">
 <div class="dataTables_paginate paging_bootstrap pagination right">
 <?php echo $pages; ?>

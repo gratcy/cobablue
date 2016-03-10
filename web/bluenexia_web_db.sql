@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `bluenexia_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `bluenexia_db`;
--- MySQL dump 10.13  Distrib 5.5.46, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: bluenexia_db
 -- ------------------------------------------------------
--- Server version	5.5.46-0ubuntu0.14.04.2
+-- Server version	5.5.47-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,6 +16,34 @@ USE `bluenexia_db`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `confirmation_tab`
+--
+
+DROP TABLE IF EXISTS `confirmation_tab`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `confirmation_tab` (
+  `cid` int(10) NOT NULL AUTO_INCREMENT,
+  `cuid` int(10) DEFAULT NULL,
+  `ctid` int(10) DEFAULT NULL,
+  `cdate` int(10) DEFAULT NULL,
+  `cdesc` varchar(350) DEFAULT NULL,
+  `cstatus` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `confirmation_tab`
+--
+
+LOCK TABLES `confirmation_tab` WRITE;
+/*!40000 ALTER TABLE `confirmation_tab` DISABLE KEYS */;
+INSERT INTO `confirmation_tab` VALUES (1,6,7,1457542571,'wewew',1);
+/*!40000 ALTER TABLE `confirmation_tab` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `email_tab`
@@ -53,6 +81,7 @@ CREATE TABLE `product_tab` (
   `pid` int(10) NOT NULL AUTO_INCREMENT,
   `pname` varchar(100) DEFAULT NULL,
   `pprice` int(10) DEFAULT NULL,
+  `pyear` int(10) DEFAULT NULL,
   `pdesc` varchar(350) DEFAULT NULL,
   `pstatus` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`pid`)
@@ -65,7 +94,7 @@ CREATE TABLE `product_tab` (
 
 LOCK TABLES `product_tab` WRITE;
 /*!40000 ALTER TABLE `product_tab` DISABLE KEYS */;
-INSERT INTO `product_tab` VALUES (1,'1 Tahun',100000,'1 Tahun',1),(2,'2 Tahun',180000,'2 Tahun',1);
+INSERT INTO `product_tab` VALUES (1,'1 Tahun',100000,1,'1 Tahun',1),(2,'2 Tahun',180000,2,'2 Tahun',1);
 /*!40000 ALTER TABLE `product_tab` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +116,7 @@ CREATE TABLE `tickets_tab` (
   `tparent` int(10) DEFAULT NULL,
   `tstatus` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`tid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,8 +125,67 @@ CREATE TABLE `tickets_tab` (
 
 LOCK TABLES `tickets_tab` WRITE;
 /*!40000 ALTER TABLE `tickets_tab` DISABLE KEYS */;
-INSERT INTO `tickets_tab` VALUES (1,1,1,NULL,1451458723,'Masalah IP Address','Masalah IP Address',0,1),(2,1,1,5,1451458723,'Re: Masalah IP Address','Re: Masalah IP Address Masalah IP Address Masalah IP Address Masalah IP Address Masalah IP Address Masalah IP Address Masalah IP Address Masalah IP Address',1,1),(3,1,1,NULL,1451458723,'Masalah IP Address','Masalah IP Address',0,1),(4,1,1,NULL,1451473878,'Thanks for the information','Thanks for the information',1,1);
+INSERT INTO `tickets_tab` VALUES (1,1,1,NULL,1457274569,'tutorialnya dong cui','tutorialnya dong cui',0,1),(2,1,1,5,1457274584,'ini loh link nya','cek aja disini cui.',1,1),(3,1,5,1,1457274739,'thanks kk ','thanks kk ',1,1);
 /*!40000 ALTER TABLE `tickets_tab` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `token_tab`
+--
+
+DROP TABLE IF EXISTS `token_tab`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `token_tab` (
+  `tid` int(10) NOT NULL AUTO_INCREMENT,
+  `ttype` tinyint(1) DEFAULT '1',
+  `tuid` int(10) DEFAULT NULL,
+  `tkey` varchar(350) DEFAULT NULL,
+  `tstatus` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`tid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `token_tab`
+--
+
+LOCK TABLES `token_tab` WRITE;
+/*!40000 ALTER TABLE `token_tab` DISABLE KEYS */;
+INSERT INTO `token_tab` VALUES (1,2,7,'asdprweaadajer',1),(2,1,7,'palammamam',0);
+/*!40000 ALTER TABLE `token_tab` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `transaction_confirm_tab`
+--
+
+DROP TABLE IF EXISTS `transaction_confirm_tab`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transaction_confirm_tab` (
+  `tid` int(10) NOT NULL AUTO_INCREMENT,
+  `ttid` int(10) DEFAULT NULL,
+  `tdate` int(10) DEFAULT NULL,
+  `tabank` int(10) DEFAULT NULL,
+  `tano` varchar(50) DEFAULT NULL,
+  `taname` varchar(150) DEFAULT NULL,
+  `tmbank` int(10) DEFAULT NULL,
+  `ttotal` int(10) DEFAULT NULL,
+  `tdesc` text,
+  `tstatus` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`tid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transaction_confirm_tab`
+--
+
+LOCK TABLES `transaction_confirm_tab` WRITE;
+/*!40000 ALTER TABLE `transaction_confirm_tab` DISABLE KEYS */;
+INSERT INTO `transaction_confirm_tab` VALUES (1,7,1457280954,1,'wew241141','padapdkapdkadp',1,100000,'0',1);
+/*!40000 ALTER TABLE `transaction_confirm_tab` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -116,9 +204,10 @@ CREATE TABLE `transaction_tab` (
   `tfrom` int(10) DEFAULT NULL,
   `tto` int(10) DEFAULT NULL,
   `ttotal` int(10) DEFAULT NULL,
+  `tdesc` text,
   `tstatus` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`tid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +216,7 @@ CREATE TABLE `transaction_tab` (
 
 LOCK TABLES `transaction_tab` WRITE;
 /*!40000 ALTER TABLE `transaction_tab` DISABLE KEYS */;
-INSERT INTO `transaction_tab` VALUES (1,1,'TR123456789',1451402285,1,1451402285,1451402285,100000,1),(2,2,'TR123461732',1451402285,1,1451402285,1451402285,100000,1),(3,3,'TR991245678',1451402285,1,1451402285,1451402285,100000,1),(4,4,'TR445456789',1451402285,1,1451402285,1451402285,100000,1),(5,1,'TR333456789',1451402285,1,1451402285,1451402285,100000,1);
+INSERT INTO `transaction_tab` VALUES (1,1,'TR123456789',1451402285,1,1451402285,1451402285,100000,NULL,1),(2,2,'TR123461732',1451402285,1,1451402285,1451402285,100000,NULL,0),(3,3,'TR991245678',1451402285,1,1451402285,1451402285,100000,NULL,1),(4,4,'TR445456789',1451402285,1,1451402285,1451402285,100000,NULL,1),(5,1,'TR333456789',1451402285,1,1451402285,1451402285,100000,NULL,1),(6,1,'TR',1457277805,1,NULL,NULL,100000,NULL,3),(7,1,'TR0000701060316',1457278864,1,1457278864,1488814864,100000,NULL,2);
 /*!40000 ALTER TABLE `transaction_tab` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,7 +247,7 @@ CREATE TABLE `users_profiles_tab` (
 
 LOCK TABLES `users_profiles_tab` WRITE;
 /*!40000 ALTER TABLE `users_profiles_tab` DISABLE KEYS */;
-INSERT INTO `users_profiles_tab` VALUES (1,'Gratcy Palma','Indonesia','Jakarta','10213','Duren Tiga','091313121','568409691b9311451493737cetakan-kembang-loyang-kembang-goyang.jpg','Jakarta*1451408400'),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'Support',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'Gratcy Palma','Indonesia','Jakarta','131212','wewewe','081031321313','569594ce785a41452643534pp.jpg','Jakarta*1452618000');
+INSERT INTO `users_profiles_tab` VALUES (1,'Gratcy Palma','Indonesia','Jakarta','10213','Duren Tiga','091313121','568409691b9311451493737cetakan-kembang-loyang-kembang-goyang.jpg','Jakarta*1451408400'),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'Support',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'Gratcy Palma','Indonesia','Jakarta','131212','wewewe','081031321313','569594ce785a41452643534pp.jpg','Jakarta*1452618000'),(7,'Gratcy Palma P Hutapea',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users_profiles_tab` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +270,7 @@ CREATE TABLE `users_tab` (
   `uexpire` int(10) DEFAULT NULL,
   `ustatus` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +279,7 @@ CREATE TABLE `users_tab` (
 
 LOCK TABLES `users_tab` WRITE;
 /*!40000 ALTER TABLE `users_tab` DISABLE KEYS */;
-INSERT INTO `users_tab` VALUES (1,2,'admin@admin.com','3fbf895c0eb50c03a7a870c9586fba9379a631b6','Q4OZSj0fCb3sJjYZZwEJF6wHEvZ88peJgrDvztfX2cZTQRDAGqJG8adkVAUMcWA9','admin',0,'*1452643248',1451466459,1),(2,2,'palma@palma.com',NULL,NULL,'palma',1,NULL,NULL,1),(3,2,'cumi@cumi.com','',NULL,'cumi',1,NULL,NULL,1),(4,2,'dapur@dapur.com',NULL,NULL,'wew',1,NULL,NULL,0),(5,1,'support@max.com',NULL,NULL,NULL,NULL,NULL,NULL,1),(6,1,'root@max.com','3fbf895c0eb50c03a7a870c9586fba9379a631b6','Q4OZSj0fCb3sJjYZZwEJF6wHEvZ88peJgrDvztfX2cZTQRDAGqJG8adkVAUMcWA9',NULL,NULL,'*1452644084',NULL,1);
+INSERT INTO `users_tab` VALUES (1,4,'user@max.com','3fbf895c0eb50c03a7a870c9586fba9379a631b6','Q4OZSj0fCb3sJjYZZwEJF6wHEvZ88peJgrDvztfX2cZTQRDAGqJG8adkVAUMcWA9','admin',0,'*1457541835',1,1),(2,3,'marketing@max.com','3fbf895c0eb50c03a7a870c9586fba9379a631b6','Q4OZSj0fCb3sJjYZZwEJF6wHEvZ88peJgrDvztfX2cZTQRDAGqJG8adkVAUMcWA9','palma',1,NULL,NULL,1),(3,2,'cumi@cumi.com','',NULL,'cumi',1,NULL,NULL,1),(4,2,'dapur@dapur.com','3fbf895c0eb50c03a7a870c9586fba9379a631b6','Q4OZSj0fCb3sJjYZZwEJF6wHEvZ88peJgrDvztfX2cZTQRDAGqJG8adkVAUMcWA9','wew',1,'*1457276558',NULL,1),(5,2,'support@max.com','3fbf895c0eb50c03a7a870c9586fba9379a631b6','Q4OZSj0fCb3sJjYZZwEJF6wHEvZ88peJgrDvztfX2cZTQRDAGqJG8adkVAUMcWA9',NULL,NULL,'*1457273487',NULL,1),(6,1,'root@max.com','3fbf895c0eb50c03a7a870c9586fba9379a631b6','Q4OZSj0fCb3sJjYZZwEJF6wHEvZ88peJgrDvztfX2cZTQRDAGqJG8adkVAUMcWA9',NULL,NULL,'*1457541638',NULL,1),(7,2,'palmagratcy@gmail.com','d117185bd4a5f3160eaf2f1a7baaaa81d686cd0a','RPSDxj0Fi7etDGl0PPSwgIfV73xyC0066wbvAXlS3nMvZ1HTA32xMB8FT8ThyqGK','palmagratcy7',NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `users_tab` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -219,4 +308,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-13  7:15:38
+-- Dump completed on 2016-03-10 10:21:02

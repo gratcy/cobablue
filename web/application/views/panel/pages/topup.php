@@ -40,6 +40,8 @@
                                 <div class="panel-body">
                                     <form class="form-horizontal" id="resetpass" action="<?php echo site_url('panel/transaction/topup');?>" role="form" method="post">
 			<?php echo __get_error_msg(); ?>
+			<input type="hidden" name="total" value="">
+			<input type="hidden" name="year" value="">
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Product</label>
                                             <div class="col-lg-9">
@@ -48,10 +50,10 @@
                                                 </select>
                                             </div>
                                         </div>
-                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder">Price</label>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="desc">Description</label>
                                             <div class="col-lg-9">
-                                                <input type="text" class="form-control" name="price">
+                                                <textarea id="textarea1" name="desc" rows="3" class="form-control elastic"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -70,4 +72,9 @@
                     </div><!-- End .row -->
                
                 <!-- Page end here -->
-                                    
+                                    <script>
+                                    $('select[name="product"]').change(function(){
+										$('input[name="total"]').val($(':selected',this).attr('price'));
+										$('input[name="year"]').val($(':selected',this).attr('year'));
+									})
+                                    </script>

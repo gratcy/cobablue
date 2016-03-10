@@ -43,11 +43,14 @@ $lastlogin = explode('*', $this -> memcachedlib -> sesresult['ulastlogin']);
 					<p>Hello <?php echo $this -> memcachedlib -> sesresult['uemail']; ?></p>
 					<p>Login Today <?php echo __get_date($this -> memcachedlib -> sesresult['ldate'],3) . ' with IP Address ' . long2ip($this -> memcachedlib -> sesresult['lip']); ?></p>
 					<p>Last Login <?php echo __get_date($lastlogin[1],3) . ' with IP Address ' . long2ip($lastlogin[0]); ?></p>
+					<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
 					<p>Rerreral Code: <b><?php echo $this -> memcachedlib -> sesresult['urefcode']; ?></b></p>
+					<?php endif; ?>
 					</div>
 					</div>
 					</div>
 				</div>
+				<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
                 <div class="row">
 
                     <div class="col-lg-6">
@@ -145,6 +148,7 @@ $lastlogin = explode('*', $this -> memcachedlib -> sesresult['ulastlogin']);
                     </div><!-- End .span6 -->
 
                 </div><!-- End .row -->
+                <?php endif; ?>
 
                 
             </div><!-- End contentwrapper -->

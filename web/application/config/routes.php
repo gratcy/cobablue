@@ -42,6 +42,8 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
+################################################### FRONTEND ##################################################
+
 $route['register'] = 'register/home';
 $route['confirm'] = 'confirm/home';
 $route['lostpwd'] = 'lostpwd/home/index';
@@ -55,9 +57,14 @@ $route['panel/login'] = 'login/home';
 $route['panel/login/logging'] = 'login/home/logging';
 $route['panel/login/logout'] = 'login/home/logout';
 
+$route['panel/confirmation/?(:num)?'] = 'confirmation/home/index/$1';
+$route['panel/confirmation/update/?(:num)?'] = 'confirmation/home/update/$1';
+$route['panel/confirmation/delete/?(:num)?'] = 'confirmation/home/delete/$1';
+
 $route['panel/transaction/?(:num)?'] = 'transaction/home/index/$1';
 $route['panel/transaction/topup'] = 'transaction/home/topup';
 $route['panel/transaction/confirm'] = 'transaction/home/confirm';
+$route['panel/transaction/delete/(:num)'] = 'transaction/home/delete/$1';
 
 $route['panel/refferal/?(:num)?'] = 'refferal/home/index/$1';
 
