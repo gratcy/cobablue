@@ -3,7 +3,7 @@ if (!defined('BASEPATH')) exit( 'Direct access not allowed !!!' );
 
 class models_login extends objectdb {
 	function __check_user($email) {
-		return $this -> query_one("SELECT * FROM users_tab WHERE ustatus=1 AND uemail='".$email."'");
+		return $this -> query_one("SELECT * FROM users_tab WHERE uemail='".$email."'");
 	}
 	
 	function __check_email_exists($email) {

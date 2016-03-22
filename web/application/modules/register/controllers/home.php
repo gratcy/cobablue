@@ -16,7 +16,8 @@ class Home extends MY_Controller {
 			$cemail = $this -> input -> post('cemail');
 			$pass = $this -> input -> post('pass');
 			$cpass = $this -> input -> post('cpass');
-			$captchar = $this -> rg -> post('captchar');
+			$ref = $this -> input -> post('ref');
+			$captchar = $this -> input -> post('captchar');
 			
 			$params = array();
 			$params['secret'] = '6Le2UxkTAAAAAF3MwydlfwgtO-lM-YZoW5-nvowi';
@@ -39,7 +40,8 @@ class Home extends MY_Controller {
 			$response = @json_decode($response, true);
 			if ($response) {
 				if ($response["success"] == false) {
-					echo 'Kode keamanan salah!';
+					__set_error_msg(array('error' => 'Invalid security code !!!'));
+					redirect(site_url('register'));
 				}
 				else {
 					if (!$name || !$phone || !$email) {
@@ -72,7 +74,8 @@ class Home extends MY_Controller {
 							redirect(site_url('register'));
 						}
 						else {
-							if ($this -> register_model -> __insert_user(array('ulevel' => 2, 'uemail' => $cemail, 'upass' => $pwd, 'usalt' => $salt))) {
+							$ckref = $this -> register_model -> __check_reff($ref);
+							if ($this -> register_model -> __insert_user(array('ulevel' => 2, 'uemail' => $cemail, 'upass' => $pwd, 'usalt' => $salt, 'urefid' => $ckref[0] -> uid))) {
 								$uid = $this -> db -> insert_id();
 								$this -> register_model -> __update_user($uid, array('urefcode' => $rcode[0] . $uid),1);
 								$this -> register_model -> __update_user($uid, array('ufullname' => $name),2);
@@ -102,8 +105,14 @@ class Home extends MY_Controller {
 					}
 				}
 			}
+			else {
+				__set_error_msg(array('error' => 'Dissmiss input data !!!'));
+				redirect(site_url('register'));
+			}
 		}
-		else
-			$this->load->view('register', '');
+		else {
+			$view['ref'] = $this -> input -> get('ref');
+			$this->load->view('register', $view);
+		}
 	}
 }

@@ -4,7 +4,7 @@
 
                 <div class="heading">
 
-                    <h3>Transaction</h3>                    
+                    <h3>List User</h3>                    
 
                     <div class="resBtnSearch">
                         <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
@@ -14,13 +14,13 @@
                         <li>You are here:</li>
                         <li>
                             <a href="./" class="tip" title="back to dashboard">
-                                <span class="icon16 icomoon-icon-file"></span>
+                                <span class="icon16 icomoon-icon-users"></span>
                             </a> 
                             <span class="divider">
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
                             </span>
                         </li>
-                        <li class="active">Transaction</li>
+                        <li class="active">List User</li>
                     </ul>
 
                 </div><!-- End .heading-->
@@ -32,8 +32,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4>
-                                        <span class="icon16 icomoon-icon-file"></span>
-                                        <span>Transaction</span>
+                                        <span class="icon16 icomoon-icon-users"></span>
+                                        <span>List User</span>
                                     </h4>
                                     <a href="#" class="minimize">Minimize</a>
                                 </div>
@@ -44,33 +44,37 @@
                                         <thead>
                                           <tr>
                                             <th class="ch">#</th>
-                                            <th class="col-lg-1">Product</th>
-                                            <th class="col-lg-2">Transaction No.</th>
-                                            <th>Date</th>
-                                            <th>Period</th>
-                                            <th>Price</th>
-                                            <th class="col-lg-2">Status</th>
-                                            <th style="width:5%">Action</th>
+                                            <th>Level</th>
+                                            <th>Email</th>
+                                            <th>Full Name</th>
+                                            <th>Refcode</th>
+                                            <th>Refid</th>
+                                            <th>Last Login</th>
+                                            <th>Expire</th>
+                                            <th>Status</th>
+                                            <th class="col-lg-1">Actions</th>
                                           </tr>
                                         </thead>
                                         <tbody>
 											<?php
 											$i=1;
-											foreach($transaction as $k => $v) :
+											foreach($users as $k => $v) :
+											$llogin = explode('*',$v -> ulastlogin);
 											?>
                                           <tr>
                                             <td><?php echo ($page * $i); ?>.</td>
-                                            <td><?php echo $v -> pname; ?></td>
-                                            <td>#<?php echo $v -> tno; ?></td>
-                                            <td><?php echo __get_date($v -> tdate,3); ?></td>
-                                            <td><?php echo __get_date($v -> tfrom,1) .' - ' . __get_date($v -> tto,1); ?></td>
-                                            <td><?php echo __get_rupiah($v -> ttotal); ?></td>
-                                            <td><?php echo __get_status_transaction($v -> tstatus,1); ?></td>
+                                            <td><?php echo __get_user_level($v -> ulevel,1); ?></td>
+                                            <td><?php echo $v -> uemail; ?></td>
+                                            <td><?php echo $v -> ufullname; ?></td>
+                                            <td><?php echo $v -> urefcode; ?></td>
+                                            <td><?php echo $v -> urefid; ?></td>
+                                            <td><?php echo (isset($llogin[0]) ? long2ip($llogin[0]) : '') . ' - ' . (isset($llogin[1]) ? __get_date($llogin[1],3) : ''); ?></td>
+                                            <td><?php echo __get_date($v -> uexpire,3); ?></td>
+                                            <td><?php echo __get_status($v -> ustatus,1); ?></td>
                                             <td>
                                             <div class="controls center">
-												<?php if ($v -> tstatus == 0) : ?>
-                                                    <a href="<?php echo site_url('panel/transaction/delete/' . $v -> tid); ?>" title="Cancel Transaction" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
-                                                    <?php endif; ?>
+                                                    <a href="<?php echo site_url('panel/users/update/' . $v -> uid); ?>" title="Update User" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    <a href="<?php echo site_url('panel/users/delete/' . $v -> uid); ?>" title="Remove User" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
 												</div>
                                             </td>
                                           </tr>
@@ -79,7 +83,7 @@
                                     </table>
                                     <div id="pgboth">
                         <div class="col-lg-2">
-						<a href="<?php echo site_url('panel/transaction/topup'); ?>" class="btn btn-default"><span class="icon16 icomoon-icon-arrow-up-right"></span> Top Up</a>
+						<a href="<?php echo site_url('panel/users/add'); ?>" class="btn btn-default"><span class="icon16 icomoon-icon-plus"></span> Add New User</a>
 						</div>
                         <div class="col-lg-10">
 <div class="dataTables_paginate paging_bootstrap pagination right">
@@ -87,6 +91,8 @@
 </div>
 </div>
                                 </div>
+
+
                             </div><!-- End .panel -->
 
                         </div><!-- End .span6 -->

@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Max Hidden Panel</title>
+    <title>NeverBlock.Me - User Panel</title>
     <meta name="author" content="SuggeElson" />
-    <meta name="application-name" content="Max Hidden - Game Bracket" />
+    <meta name="application-name" content="NeverBlock.Me - User Panel" />
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -85,7 +85,7 @@
     <div id="header">
         <nav class="navbar navbar-default" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="<?php echo site_url('panel/');?>">Max<span class="slogan">Panel</span></a>
+                <a class="navbar-brand" href="<?php echo site_url('panel/');?>">NeverBlock.Me<span class="slogan">Panel</span></a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon16 icomoon-icon-arrow-4"></span>

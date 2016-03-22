@@ -14,7 +14,7 @@
                         <li>You are here:</li>
                         <li>
                             <a href="./" class="tip" title="back to dashboard">
-                                <span class="icon16 icomoon-icon-screen-2"></span>
+                                <span class="icon16 icomoon-icon-arrow-up-right"></span>
                             </a> 
                             <span class="divider">
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>

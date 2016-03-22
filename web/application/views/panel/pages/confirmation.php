@@ -14,7 +14,7 @@
                         <li>You are here:</li>
                         <li>
                             <a href="./" class="tip" title="back to dashboard">
-                                <span class="icon16 icomoon-icon-screen-2"></span>
+                                <span class="icon16 icomoon-icon-cart-checkout"></span>
                             </a> 
                             <span class="divider">
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
@@ -32,7 +32,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4>
-                                        <span class="icon16 icomoon-icon-file"></span>
+                                        <span class="icon16 icomoon-icon-cart-checkout"></span>
                                         <span>Confirmation</span>
                                     </h4>
                                     <a href="#" class="minimize">Minimize</a>

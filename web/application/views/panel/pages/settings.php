@@ -14,7 +14,7 @@
                         <li>You are here:</li>
                         <li>
                             <a href="./" class="tip" title="back to dashboard">
-                                <span class="icon16 icomoon-icon-screen-2"></span>
+                                <span class="icon16 icomoon-icon-user"></span>
                             </a> 
                             <span class="divider">
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
@@ -42,6 +42,13 @@
                                     <form class="form-horizontal" id="resetpass" action="<?php echo site_url('panel/settings');?>" role="form" method="post">
                                     <input type="hidden" name="type" value="1">
 										<div id="msg"></div>
+                                        
+                                         <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="placeholder">Refferal URL</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" placeholder="Refferal URL" value="<?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?>" name="refcode" readonly>
+                                            </div>
+                                        </div>
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Email</label>
                                             <div class="col-lg-9">
@@ -93,7 +100,7 @@
                                             <label class="col-lg-3 control-label" for="placeholder">Place Date of Birth</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" placeholder="Place" value="<?php echo (isset($pdt[0]) ? $pdt[0] : ''); ?>" name="place">
-                                                <input type="text" id="dt" class="form-control" placeholder="Date of Birth" value="<?php echo (isset($pdt[1]) && strlen($pdt[1]) > 0 ? date('d/m/Y',$pdt[1]) : ''); ?>" name="dt">
+                                                <input type="text" id="dt" class="form-control" placeholder="Date of Birth" value="<?php echo (isset($pdt[1]) && strlen($pdt[1]) > 0 ? date('d-m-Y',$pdt[1]) : ''); ?>" name="dt">
                                             </div>
                                         </div>
                                          <div class="form-group">

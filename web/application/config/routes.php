@@ -82,5 +82,10 @@ $route['panel/product/?(:num)?'] = 'product/home/index/$1';
 $route['panel/product/add'] = 'product/home/product_add';
 $route['panel/product/update/?(:num)?'] = 'product/home/product_update/$1';
 $route['panel/product/delete/(:num)'] = 'product/home/product_delete/$1';
+
+$route['panel/users/?(:num)?'] = 'users/home/index/$1';
+$route['panel/users/add'] = 'users/home/users_add';
+$route['panel/users/update/?(:num)?'] = 'users/home/users_update/$1';
+$route['panel/users/delete/(:num)'] = 'users/home/users_delete/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

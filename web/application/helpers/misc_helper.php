@@ -129,8 +129,8 @@ function __rename_file_upload($str) {
 	return trim($res);
 }
 	
-function __get_support_type($id,$type) {
-	$arr = array('Support', 'Marketing');
+function __get_user_level($id,$type) {
+	$arr = array('Root', 'Support', 'Marketing', 'User');
 	if ($type == 1) {
 		return $arr[$id-1];
 	}

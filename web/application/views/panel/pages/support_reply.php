@@ -14,7 +14,7 @@
                         <li>You are here:</li>
                         <li>
                             <a href="./" class="tip" title="back to dashboard">
-                                <span class="icon16 icomoon-icon-screen-2"></span>
+                                <span class="icon16 icomoon-icon-support"></span>
                             </a> 
                             <span class="divider">
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="panel-body noPad">
                                     <table class="table table-bordered">
-                                          <tr><td style="width:25%"><b>Support Type</b></td><td><?php echo __get_support_type($detail[0] -> tto,1); ?></td></tr>
+                                          <tr><td style="width:25%"><b>Support Type</b></td><td><?php echo __get_user_level($detail[0] -> tto,1); ?></td></tr>
                                           <tr><td><b>From</b></td><td><?php echo $detail[0] -> ufullname; ?></td></tr>
                                           <tr><td><b>Date</b></td><td><?php echo __get_date($detail[0] -> tdate,3); ?></td></tr>
                                           <tr><td><b>Subject</b></td><td><?php echo $detail[0] -> tsubject; ?></td></tr>

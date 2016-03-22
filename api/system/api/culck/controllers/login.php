@@ -23,8 +23,8 @@ class login extends controller {
 		if ($token && $email && $passwd) {
 			$ck = $this -> models_auth -> __check_token($token,2);
 			if (isset($ck[0])) {
-				if (date('Y-m-d H:i:s', $ck['aexpire']) >= date('Y-m-d H:i:s')) {
-					if ($this -> models_auth -> __update_auth(array('astatus' => 0), $ck['aid'])) {
+				if ($this -> models_auth -> __update_auth(array('astatus' => 0), $ck['aid'])) {
+					if (date('Y-m-d H:i:s', $ck['aexpire']) >= date('Y-m-d H:i:s')) {
 						parent::database('main', true);
 						$r = $this -> models_login -> __check_user($email);
 						if ($r[0]) {
