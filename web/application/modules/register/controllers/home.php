@@ -17,10 +17,10 @@ class Home extends MY_Controller {
 			$pass = $this -> input -> post('pass');
 			$cpass = $this -> input -> post('cpass');
 			$ref = $this -> input -> post('ref');
-			$captchar = $this -> input -> post('captchar');
+			$captchar = $this -> input -> post('g-recaptcha-response');
 			
 			$params = array();
-			$params['secret'] = '6Le2UxkTAAAAAF3MwydlfwgtO-lM-YZoW5-nvowi';
+			$params['secret'] = '6Le2UxkTAAAAAAL8lB-vqqipfbfTjk4v_k4w4Ewx';
 			$params['response'] = urlencode($captchar);
 			$params['remoteip'] = $_SERVER['REMOTE_ADDR'];
 
@@ -38,6 +38,7 @@ class Home extends MY_Controller {
 			curl_close($curl);
 
 			$response = @json_decode($response, true);
+			
 			if ($response) {
 				if ($response["success"] == false) {
 					__set_error_msg(array('error' => 'Invalid security code !!!'));

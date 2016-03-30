@@ -1,18 +1,8 @@
 
-<script type="text/javascript">
-var captchaContainer = null;
-var captchar = null;
-var loadCaptcha = function() {
-  captchaContainer = grecaptcha.render('captcha_container', {
-	'sitekey' : '6Le2UxkTAAAAAF3MwydlfwgtO-lM-YZoW5-nvowi',
-	'callback' : function(response) {
-		captchar = response;
-	}
-  });
-};
-</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="page-nonindex container">
   <form action="<?php echo site_url('register'); ?>" method="post">
+  <input type="hidden" name="ref" value="<?php echo $ref; ?>">
   <div class="form-login form-register">
     <div>
       <h1 class="title">Register Form</h1>
@@ -45,7 +35,7 @@ var loadCaptcha = function() {
         <li class="capcha full" style="margin:0 auto;text-align:center">
 			<div style="margin:0 auto;text-align:center;display:inline-block">
           <div id="captcha_container"></div>
-      <script src="https://www.google.com/recaptcha/api.js?onload=loadCaptcha&render=explicit" async defer></script>
+          <div class="g-recaptcha" data-sitekey="6Le2UxkTAAAAAF3MwydlfwgtO-lM-YZoW5-nvowi"></div>
       </div>
         </li>
         <li class="term full">

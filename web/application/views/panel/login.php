@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>NeverBlock.Me - User Panel</title>
+    <title>NeverBlock User Panel</title>
     <meta name="author" content="SuggeElson" />
     <meta name="application-name" content="NeverBlock.Me - User Panel" />
 
@@ -51,11 +51,11 @@
 
                 <div class="navbar">
                     <div class="container panel-top-login">
-                        <a class="navbar-brand" href="<?php echo site_url('panel'); ?>">Max Hidden<span class="slogan">Panel</span></a>
+                        <a class="navbar-brand" href="<?php echo site_url('panel'); ?>" title="NeverBlock User Panel">Never Block<span class="slogan">Panel</span></a>
                         <!--<div class="top-gotoweb top-gotoweb-login"><a href="index.php"><span>Go To Website</span></a></div>-->
                         <ul class="nav navbar-right usernav clearenter">
                           <li class="active top-gotoweb">
-                            <a href="<?php echo site_url(); ?>"><span>Go To Website</span></a>
+                            <a href="<?php echo site_url(); ?>" title="Back to site?"><span>Go To Website</span></a>
                           </li>
                         </ul>
                     </div>
