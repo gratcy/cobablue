@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteCond $1 !^(index\.php|default\.html|assets|view|modules|data|captcha|upload|sfile|robots\.txt|application)
+RewriteCond $1 !^(index\.php|default\.html|assets|view|modules|data|captcha|upload|sfile|robots\.txt|application|chat)
 RewriteRule ^(.*)$ /index.php/$1 [L]
 
 <IfModule mod_php5.c>
