@@ -45,6 +45,7 @@ $lastlogin = explode('*', $this -> memcachedlib -> sesresult['ulastlogin']);
 					<p>Last Login <?php echo __get_date($lastlogin[1],3) . ' with IP Address ' . long2ip($lastlogin[0]); ?></p>
 					<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
 					<p>Rerreral Code: <b><a href="<?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?>"><?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?></a> (<?php echo $this -> memcachedlib -> sesresult['urefcode']; ?>)</b></p>
+					<p>Point: <b><?php echo $this -> memcachedlib -> sesresult['upoint']; ?></b></p>
 					<?php endif; ?>
 					</div>
 					</div>

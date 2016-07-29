@@ -107,10 +107,10 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="desc">Place Date of Birth</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="form-control" placeholder="Place" name="tmpt" value="<?php echo $dt[0];?>">
+                                                <input type="text" class="form-control" placeholder="Place" name="tmpt" value="<?php echo (isset($dt[0]) ? $dt[0] : '');?>">
                                             </div>
                                             <div class="col-lg-4">
-                                                <input id="dt" type="text" class="form-control" placeholder="Date of Birth" name="tgl" value="<?php echo date('d-m-Y',$dt[1]);?>">
+                                                <input id="dt" type="text" class="form-control" placeholder="Date of Birth" name="tgl" value="<?php echo (isset($dt[1]) && strlen($dt[1]) > 0 ? date('d-m-Y',$dt[1]) : '');?>">
                                             </div>
                                         </div>
                                         <div class="form-group">

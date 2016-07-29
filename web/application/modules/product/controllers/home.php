@@ -20,12 +20,14 @@ class Home extends MY_Controller {
 	function product_add() {
 		if ($_POST) {
 			$name = $this -> input -> post('name');
+			$ptype = (int) $this -> input -> post('ptype');
+			$point = (int) $this -> input -> post('point');
 			$price = str_replace(',','',$this -> input -> post('price'));
 			$desc = $this -> input -> post('desc');
 			$status = (int) $this -> input -> post('status');
 			$year = (int) $this -> input -> post('year');
 			
-			if (!$name || !$price || !$year) {
+			if (!$name || !$price) {
 				__set_error_msg(array('error' => 'Product name and price must filled !!!'));
 				redirect(site_url('panel/product/add'));
 			}
@@ -34,7 +36,7 @@ class Home extends MY_Controller {
 				redirect(site_url('panel/product/add'));
 			}
 			else {
-				if ($this -> product_model -> __insert_product(array('pname' => $name, 'pprice' => $price, 'pyear' => $year, 'pdesc' => $desc, 'pstatus' => $status))) {
+				if ($this -> product_model -> __insert_product(array('ptype' => $ptype, 'pname' => $name, 'pprice' => $price, 'pyear' => $year, 'pdesc' => $desc, 'ppoint' => $point, 'pstatus' => $status))) {
 					__set_error_msg(array('info' => 'Product successfully added !!!'));
 					redirect(site_url('panel/product'));
 				}
@@ -55,10 +57,12 @@ class Home extends MY_Controller {
 			$desc = $this -> input -> post('desc');
 			$status = (int) $this -> input -> post('status');
 			$year = (int) $this -> input -> post('year');
+			$ptype = (int) $this -> input -> post('ptype');
+			$point = (int) $this -> input -> post('point');
 			$id = (int) $this -> input -> post('id');
 			
 			if ($id) {
-				if (!$name || !$price || !$year) {
+				if (!$name || !$price) {
 					__set_error_msg(array('error' => 'Product name and price must filled !!!'));
 					redirect(site_url('panel/product/update/' . $id));
 				}
@@ -67,7 +71,7 @@ class Home extends MY_Controller {
 					redirect(site_url('panel/product/update/' . $id));
 				}
 				else {
-					if ($this -> product_model -> __update_product($id, array('pname' => $name, 'pprice' => $price, 'pyear' => $year, 'pdesc' => $desc, 'pstatus' => $status))) {
+					if ($this -> product_model -> __update_product($id, array('ptype' => $ptype, 'pname' => $name, 'pprice' => $price, 'pyear' => $year, 'pdesc' => $desc, 'ppoint' => $point, 'pstatus' => $status))) {
 						__set_error_msg(array('info' => 'Product successfully updated !!!'));
 						redirect(site_url('panel/product'));
 					}

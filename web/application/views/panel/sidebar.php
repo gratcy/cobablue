@@ -7,6 +7,9 @@
                 <div class="mainnav">
                     <ul>
                         <li><a href="<?php echo site_url('panel');?>"><span class="icon16 icomoon-icon-home-6"></span>Dashboard</a></li>
+						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
+                        <li><a href="<?php echo site_url('panel/create_account');?>"><span class="icon16 icomoon-icon-transmission"></span>Create Account</a></li>
+                        <?php endif; ?>
                         <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 1) : ?>
                         <li><a href="<?php echo site_url('panel/product');?>" ><span class="icon16 icomoon-icon-quill"></span>Products</a></li>
                         <li><a href="<?php echo site_url('panel/confirmation');?>" ><span class="icon16 icomoon-icon-cart-checkout"></span>Confirmation</a></li>
@@ -27,6 +30,9 @@
                                 <li><a href="<?php echo site_url('panel/invite');?>"><span class="icon16 icomoon-icon-user-plus"></span>Invite Member</a></li>
                             </ul>
                         </li>
+                        <?php endif; ?>
+						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
+                        <li><a href="<?php echo site_url('panel/report');?>"><span class="icon16 icomoon-icon-list"></span>Report Create Account</a></li>
                         <?php endif; ?>
                         <li><a href="<?php echo site_url('panel/support');?>" ><span class="icon16 icomoon-icon-support"></span>Support</a></li>
                         <li><a href="<?php echo site_url('panel/download');?>" ><span class="icon16 icomoon-icon-download"></span>Download Application</a></li>

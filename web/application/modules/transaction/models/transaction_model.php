@@ -5,7 +5,7 @@ class Transaction_model extends CI_Model {
     }
     
     function __get_transaction($uid) {
-		return "SELECT a.tid,a.tno,a.tdate,a.tfrom,a.tto,a.ttotal,a.tstatus,b.pname FROM transaction_tab a LEFT JOIN product_tab b ON a.tpid=b.pid WHERE a.tstatus!=3 AND a.tuid=" . $uid . " ORDER BY a.tid DESC";
+		return "SELECT a.tid,a.tno,a.tdate,a.tfrom,a.tto,a.ttotal,a.tstatus,b.ptype,b.pname FROM transaction_tab a LEFT JOIN product_tab b ON a.tpid=b.pid WHERE a.tstatus!=3 AND a.tuid=" . $uid . " ORDER BY a.tid DESC";
 	}
 	
 	function __insert_transaction($data) {

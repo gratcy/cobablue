@@ -43,6 +43,12 @@
                                     <input type="hidden" name="id" value="<?php echo $id; ?>">
 			<?php echo __get_error_msg(); ?>
                                          <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="placeholder">Product Type</label>
+                                            <div class="col-lg-9">
+                                                <?php echo __get_product_type($detail[0] -> ptype,2); ?>
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Name</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" placeholder="Product Name" value="<?php echo $detail[0] -> pname; ?>" name="name">
@@ -54,10 +60,16 @@
                                                 <input type="text" class="form-control" onkeyup="formatharga(this.value,this)" placeholder="Product Price" autocomplete="off" name="price" value="<?php echo __get_rupiah($detail[0] -> pprice,2); ?>">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="duration" style="<?php echo ($detail[0] -> ptype == 0 ? 'display:block;' : 'display:none;'); ?>">
                                             <label class="col-lg-3 control-label" for="price">Duration In Year</label>
                                             <div class="col-lg-9">
                                                 <input type="number" class="form-control" placeholder="Duration In Year" autocomplete="off" name="year" value="<?php echo $detail[0] -> pyear; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="point" style="<?php echo ($detail[0] -> ptype == 1 ? 'display:block;' : 'display:none;'); ?>">
+                                            <label class="col-lg-3 control-label" for="price">Point</label>
+                                            <div class="col-lg-9">
+                                                <input type="number" class="form-control" placeholder="Point Member" autocomplete="off" name="point" value="<?php echo $detail[0] -> ppoint; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -94,3 +106,18 @@
                     </div><!-- End .row -->
                 <!-- Page end here -->
                                     
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('input[name="ptype"]').bind('change click',function(){
+		if ($(this).val() == 0) {
+			$('div#duration').show();
+			$('div#point').hide();
+		}
+		else {
+			$('div#duration').hide();
+			$('div#point').show();
+		}
+	});
+});
+</script>

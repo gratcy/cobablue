@@ -67,12 +67,14 @@
                                             <td><?php echo __get_rupiah($v -> ttotal); ?></td>
                                             <td><?php echo __get_status_transaction($v -> ttstatus,1); ?></td>
                                             <td>
-												<?php if ($v -> ttstatus == 1) : ?>
                                             <div class="controls center">
+												<?php if ($v -> ttstatus == 1) : ?>
                                                     <a href="<?php echo site_url('panel/confirmation/update/' . $v -> ttid); ?>" title="Update Product" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
                                                     <a href="<?php echo site_url('panel/confirmation/delete/' . $v -> ttid); ?>" title="Remove Product" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
-												</div>
+												<?php else: ?>
+													<a href="#"><span class="icon12 icomoon-icon-checkmark"></span></a>
 												<?php endif; ?>
+												</div>
                                             </td>
                                           </tr>
                                           <?php ++$i; endforeach; ?>

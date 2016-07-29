@@ -57,6 +57,10 @@ class Home extends MY_Controller {
 						__set_error_msg(array('error' => 'Invalid email format !!!'));
 						redirect(site_url('register'));
 					}
+					else if (strlen($pass) < 6 && strlen($pass) > 20) {
+						__set_error_msg(array('error' => 'Password min 6 character and max 20 character !!!'));
+						redirect(site_url('register'));
+					}
 					else if ($cemail !== $email) {
 						__set_error_msg(array('error' => 'Email and confirm email is not match !!!'));
 						redirect(site_url('register'));
@@ -76,7 +80,7 @@ class Home extends MY_Controller {
 						}
 						else {
 							$ckref = $this -> register_model -> __check_reff($ref);
-							if ($this -> register_model -> __insert_user(array('ulevel' => 2, 'uemail' => $cemail, 'upass' => $pwd, 'usalt' => $salt, 'urefid' => $ckref[0] -> uid))) {
+							if ($this -> register_model -> __insert_user(array('ulevel' => 4, 'uemail' => $cemail, 'upass' => $pwd, 'usalt' => $salt, 'urefid' => $ckref[0] -> uid, 'utype' => 1))) {
 								$uid = $this -> db -> insert_id();
 								$this -> register_model -> __update_user($uid, array('urefcode' => $rcode[0] . $uid),1);
 								$this -> register_model -> __update_user($uid, array('ufullname' => $name),2);

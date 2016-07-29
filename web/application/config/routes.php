@@ -66,6 +66,9 @@ $route['panel/transaction/topup'] = 'transaction/home/topup';
 $route['panel/transaction/confirm'] = 'transaction/home/confirm';
 $route['panel/transaction/delete/(:num)'] = 'transaction/home/delete/$1';
 
+$route['panel/create_account'] = 'create_account/home/index';
+$route['panel/report'] = 'report/home/index';
+
 $route['panel/refferal/?(:num)?'] = 'refferal/home/index/$1';
 
 $route['panel/invite'] = 'invite/home';

@@ -37,7 +37,7 @@ function __get_status_transaction($status, $type) {
 	$data = array('Belum Dibayar','Sudah di Konfirmasi','Lunas');
 	$res = '';
 	if ($type == 1) {
-		$res = $data[$status];
+		$res = isset($data[$status]) ? $data[$status] : '';
 	}
 	else {
 		foreach($data as $k => $v)
@@ -46,11 +46,24 @@ function __get_status_transaction($status, $type) {
 	return $res;
 }
 
+function __get_product_type($status, $type) {
+	$data = array('Personal','Retail');
+	$res = '';
+	if ($type == 1) {
+		$res = isset($data[$status]) ? $data[$status] : '';
+	}
+	else {
+		foreach($data as $k => $v)
+			$res .= $v . ' <input type="radio" '.($status == $k ? 'checked="checked"' : '').' name="ptype" value="'.$k.'" />';
+	}
+	return $res;
+}
+
 function __get_rupiah($num,$type=1) {
-	if ($type == 1) return "Rp. " . number_format($num,0,',','.');
+	if ($type == 1) return "IDR " . number_format($num,0,',','.');
 	elseif ($type == 2) return number_format($num,0,',',',');
 	elseif ($type == 3) return number_format($num,0,',','.');
-	else return "Rp. " . number_format($num,2,',','.');
+	else return "IDR " . number_format($num,2,',','.');
 }
 
 function __keyTMP($str) {
@@ -160,9 +173,23 @@ function __get_bank($id,$type,$type2) {
 	}
 }
 
+function __get_duration($id,$type) {
+	$arr = array(6 => '6 Month', 12 => '1 Year', 18 => '1 &frac12; Year', 24 => '2 Year', 30 => '2 &frac12; Year', 36 => '3 Year');
+	if ($type == 1) {
+		return $arr[$id];
+	}
+	else {
+		$res = '<option value="">-- Chose Duration --</option>';
+		foreach($arr as $k => $v)
+			if ($id == $k) $res .= '<option value="'.$k.'" selected>'.$v.'</option>';
+			else $res .= '<option value="'.$k.'">'.$v.'</option>';
+		return $res;
+	}
+}
+
 function __send_email($to,$subject,$message) {
-	$headers = 'From: noreply@indogamers.com' . "\r\n" .
-		'Reply-To: noreply@indogamers.com' . "\r\n" .
+	$headers = 'From: noreply@neverblock.me' . "\r\n" .
+		'Reply-To: noreply@neverblock.me' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 
 	return @mail($to, $subject, $message, $headers);

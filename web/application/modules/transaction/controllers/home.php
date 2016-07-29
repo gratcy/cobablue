@@ -21,30 +21,35 @@ class Home extends MY_Controller {
 		if ($_POST) {
 			$product = (int) $this -> input -> post('product');
 			$total = (int) $this -> input -> post('total');
+			$point = (int) $this -> input -> post('point');
 			$year = (int) $this -> input -> post('year');
+			$ptype = (int) $this -> input -> post('ptype');
 			$desc = $this -> input -> post('desc');
 			
-			if (!$product || !$total || !$year) {
+			if (!$product || !$total) {
 				__set_error_msg(array('error' => 'Product must be choose !!!'));
 				redirect(site_url('panel/transaction/topup'));
 			}
 			else {
 				$ttrans = $this -> transaction_model -> __get_total_transaction() + 1;
-				$tno = 'TR' . str_pad($ttrans, 5, "0", STR_PAD_LEFT).str_pad($year, 2, "0", STR_PAD_LEFT).date('dmy');
-				$exp = $this -> transaction_model -> __get_user_expire($this -> memcachedlib -> sesresult['uid']);
+				$tno = 'TR' . str_pad($ttrans, 5, "0", STR_PAD_LEFT).str_pad(($ptype == 0 ? $year : $point), 2, "0", STR_PAD_LEFT).date('dmy');
+			
+				$tfrom = '';
+				$tto = '';
 				
-				if ($exp[0] -> uexpire) {
-					if ($exp[0] -> uexpire >= time())
-					$tfrom = $exp[0] -> uexpire;
+				if ($ptype == 0) {
+					$exp = $this -> transaction_model -> __get_user_expire($this -> memcachedlib -> sesresult['uid']);
+					
+					if ($exp[0] -> uexpire) {
+						if ($exp[0] -> uexpire >= time()) $tfrom = $exp[0] -> uexpire;
+						else $tfrom = time();
+					}
 					else
-					$tfrom = time();
+						$tfrom = time();
+					$tto = strtotime('+1 year', $tfrom);
 				}
-				else {
-					$tfrom = time();
-				}
-				$tto = strtotime('+1 year', $tfrom);
-
-				if ($this -> transaction_model -> __insert_transaction(array('tuid' => $this -> memcachedlib -> sesresult['uid'], 'tno' => $tno, 'tdate' => time(), 'tpid' => $product, 'tfrom' => $tfrom, 'tto' => $tto, 'ttotal' => $total, 'tstatus' => 1))) {
+				
+				if ($this -> transaction_model -> __insert_transaction(array('tuid' => $this -> memcachedlib -> sesresult['uid'], 'ttype' => $ptype, 'tno' => $tno, 'tdate' => time(), 'tpid' => $product, 'tfrom' => $tfrom, 'tto' => $tto, 'ttotal' => $total, 'tpoint' => $point, 'tstatus' => 0))) {
 					__set_error_msg(array('info' => 'Transaction succesfully added.'));
 					redirect(site_url('panel/transaction'));
 				}

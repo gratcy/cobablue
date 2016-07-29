@@ -44,6 +44,7 @@
                                         <thead>
                                           <tr>
                                             <th class="ch">#</th>
+                                            <th>Type</th>
                                             <th>Name</th>
                                             <th>Price</th>
                                             <th>Description</th>
@@ -58,6 +59,7 @@
 											?>
                                           <tr>
                                             <td><?php echo ($page * $i); ?>.</td>
+                                            <td><?php echo __get_product_type($v -> ptype,1); ?></td>
                                             <td><?php echo $v -> pname; ?></td>
                                             <td><?php echo __get_rupiah($v -> pprice); ?></td>
                                             <td><?php echo $v -> pdesc; ?></td>

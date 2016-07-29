@@ -9,12 +9,12 @@ class Product_model extends CI_Model {
 	}
     
     function __get_product_select() {
-		$this -> db -> select('pid,pname,pprice,pyear FROM product_tab WHERE pstatus=1');
+		$this -> db -> select('pid,ptype,pname,pprice,pyear,ppoint FROM product_tab WHERE pstatus=1');
 		return $this -> db -> get() -> result();
 	}
     
     function __get_product_detail($id) {
-		$this -> db -> select('pname,pyear,pprice,pdesc,pstatus FROM product_tab WHERE (pstatus=1 OR pstatus=0) AND pid=' . $id);
+		$this -> db -> select('ptype,pname,pyear,pprice,ppoint,pdesc,pstatus FROM product_tab WHERE (pstatus=1 OR pstatus=0) AND pid=' . $id);
 		return $this -> db -> get() -> result();
 	}
 	

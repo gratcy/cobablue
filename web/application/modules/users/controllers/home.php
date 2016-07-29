@@ -42,6 +42,10 @@ class Home extends MY_Controller {
 				__set_error_msg(array('error' => 'Invalid email format !!!'));
 				redirect(site_url('panel/users/add'));
 			}
+			else if (strlen($pass) < 6 && strlen($pass) > 20) {
+				__set_error_msg(array('error' => 'Password min 6 character and max 20 character !!!'));
+				redirect(site_url('panel/users/add'));
+			}
 			else if ($pass !== $cpass) {
 				__set_error_msg(array('error' => 'Password and confirm password not match !!!'));
 				redirect(site_url('panel/users/add'));
@@ -56,7 +60,7 @@ class Home extends MY_Controller {
 					redirect(site_url('panel/users/add'));
 				}
 				else {
-					if ($this -> users_model -> __insert_users(array('ulevel' => $level, 'uemail' => $email, 'upass' => $pwd, 'usalt' => $salt, 'ustatus' => $status))) {
+					if ($this -> users_model -> __insert_users(array('ulevel' => $level, 'uemail' => $email, 'upass' => $pwd, 'usalt' => $salt, 'utype' => 1, 'ustatus' => $status))) {
 						$uid = $this -> db -> insert_id();
 						$this -> users_model -> __update_users($uid,array('urefcode' => $rcode[0] . $uid),1);
 						$this -> users_model -> __update_users($uid,array('ufullname' => $name, 'ucountry' => $country, 'ucity' => $city, 'upostal' => $postal, 'uaddr' => $addr, 'uphone' => $phone, 'uttl' => $tmpt.'*'.strtotime($tgl)),2);

@@ -42,6 +42,8 @@
 			<?php echo __get_error_msg(); ?>
 			<input type="hidden" name="total" value="">
 			<input type="hidden" name="year" value="">
+			<input type="hidden" name="point" value="">
+			<input type="hidden" name="ptype" value="">
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Product</label>
                                             <div class="col-lg-9">
@@ -76,5 +78,7 @@
                                     $('select[name="product"]').change(function(){
 										$('input[name="total"]').val($(':selected',this).attr('price'));
 										$('input[name="year"]').val($(':selected',this).attr('year'));
+										$('input[name="point"]').val($(':selected',this).attr('point'));
+										$('input[name="ptype"]').val($(':selected',this).attr('ptype'));
 									})
                                     </script>

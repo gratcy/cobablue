@@ -44,6 +44,7 @@
                                         <thead>
                                           <tr>
                                             <th class="ch">#</th>
+                                            <th class="col-lg-1">Type</th>
                                             <th class="col-lg-1">Product</th>
                                             <th class="col-lg-2">Transaction No.</th>
                                             <th>Date</th>
@@ -60,16 +61,19 @@
 											?>
                                           <tr>
                                             <td><?php echo ($page * $i); ?>.</td>
+                                            <td><?php echo __get_product_type($v -> ptype,1); ?></td>
                                             <td><?php echo $v -> pname; ?></td>
                                             <td>#<?php echo $v -> tno; ?></td>
                                             <td><?php echo __get_date($v -> tdate,3); ?></td>
-                                            <td><?php echo __get_date($v -> tfrom,1) .' - ' . __get_date($v -> tto,1); ?></td>
+                                            <td><?php echo ($v -> ptype == 0 ? __get_date($v -> tfrom,1) .' - ' . __get_date($v -> tto,1) : ''); ?></td>
                                             <td><?php echo __get_rupiah($v -> ttotal); ?></td>
                                             <td><?php echo __get_status_transaction($v -> tstatus,1); ?></td>
                                             <td>
                                             <div class="controls center">
 												<?php if ($v -> tstatus == 0) : ?>
                                                     <a href="<?php echo site_url('panel/transaction/delete/' . $v -> tid); ?>" title="Cancel Transaction" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
+                                                    <?php else: ?>
+													<a href="#"><span class="icon12 icomoon-icon-checkmark"></span></a>
                                                     <?php endif; ?>
 												</div>
                                             </td>
