@@ -26,25 +26,9 @@ $(function() {
 
 /* loading */
 $(window).load(function() {
-  $(".se-pre-con").fadeOut("slow");;
+  $(".se-pre-con").fadeOut("slow");
 });
 /* end loading */
-
-
-
-/* resize mode */
-var sizeable = 'section';
-$(document).ready(function(){
-  $(window).resize();
-});
-
-$(window).resize(function(){
-  var browserwidth = parseInt($(window).width());
-  var browserheight = parseInt($(window).height());
-  
-  
-});
-/* end resize mode */
 
 
 
@@ -65,6 +49,15 @@ $("#menu-show, #menu-hide").click(function(){
   $("#menu-show, #menu-hide").toggle();
   return false;
 })
+
+$(".menu-mobile-cover, menu > ul > li > a").click(function(){
+  $("menu").removeClass("show");
+  $("menu, .menu-mobile-cover").animate({
+	  right: "-100%",
+	},500);	
+  $("#menu-show").css("display","block");
+  $("#menu-hide").css("display","none");
+})
 /* end show menu mobile */ 
 
 
@@ -80,3 +73,21 @@ $(document).ready(function() {
   });
 }); 
 /* end flex thumbnail */
+
+
+
+/* font */
+$(window).load(function() {
+  WebFontConfig = {
+    google: { families: [ 'Roboto:400,700:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+});
+/* end font */

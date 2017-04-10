@@ -45,7 +45,7 @@ class Home extends MY_Controller {
 					$cpoint = $ckPoint[0] -> upoint - $dpoint;
 
 					if ($ckPoint[0] -> upoint > 0 && $dpoint > 0) {
-						if ($this -> register_model -> __insert_user(array('ulevel' => 4, 'uemail' => $email, 'upass' => $pwd, 'uexpire' => $expire, 'usalt' => $salt, 'urefid' => $this -> memcachedlib -> sesresult['uid'], 'utype' => 2, 'ustatus' => 1))) {
+						if ($this -> register_model -> __insert_user(array('ulevel' => 4, 'uemail' => $email, 'upass' => $pwd, 'uexpire' => $expire, 'usalt' => $salt, 'urefid' => $this -> memcachedlib -> sesresult['uid'], 'ukey' => __api_key($email), 'utype' => 2, 'ustatus' => 1))) {
 							$this -> create_account_model -> __update_users($this -> memcachedlib -> sesresult['uid'], array('upoint' => $cpoint));
 							$this -> create_account_model -> __insert_history(array('cuid' => $this -> memcachedlib -> sesresult['uid'], 'cdate' => time(), 'cemail' => $email, 'cduration' => $duration, 'cprice' => $price, 'cdesc' => $desc));
 							

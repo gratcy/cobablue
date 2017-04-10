@@ -114,6 +114,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="desc">Expire</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" id="dt2" class="form-control" placeholder="Expire" name="expire" value="<?php echo date('d-m-Y',$detail[0] -> uexpire);?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-lg-3 control-label" for="password">Status</label>
                                             <div class="col-lg-9">
                                                <?php echo __get_status($detail[0] -> ustatus,2,2); ?>

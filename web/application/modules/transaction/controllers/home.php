@@ -105,7 +105,8 @@ class Home extends MY_Controller {
 			}
 		}
 		else {
-			$this->load->view('pages/confirm', '');
+			$data['tno'] = $this -> input -> get('tno');
+			$this->load->view('pages/confirm', $data);
 		}
 	}
 	

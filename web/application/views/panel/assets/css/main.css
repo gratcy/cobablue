@@ -3688,3 +3688,26 @@ body.rtl .support-section .sendMsg {margin-right: 0;}
 .panel-top-login{position:relative;}
 .panel-top-login > .nav{position:absolute; left:0; top:0;}
 .panel-top-login > .nav > li{float:left;}
+
+.clearenter::before, .clearenter::after{content:''; display:block; overflow:hidden; visibility:hidden; width:0;}
+.clearenter::after, .clearboth{clear:both;}
+.payment_method *{margin:0; padding:0;}
+.payment_method{text-align:center;}
+.payment_method > h5{margin-bottom:10px;}
+.payment_method > ul{list-style:none; display:inline-block;}
+.payment_method > ul > li{float:left; width:300px; margin:10px;}
+.payment_method > ul > li > div{background:#FFF; border:1px solid #DDD; min-height:275px;}
+.payment_method > ul > li > div > .logo > img{width:100%;}
+.payment_method > ul > li > div > ul{list-style:none; padding:10px 0; border-bottom:1px dashed #E0E0E0;}
+.payment_method > ul > li > div > ul:last-child{border-bottom:0;}
+.payment_method > ul > li > div > ul > li{padding:0 10px; text-align:left;}
+.payment_method > ul > li > div > ul > .kode{float:left; width:125px;}
+.payment_method > ul > li > div > ul > .isi{float:right; width:calc(100% - 125px);}
+
+@media screen and (max-width:680px){
+	.payment_method > ul > li{width:calc(50% - 20px);}
+}
+
+@media screen and (max-width:550px){
+	.payment_method > ul > li{width:calc(100% - 20px);}
+}

@@ -42,9 +42,8 @@
                                         <thead>
                                           <tr>
                                             <th class="ch">#</th>
-                                            <th class="col-lg-1">Email</th>
+                                            <th>Email</th>
                                             <th>Ref Code</th>
-                                            <th>Transaction</th>
                                             <th class="col-lg-1">Status</th>
                                           </tr>
                                         </thead>
@@ -57,19 +56,6 @@
                                             <td><?php echo ($page * $i); ?>.</td>
                                             <td><?php echo $v -> uemail; ?></td>
                                             <td><?php echo $v -> urefcode; ?></td>
-                                            <td>
-                                            <?php
-                                            $res = '';
-                                            $wew = $this -> refferal_model -> __get_transaction($v -> uid);
-                                            foreach($wew as $k1 => $v1) :
-												$res .= 'No: '.$v1 -> tno . '<br />';
-												$res .= 'Total: '.__get_rupiah($v1 -> ttotal) . '<br />';
-												$res .= 'Status: '.__get_status_transaction($v1 -> tstatus,1) . '<br /><br />';
-                                            endforeach;
-                                            echo $res;
-                                            $wew = array();
-                                            ?>
-                                            </td>
                                             <td><?php echo __get_status($v -> ustatus,1);?></td>
                                           </tr>
                                           <?php ++$i; endforeach; ?>

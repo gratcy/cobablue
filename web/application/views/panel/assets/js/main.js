@@ -23,6 +23,7 @@ Modernizr.load({
 });
 
 $("#dt").datepicker({dateFormat : 'dd-mm-yy'});
+$("#dt2").datepicker({dateFormat : 'dd-mm-yy'});
 //window resize events
 $(window).resize(function(){
 	//get the window size

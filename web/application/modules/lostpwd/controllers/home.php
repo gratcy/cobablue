@@ -11,13 +11,12 @@ class Home extends MY_Controller {
 	function index() {
 		if ($_POST) {
 			$email = $this -> input -> post('email');
-			$captchar = $this -> input -> post('captchar');
+			$captchar = $this -> input -> post('g-recaptcha-response');
 			
 			$params = array();
-			$params['secret'] = '6Le2UxkTAAAAAF3MwydlfwgtO-lM-YZoW5-nvowi';
+			$params['secret'] = '6Le2UxkTAAAAAAL8lB-vqqipfbfTjk4v_k4w4Ewx';
 			$params['response'] = urlencode($captchar);
 			$params['remoteip'] = $_SERVER['REMOTE_ADDR'];
-
 			$params_string = http_build_query($params);
 			$requestURL = 'https://www.google.com/recaptcha/api/siteverify?' . $params_string;
 
@@ -54,14 +53,9 @@ class Home extends MY_Controller {
 							if ($this -> lostpwd_model -> __insert_token(array('tuid' => $uid[0] -> uid, 'ttype' => 2, 'tkey' => $key, 'tstatus' => 1))) {
 								$to = $email;
 								$subject = "Email Reset Password Anti Block";
-								$message = "Email Reset Password Anti Block \r\n";
-								$message = "Please click this link below to reset your password \r\n";
-								$message = site_url('lostpwd/setpwd?email=' . $email . '&key=' . $key) . " \r\n \r\n \r\n \r\n";
-								$message = "Regards, \r\n";
-								$message = " \r\n";
-								$message = "Admin \r\n";
-								
-								if (__send_email($to,$subject,$message)) {
+								$data = array();
+								$data['link'] = site_url('lostpwd/setpwd?email=' . $email . '&key=' . $key);
+								if (__send_email($to,$subject,$data,FCPATH . 'application/views/front/email/reset-pass.html')) {
 									__set_error_msg(array('info' => 'Please check your email to reset password.'));
 									redirect(site_url('lostpwd'));
 								}

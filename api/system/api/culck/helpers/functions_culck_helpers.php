@@ -1,10 +1,13 @@
 <?php
-function __get_salt() {
+function __get_salt($randStringLen=64) {
      $charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-     $randStringLen = 64;
      $randString = "";
      for ($i = 0; $i < $randStringLen; $i++) $randString .= $charset[mt_rand(0, strlen($charset) - 1)];
      return $randString;
+}
+
+function __api_key($str) {
+	return __get_salt(90) . md5($str . '__blu') . base64_encode(uniqid());
 }
 
 function __set_pass($upass, $salt) {

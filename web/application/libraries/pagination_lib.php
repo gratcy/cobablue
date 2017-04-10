@@ -18,7 +18,7 @@ class Pagination_lib {
 		$this -> adjacents = $adjacents;
 		$this -> page_name = rtrim($page_name, '/');
 		
-		$pname = 'http://'.$_SERVER['HTTP_HOST'].rtrim($_SERVER['REQUEST_URI'],'/');
+		$pname = 'https://'.$_SERVER['HTTP_HOST'].rtrim($_SERVER['REQUEST_URI'],'/');
 		$pname = str_replace($page_name,'', $pname);
 		
 		if($pname)

@@ -17,7 +17,7 @@ $(document).ready(function() {
     <div class="bg_cover"></div>
     <div class="bg_overlay"></div>
     <div class="message">
-      <h1 class="title">Welcome To Unblockwebs</h1>
+      <h1 class="title">Welcome To Neverblock</h1>
       <h5>Browse the internet privately, anonymously and securely.</h5>
       <ul class="clearenter">
         <li class="next_btn"><a href="#index-info">Take a Tour</a></li>
@@ -36,20 +36,20 @@ $(document).ready(function() {
       </li>
       <li>
         <img src="<?php echo site_url('application/views/front/images/icon-fitur-unblock.png'); ?>" />
-        <h5>Unblock websites</h5>
-        <p>Access any website or app without geographic restrictions or censorship.</p>
+        <h5>Secure websites access</h5>
+        <p>Browse safely without blocked by any hackers.</p>
       </li>
       <li>
         <img src="<?php echo site_url('application/views/front/images/icon-fitur-easy.png'); ?>" />
         <h5>Easy To Use</h5>
-        <p>You can secure your connection and unblock websites in one click.</p>
+        <p>You can secure your connection in one click.</p>
       </li>
     </ul>
   </div>
   
   <div id="index-works">
-    <h1 class="title">How Unblockwebs Works?</h1>
-	<div>
+    <h1 class="title">How Neverblock Works?</h1>
+	<div class="clearenter">
 	  <div class="works_image">
 	    <img src="<?php echo site_url('application/views/front/images/icon-works-big.png'); ?>" />
 	  </div>
@@ -66,12 +66,15 @@ $(document).ready(function() {
   
   <div id="index-feature" class="clearenter">
     <h1 class="title">Features</h1>
+    <div class="bg_cover"></div>
+    <div class="bg_overlay"></div>
+    <div class="content clearenter">
     <ul class="clearenter">
       <li class="image left">
         <img src="<?php echo site_url('application/views/front/images/icon-bypass_proxy.png'); ?>" />
       </li>
       <li class="content right">
-        <h5>Bypass Filters</h5>
+        <h5>Access All Website</h5>
         <p>As every online web proxy, this free proxy service may allow you to access websites anonymously,
 bypass website blocks/filters and browse websites blocked in your computer or mobile device.</p>
       </li>
@@ -131,45 +134,135 @@ websites anonymously, save Internet bandwidth. Use this service ethically and re
 ethically). If you have found this web proxy useful and cool, please share it with your friends.</p>
       </li>
     </ul>
+    </div>
   </div>
       
   <div id="index-download">
     <h1 class="title">Download</h1>
     <ul class="clearenter">
       <li class="dl-android">
-        <a href="#">
-          <span class="dl-icon"></span>
+        <a href="https://play.google.com/store/apps/details?id=de.blinkt.bluenexia" target="_blank">
+          <span class="dl-icon">
+            <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-androidlogo.png'); ?>" />
+            <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-androidlogo-hover.png'); ?>" />
+          </span>
           <h5>Android</h5>
         </a>
+		<div class="tutorial-tombol">
+          <a href="https://play.google.com/store/apps/details?id=de.blinkt.bluenexia" target="_blank">Download</a>
+          <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-android.pdf'); ?>" target="_blank">Guide</a>
+        </div>
       </li>
-      <li class="dl-ios">
-        <a href="#">
-          <span class="dl-icon"></span>
-          <h5>IOS</h5>
+      <li class="dl-osx">
+        <a href="<?php echo site_url('application/views/front/file/neverblock-osx.pkg'); ?>" target="_blank">
+          <span class="dl-icon">
+            <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-osxlogo.png'); ?>" />
+            <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-osxlogo-hover.png'); ?>" />
+          </span>
+          <h5>OS X</h5>
         </a>
+        <div class="tutorial-tombol">
+          <a href="<?php echo site_url('application/views/front/file/neverblock-osx.pkg'); ?>" target="_blank">Download</a>
+          <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-osx.pdf'); ?>" target="_blank">Guide</a>
+        </div>
       </li>
       <li class="dl-windows">
-        <a href="#">
-          <span class="dl-icon"></span>
+        <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe'); ?>"  target="_blank">
+          <span class="dl-icon">
+            <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-winlogo.png'); ?>" />
+            <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-winlogo-hover.png'); ?>" />
+          </span>
           <h5>Windows</h5>
         </a>
+		<div class="tutorial-tombol">
+          <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe'); ?>" target="_blank">Download</a>
+          <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-windows.pdf'); ?>" target="_blank">Guide</a>
+        </div>
+      </li>
+      <li class="dl-ios">
+        <a href="https://appsto.re/id/6Mhhib.i"  target="_blank">
+          <span class="dl-icon">
+            <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-applelogo.png'); ?>" />
+            <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-applelogo-hover.png'); ?>" />
+          </span>
+          <h5>IOS</h5>
+        </a>
+        <div class="tutorial-tombol">
+          <a href="https://appsto.re/id/6Mhhib.i" target="_blank">Download</a>
+        </div>
       </li>
       <li class="dl-linux">
-        <a href="#">
-          <span class="dl-icon"></span>
+        <div>
+          <span class="dl-icon">
+            <img src="<?php echo site_url('application/views/front/images/icon-linuxlogo.png'); ?>" />
+          </span>
           <h5>Linux</h5>
-        </a>
+		  <b>Coming Soon</b>
+        </div>
       </li>
     </ul>
   </div>
+  
+  <!--
+  <div id="index-contact">
+    <h1 class="title">Contact Us</h1>
+    <div class="bg_cover"></div>
+    <div class="bg_overlay"></div>
+    <div class="content clearenter">
+      <div class="email-phone">
+        <b>Email : <a href="mailto:admin@neverblock.me">admin@neverblock.me</a></b> | 
+        <b>Phone : -</b>
+      </div>
+      <div class="contact-form">
+        <b>Please fill out the form below to get more information about neverblock.</b>
+        <ul class="clearenter">
+        
+          <li class="left">
+            <div>
+              <input name="name" type="text" placeholder="Insert your name" />
+            </div>
+            <div>
+              <input name="email" type="text" placeholder="Insert your email" />
+            </div>
+            <div>
+              <input name="phone" type="text" placeholder="Insert your phone" />
+            </div>
+            <div>
+              <input name="title" type="text" placeholder="Insert the title of your message" />
+            </div>
+          </li>
+          
+          <li class="right">
+            <div>
+              <textarea name="message" required="" cols="" rows="" placeholder="Insert Your Message"></textarea>
+            </div>
+          </li>
+          
+        </ul>
+        
+        <div class="submit">
+          <div>
+            <span>capcha here</span>
+          </div>
+          <div>
+            <span><input name="submit" class="btn" value="Submit" type="submit"></span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  -->
   
 </div>
 
 <div class="btt index-btt" title="Return To Top">
   <ul>
     <li class="next_btn floatbtn-info"><a href="#index-info"> <div><b>Info</b></div></a></li>
-    <li class="next_btn floatbtn-works"><a href="#index-works"> <div><b>How Antiblock Works</b></div></a></li>
+    <li class="next_btn floatbtn-works"><a href="#index-works"> <div><b>How Neverblock Works</b></div></a></li>
     <li class="next_btn floatbtn-feature"><a href="#index-feature"> <div><b>Features</b></div></a></li>
+    <!--<li class="next_btn floatbtn-package"><a href="#index-package"> <div><b>Package</b></div></a></li>-->
     <li class="next_btn floatbtn-download"><a href="#index-download"> <div><b>Download</b></div></a></li>
+    <!--<li class="next_btn floatbtn-contact"><a href="#index-contact"> <div><b>Contact Us</b></div></a></li>-->
   </ul>
 </div>

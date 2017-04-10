@@ -11,9 +11,18 @@ class Home extends MY_Controller {
 	}
 
 	function index($page) {
-		$pager = $this -> pagination_lib -> pagination($this -> users_model -> __get_users(),3,10,site_url('panel/users'));
-		$view['users'] = $this -> pagination_lib -> paginate();
-		$view['pages'] = $this -> pagination_lib -> pages();
+		$keyword = $this -> input -> post('keyword');
+		
+		if ($keyword) {
+			$view['users'] = $this -> users_model -> __search_users($keyword);
+			$view['pages'] = '';
+		}
+		else {
+			$pager = $this -> pagination_lib -> pagination($this -> users_model -> __get_users(),3,10,site_url('panel/users'));
+			$view['users'] = $this -> pagination_lib -> paginate();
+			$view['pages'] = $this -> pagination_lib -> pages();
+		}
+		
 		$view['page'] = (!$page ? 1 : (int) $page);
 		$this->load->view('pages/users', $view);
 	}
@@ -60,10 +69,13 @@ class Home extends MY_Controller {
 					redirect(site_url('panel/users/add'));
 				}
 				else {
-					if ($this -> users_model -> __insert_users(array('ulevel' => $level, 'uemail' => $email, 'upass' => $pwd, 'usalt' => $salt, 'utype' => 1, 'ustatus' => $status))) {
+					if ($this -> users_model -> __insert_users(array('ulevel' => $level, 'uemail' => $email, 'upass' => $pwd, 'usalt' => $salt, 'utype' => 1, 'ukey' => __api_key($email), 'uexpire' => strtotime('+7 days'), 'ustatus' => $status))) {
 						$uid = $this -> db -> insert_id();
 						$this -> users_model -> __update_users($uid,array('urefcode' => $rcode[0] . $uid),1);
 						$this -> users_model -> __update_users($uid,array('ufullname' => $name, 'ucountry' => $country, 'ucity' => $city, 'upostal' => $postal, 'uaddr' => $addr, 'uphone' => $phone, 'uttl' => $tmpt.'*'.strtotime($tgl)),2);
+						
+						$key = __get_salt();
+						$this -> register_model -> __insert_token(array('tuid' => $uid, 'ttype' => 1, 'tkey' => $key, 'tstatus' => 1));
 						__set_error_msg(array('info' => 'User successfully added !!!'));
 						redirect(site_url('panel/users'));
 					}
@@ -87,6 +99,7 @@ class Home extends MY_Controller {
 			$phone = $this -> input -> post('phone');
 			$tmpt = $this -> input -> post('tmpt');
 			$tgl = $this -> input -> post('tgl');
+			$expire = $this -> input -> post('expire');
 			$name = $this -> input -> post('name');
 			$addr = $this -> input -> post('addr');
 			$pass = $this -> input -> post('pass');
@@ -117,8 +130,7 @@ class Home extends MY_Controller {
 							$arr += array('upass' => $pwd, 'usalt' => $salt);
 						}
 					}
-					$arr += array('ulevel' => $level, 'ustatus' => $status);
-					
+					$arr += array('ulevel' => $level, 'ustatus' => $status, 'uexpire' => strtotime($expire));
 					if ($this -> users_model -> __update_users($id, $arr,1)) {
 						$this -> users_model -> __update_users($id,array('ufullname' => $name, 'ucountry' => $country, 'ucity' => $city, 'upostal' => $postal, 'uaddr' => $addr, 'uphone' => $phone, 'uttl' => $tmpt.'*'.strtotime($tgl)),2);
 						__set_error_msg(array('info' => 'User successfully updated !!!'));

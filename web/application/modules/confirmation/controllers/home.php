@@ -6,6 +6,8 @@ class Home extends MY_Controller {
 		parent::__construct();
 		$this -> load -> model('confirmation_model');
 		$this -> load -> model('transaction/transaction_model');
+		$this -> load -> model('users/users_model');
+		$this -> load -> model('product/product_model');
 		$this -> load -> library('pagination_lib');
 		$this -> load -> library('product/product_lib');
 	}
@@ -22,15 +24,30 @@ class Home extends MY_Controller {
 		if ($_POST) {
 			$id = (int) $this -> input -> post('id');
 			$tcid = (int) $this -> input -> post('tcid');
+			$product = (int) $this -> input -> post('product');
 			$uid = (int) $this -> input -> post('uid');
+			$ptype = (int) $this -> input -> post('ptype');
 			$status = (int) $this -> input -> post('status');
 			$desc = $this -> input -> post('desc');
 			$to = $this -> input -> post('to');
 			$expire = str_replace('/','-',$to);
 			
 			if ($id && $tcid && $uid) {
-				if (strtotime($expire) > time()) {
+				if (strtotime($expire) < time() && $ptype == 0) {
+					__set_error_msg(array('info' => 'Invalid expire !!!'));
+					redirect(site_url('panel/confirmation'));
+				}
+				else {
 					if ($status == 1) {
+						if (strtotime($expire) > time() && $ptype == 0) {
+							$this -> users_model -> __update_users($uid, array('uexpire' => strtotime($expire)),1);	
+						}
+						if ($ptype == 1 && $product > 0) {
+							$pp = $this -> product_model -> __get_product_detail($product);
+							$up = $this -> users_model -> __get_point($uid);
+							$this -> users_model -> __update_users($uid, array('upoint' => $up[0] -> upoint+$pp[0] -> ppoint),1);	
+						}
+						
 						$this -> confirmation_model -> __insert_confirmation(array('cuid' => $this -> memcachedlib -> sesresult['uid'], 'ctid' => $id, 'cdate' => time(), 'cdesc' => $desc, 'cstatus' => 1));
 						$this -> transaction_model -> __update_transaction($id, array('tstatus' => 2),1);
 						$this -> transaction_model -> __update_transaction($tcid, array('tstatus' => 1),2);
@@ -42,10 +59,6 @@ class Home extends MY_Controller {
 						__set_error_msg(array('info' => 'There is no data changes !!!'));
 						redirect(site_url('panel/confirmation'));
 					}
-				}
-				else {
-					__set_error_msg(array('info' => 'Invalid expire !!!'));
-					redirect(site_url('panel/confirmation'));
 				}
 			}
 			else {

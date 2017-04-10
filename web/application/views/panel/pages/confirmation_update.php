@@ -41,6 +41,7 @@
                                     <form class="form-horizontal" id="resetpass" action="<?php echo site_url('panel/confirmation/update');?>" role="form" method="post">
 			<?php echo __get_error_msg(); ?>
 			<input type="hidden" name="id" value="<?php echo $id; ?>">
+			<input type="hidden" name="ptype" value="<?php echo $detail[0] -> ptype; ?>">
 			<input type="hidden" name="tcid" value="<?php echo $detail[0] -> tcid; ?>">
 			<input type="hidden" name="uid" value="<?php echo $detail[0] -> tuid; ?>">
                                          <div class="form-group">
@@ -57,6 +58,7 @@
                                                 </select>
                                             </div>
                                         </div>
+										<?php if ($detail[0] -> ptype != 1) : ?>
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Period</label>
                                             <div class="col-lg-4">
@@ -66,6 +68,7 @@
                                                 To <input type="text" readonly class="form-control" placeholder="To" name="to" value="<?php echo date('d/m/Y H:i:s',$detail[0] -> tto);?>">
                                             </div>
                                         </div>
+										<?php endif; ?>
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Bank</label>
                                             <div class="col-lg-9">
@@ -105,7 +108,7 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="password">Approve</label>
                                             <div class="col-lg-9">
-                                               <?php echo __get_status(0,2,2); ?>
+                                               <?php echo __get_approved(0,2); ?>
                                             </div>
                                         </div>
                                         <div class="form-group">

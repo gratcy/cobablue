@@ -11,6 +11,10 @@ class Memcachedlib {
             session_start();
         }
         
+        if (isset($_SERVER['HTTP_X_REAL_IP'])) {
+			$_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_REAL_IP'];
+		}
+        
 		if ($this -> _ci ->config->load('memcached', TRUE, TRUE))
 		{
 			if (is_array($this -> _ci->config->config['memcached']))
@@ -38,6 +42,7 @@ class Memcachedlib {
 			$this -> login = false;
         self::__check_login();
         self::__save_post();
+        self::__privileges();
     }
     
     function __save_post() {
@@ -56,6 +61,10 @@ class Memcachedlib {
 				}
 			}
 		}
+	}
+
+	function __privileges() {
+		
 	}
 	
 	function add($key, $value, $expiration=false,$keyGlobal=false) {

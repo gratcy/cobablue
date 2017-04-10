@@ -80,7 +80,7 @@ class Home extends MY_Controller {
 						}
 						else {
 							$ckref = $this -> register_model -> __check_reff($ref);
-							if ($this -> register_model -> __insert_user(array('ulevel' => 4, 'uemail' => $cemail, 'upass' => $pwd, 'usalt' => $salt, 'urefid' => $ckref[0] -> uid, 'utype' => 1))) {
+							if ($this -> register_model -> __insert_user(array('ulevel' => 4, 'uemail' => $cemail, 'upass' => $pwd, 'usalt' => $salt, 'urefid' => $ckref[0] -> uid, 'ukey' => __api_key($email), 'uexpire' => strtotime('+7 days'), 'utype' => 1))) {
 								$uid = $this -> db -> insert_id();
 								$this -> register_model -> __update_user($uid, array('urefcode' => $rcode[0] . $uid),1);
 								$this -> register_model -> __update_user($uid, array('ufullname' => $name),2);
@@ -90,14 +90,11 @@ class Home extends MY_Controller {
 								
 								$to = $email;
 								$subject = "Email Confirmation Activation Account Anti Block";
-								$message = "Email Confirmation Activation Account Anti Block \r\n";
-								$message .= "Please click this link below to activation your account anti block \r\n";
-								$message .= site_url('confirm?email=' . $cemail . '&key=' . $key) . " \r\n \r\n \r\n \r\n";
-								$message .= "Regards, \r\n";
-								$message .= " \r\n";
-								$message .= "Admin \r\n";
-								
-								__send_email($to,$subject,$message);
+								$data = array();
+								$data['link'] = site_url('confirm?email=' . $cemail . '&key=' . $key);
+								$data['email'] = $cemail;
+								$data['password'] = $cpass;
+								__send_email($to,$subject,$data,FCPATH . 'application/views/front/email/register.html');
 								
 								__set_error_msg(array('info' => 'Register complete, please check your email to activation account.'));
 								redirect(site_url('register'));

@@ -4,6 +4,11 @@ class Panel_model extends CI_Model {
         parent::__construct();
     }
     
+    function __get_user_expire($uid) {
+		$this -> db -> select("uexpire FROM users_tab WHERE uid=" . $uid);
+		return $this -> db -> get() -> result();
+	}
+    
     function __get_recent_refferal($uid) {
 		$this -> db -> select("uid,uemail,urefcode,ustatus FROM users_tab WHERE urefid=" . $uid . " ORDER BY uid DESC LIMIT 5");
 		return $this -> db -> get() -> result();

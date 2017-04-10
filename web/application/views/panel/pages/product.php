@@ -4,7 +4,7 @@
 
                 <div class="heading">
 
-                    <h3>List Product</h3>                    
+                    <h3>List Products</h3>                    
 
                     <div class="resBtnSearch">
                         <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
@@ -20,7 +20,7 @@
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
                             </span>
                         </li>
-                        <li class="active">List Product</li>
+                        <li class="active">List Products</li>
                     </ul>
 
                 </div><!-- End .heading-->

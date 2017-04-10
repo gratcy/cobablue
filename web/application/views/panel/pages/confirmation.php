@@ -37,19 +37,21 @@
                                     </h4>
                                     <a href="#" class="minimize">Minimize</a>
                                 </div>
-                                <div class="panel-body noPad">
 			<?php echo __get_error_msg(); ?>
 									
-                                    <table class="table table-bordered">
+                            <div class="panel-body" style="padding-bottom:0;">
+                                    <table class="table table-bordered" style="min-width:1200px">
                                         <thead>
                                           <tr>
                                             <th class="ch">#</th>
+                                            <th class="col-lg-1">Email</th>
                                             <th class="col-lg-1">Product</th>
                                             <th class="col-lg-2">Transaction No.</th>
+                                            <th class="col-lg-2">Bank Account</th>
                                             <th>Date</th>
-                                            <th>Period</th>
+                                            <th>Period / Points</th>
                                             <th>Price</th>
-                                            <th class="col-lg-2">Status</th>
+                                            <th class="col-lg-1">Status</th>
                                             <th style="width:10%">Action</th>
                                           </tr>
                                         </thead>
@@ -60,10 +62,12 @@
 											?>
                                           <tr>
                                             <td><?php echo ($page * $i); ?>.</td>
+                                            <td><?php echo $v -> uemail; ?></td>
                                             <td><?php echo $v -> pname; ?></td>
                                             <td>#<?php echo $v -> tno; ?></td>
+                                            <td>Bank: <?php echo __get_bank($v -> tabank,1,1);?><br />Acc No.: <?php echo $v -> tano; ?><br />Acc Name: <?php echo $v -> taname; ?></td>
                                             <td><?php echo __get_date($v -> tdate,3); ?></td>
-                                            <td><?php echo __get_date($v -> tfrom,1) .' - ' . __get_date($v -> tto,1); ?></td>
+                                            <td><?php echo ($v -> ptype == 0 ? __get_date($v -> tfrom,1) .' - ' . __get_date($v -> tto,1) : 'Retail (' . $v -> tpoint .' Points)'); ?></td>
                                             <td><?php echo __get_rupiah($v -> ttotal); ?></td>
                                             <td><?php echo __get_status_transaction($v -> ttstatus,1); ?></td>
                                             <td>

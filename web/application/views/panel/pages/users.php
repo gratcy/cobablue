@@ -39,7 +39,17 @@
                                 </div>
                                 <div class="panel-body noPad">
 			<?php echo __get_error_msg(); ?>
-									
+									<form action="" method="post" id="searchuser" name="searchuser">
+									<div class="row" style="padding:10px;">
+									<div class="col-lg-4">
+									<input type="search" class="form-control input-sm" name="keyword" placeholder="" aria-controls="table-ajax-defer">
+									</div>
+									<div class="col-lg-2" style="margin-left: -25px;margin-top: -2px;">
+									<a href="javascript:void(0);" onclick="document.getElementById('searchuser').submit();" class="btn btn-default"> Go! </a>
+									</div>
+									</div>
+									<div style="clear:both"></div>
+									</form>
                                     <table class="table table-bordered">
                                         <thead>
                                           <tr>

@@ -9,7 +9,7 @@ class objectdb {
 	}
 	
 	function num_rows($sql) {
-		if ($sql) return mysql_num_rows($sql);
+		if ($sql) return $sql -> rowCount();
 	}
 
 	function query($sql) {
@@ -17,7 +17,8 @@ class objectdb {
 			self::error(1);
 		}
 		else {
-			$sql = mysql_query($sql);
+			$sql = $this -> db_link -> query($sql);
+			$sql -> execute();
 			if (!$sql)
 				self::error(2);
 			else
@@ -26,16 +27,14 @@ class objectdb {
 	}
 	
 	function free_result($sql) {
-		return @mysql_free_result($sql);
+		return $sql -> closeCursor();
 	}
 	
 	function query_one($sql) {
 		if ($sql) {
-			$sql = self::query($sql . " limit 1");
-			if ($sql) {
-				$r = mysql_fetch_array($sql);
-				return $r;
-			}
+			$sql = $this -> db_link -> query($sql . " limit 1", PDO::FETCH_ASSOC);
+			if ($sql)
+				return $sql -> fetch();
 			else
 				self::error(1);
 		}
@@ -49,51 +48,40 @@ class objectdb {
 			self::error(2);
 		}
 		else {
-			$sql = mysql_fetch_row($sql);
+			$sql = $sql -> fetch;
 			$total = $sql[0] + 1;
 			return $total;
 		}
 	}
 
-	function result_sql($sql, $type='MYSQL_BOTH') {
+	function result_sql($sql, $type='FETCH_BOTH') {
 		if (!$sql) {
 			self::error(2);
 		}
 		else {
-			if ($type == 'MYSQL_ASSOC') $r = mysql_fetch_array($sql, MYSQL_ASSOC);
-			if ($type == 'MYSQL_BOTH') $r = mysql_fetch_array($sql, MYSQL_BOTH);
-			if ($type == 'MYSQL_NUM') $r = mysql_fetch_array($sql, MYSQL_NUM);
+			if ($type == 'FETCH_ASSOC') $r = $sql -> fetchAll(PDO::FETCH_ASSOC);
+			if ($type == 'FETCH_BOTH') $r = $sql -> fetchAll(PDO::FETCH_BOTH);
+			if ($type == 'FETCH_NUM') $r = $sql -> fetchAll(PDO::FETCH_NUM);
 			
 			if (!$r) return false;
-			foreach ($r as $key => $value) $r[$key] = $value;
 			return $r;
 		}
 	}
 
-	function update_sql($sql) {
-		$sql = self::query($sql);
-		if (!$sql)
-			self::error(2);
-		else
-			return $sql;
-	}
-
-	function insert_sql($sql) {
-		$sql = self::query($sql);
-		if (!$sql)
-			self::error(2);
-		else
-			return $sql;
-	}
-
 	function update_array($table,$data,$kondisi) {
 		if (empty($data) || empty($table) || empty($kondisi)) self::error(2);
-
+		
+		$arr = array();
 		$sql = "UPDATE $table SET ";
-		foreach ($data as $key=>$value) $sql .= $key . "=". "'$value'" . ",";
+		
+		foreach ($data as $key=>$value) {
+			$sql .= $key . "=". "'$value'" . ",";
+			$arr[] = array(":".$key => $value);
+		}
+		
 		$sql = rtrim($sql,",");
-		$sql = self::update_sql($sql . " WHERE $kondisi");
-		return $sql;
+		$sql = $this -> db_link -> prepare($sql . " WHERE $kondisi");
+		return $sql -> execute($arr);
 	}
 
 	function insert_array($table,$data){
@@ -104,30 +92,32 @@ class objectdb {
 			$cols = '(';
 			$values = '(';
 
+			$arr = array();
 			foreach ($data as $key=>$value) {
 				$cols .= $key . ",";
 				$values .= "'$value'" . ",";
+				$arr[] = array(":".$key => $value);
 			}
 			$cols = rtrim($cols, ',').')';
 			$values = rtrim($values, ',').')';
-			$sql = self::insert_sql("INSERT INTO $table $cols VALUES $values");
-			return $sql;
+			$sql = $this -> db_link -> prepare("INSERT INTO $table $cols VALUES $values");
+			return $sql -> execute($arr);
 		}
 	}
 	
 	public function last_id() {
-		return mysql_insert_id();
+		return $this -> db_link -> lastInsertId();
 	}
 
 	public function error($type) {
 		if ($this -> debug) {
 			if ($type) {
 				if ($type == 1)
-					die('<strong>mysql error</strong> ' . mysql_error() .' at line '. mysql_errno());
+					die('<strong>mysql error</strong> ' . $this -> db_link -> errorCode() .' at line '. $this -> db_link -> errorInfo()[2]);
 				elseif ($type == 2)
 					die('<strong>error </strong>, Proses has been stopped');
 				else
-					die('<strong>error </strong>, no connection !!!' . mysql_error() .' at line '. mysql_errno());
+					die('<strong>error </strong>, no connection !!!' . $this -> db_link -> errorCode() .' at line '. $this -> db_link -> errorInfo()[2]);
 			}
 		}
 	}

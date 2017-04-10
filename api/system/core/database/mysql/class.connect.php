@@ -6,6 +6,7 @@ class connect_db {
 	protected $pass;
 	protected $db;
 	protected $db_link;
+	protected $options;
 	protected $debug = false;
 	protected $conn = false;
 	protected $persistant = false;
@@ -19,29 +20,27 @@ class connect_db {
 		$this -> debug = $db['default']['dbdebug'];
 		$this -> persistant = $db['default']['dbpersistant'];
 		
-		if ($this -> persistant)
-			$this -> db_link = mysql_pconnect($this -> host, $this -> user, $this -> pass, true);
-		else 
-			$this -> db_link = mysql_connect($this -> host, $this -> user, $this -> pass, true);
-
-		if (!$this -> db_link) {
-			self::error();
+		if ($this -> persistant) {
+			$this -> options = array(
+				PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+				PDO::ATTR_PERSISTENT => true
+			);
 		}
 		else {
-			if (!$this -> db) {
-				self::error();
-			}
-			else {
-				$this -> dbselect = mysql_select_db($this -> db, $this -> db_link);
-				self::set_db_charset($db['default']['dbcharset'], $db['default']['dbcollat'], $this -> db_link);
-				if ( !$this -> dbselect ) self::error();
-				$this -> conn = true;
-			}
+			$this -> options = array(
+				PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+			);
+		}
+		
+		$this -> db_link = new PDO('mysql:host='.$this -> host.';dbname='.$this -> db, $this -> user, $this -> pass, $this -> options);
+		
+		if (!$this -> db_link) {
+			self::error();
 		}
 	}
 
 	private function set_db_charset($charset, $collate, $dblink) {
-		return @mysql_query('SET NAMES "'.$charset.'" COLLATE "'.$collate.'"', $dblink);
+		return $this -> db -> query('SET NAMES "'.$charset.'" COLLATE "'.$collate.'"', $dblink);
 	}
 
 	function __destruct() {
@@ -50,8 +49,7 @@ class connect_db {
 				$this -> conn = true;
 			}
 			else {
-				mysql_close($this -> db_link);
-				$this -> conn = false;
+				$this -> db_link = null;
 			}
 		}
 	}

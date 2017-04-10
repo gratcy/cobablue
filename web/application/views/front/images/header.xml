@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template>
+<header><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{idgs:get_title:}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" CONTENT="{idgs:get_desc:}" itemprop="description" />
+<meta property="og:image" content="{idgs:img_social:}" />
+<link href="{idgs:get_template:}/images/favicon.ico" rel="icon" type="image/ico" />
+<!--
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,700,900' rel='stylesheet' type='text/css'>
+-->
+<link href="{idgs:get_template:}/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="{idgs:get_template:}/css/fonts.css" rel="stylesheet" type="text/css" />
+<link href="{idgs:get_template:}/css/rancak.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{idgs:get_template:}/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="{idgs:get_template:}/js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{idgs:get_template:}/js/modernizr.js"></script>
+<script type="text/javascript" src="{idgs:get_template:}/js/validateform.js"></script>
+
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"RO40o1QolK10fn", domain:"indogamers.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=RO40o1QolK10fn" style="display:none" height="1" width="1" alt="" /></noscript>
+</head>
+<script>
+var SITEURL = '{idgs:site_url:}';
+var MOD = '{idgs:module[mod]:}';
+var SESID = '{idgs:ses_id:}';
+</script>
+<body>
+<div class="se-pre-con"></div>
+<span class="strip_cover"></span>
+
+<!-- topfloatmenu -->
+<link href="http://www.indogamers.com/system/views/default/img/menu_footer/menu_header.css" rel="stylesheet" />
+<div id="atehbana">
+  <ul class="clearenter">
+    <li class="icon home parent"> 
+      <a href="http://indogamers.com/" target="_parent">IDGS</a>
+      <div>
+        <ul>
+          <li><a href="http://www.indogamers.com/category/1/news/" target="_parent">News</a></li>
+          <li><a href="http://www.indogamers.com/page/videos/" target="_parent">Video</a></li>
+          <li><a href="http://www.indogamers.com/page/images/" target="_parent">Images</a></li>
+          <li><a href="http://www.indogamers.com/page/download/" target="_parent">Download</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="icon forum parent"> 
+      <a href="http://forum.indogamers.com/forum.php" target="_parent">forum</a>
+      <div>
+        <ul>
+          <li><a href="http://forum.indogamers.com/market.php" target="_parent">Market</a></li>
+          <li><a href="http://forum.indogamers.com/vbookie.php" target="_parent">vGames</a></li>
+          <li><a href="http://forum.indogamers.com/group.php" target="_parent">Groups</a></li>
+          <li><a href="http://forum.indogamers.com/misc.php?do=forms" target="_parent">Forms</a></li>
+          <li><a href="http://forum.indogamers.com/faq.php" target="_parent">F.A.Q</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="icon games parent">
+      <a href="http://games.indogamers.com/" target="_parent">games</a>
+      <div>
+        <ul>
+          <li class="icon dota"> <a href="http://dota.indogamers.com/" target="_parent">dota idgs</a> </li>
+          <li class="icon wow"> <a href="http://wow.indogamers.com/" target="_parent">wow idgs</a> </li>
+          <li class="icon aion"> <a href="http://aion.indogamers.com/" target="_parent">aion idgs</a> </li>
+          <li class="icon wgame"><a href="http://games.indogamers.com/" target="_parent">Web Games</a></li>
+        </ul>
+      </div>
+    </li>
+	<li class="icon store"><a href="http://store.indogamers.com/" target="_parent">store</a></li>
+    <li> <a href="http://www.indogamers.com/page/site_index/" target="_parent">site index</a> </li>
+    <li> <a href="http://report.indogamers.com/" target="_parent">report</a> </li>
+    <li> <a href="http://tv.indogamers.com/" target="_parent">tv</a> </li>
+    <li> <a href="http://bucket.id/" target="_blank">images uploader</a> </li>
+    <li> <a href="http://radio.indogamers.com/" target="_parent">radio</a> </li>
+    <li> <a href="http://rss.indogamers.com/" target="_parent">RSS</a> </li>
+    <li> <a href="http://irc.indogamers.com/" target="_parent">IRC</a> </li>
+  </ul>
+</div>
+<!-- end topfloatmenu -->
+
+
+<menu class="topmenu-mobile">
+  <div class="topmenu-mobile-head">
+    <ul class="clearenter">
+      <li class="logo"><a href="{idgs:site_url:}"><img src="{idgs:get_template:}/images/logo.png" /></a></li>
+      <li class="topmenu-mobile-show_hide">
+          <input name="menu-mobile-show" id="menu-mobile-show" type="button">
+  		  <input name="menu-mobile-hide" id="menu-mobile-hide" style="display:none;" type="button">
+      </li>
+    </ul>
+  </div>
+  
+  <div class="topmenu-mobile-list">
+    <ul>
+      <li><a href="{idgs:site_url:}"><span>Halaman Utama</span></a></li>
+      
+      <li class="topmenu-mobile-free">
+        <a href="javascript:void(0)"><span>Free</span></a>
+        <div>
+          <ul>
+            <li><a href="{idgs:site_url:}/free"><span>Berita</span></a></li> 
+	  		<li><a href="{idgs:site_url:}/free/register"><span>Registrasi</span></a></li>
+            <li class="parent">
+              <a href="javascript:void(0)"><span>Donasi</span></a>
+              <ul>
+                <li><a href="{idgs:storeDonation:}"><span>Donasi ID</span></a></li>
+                <li><a href="{idgs:site_url:}/free/donation-id"><span>Donasi ID Pulsa</span></a></li>
+              </ul>
+            </li>
+            <li><a href="{idgs:site_url:}/free/confirm"><span>Konfirmasi</span></a></li>
+            <li><a href="{idgs:site_url:}/free/bot-id"><span>Bot ID</span></a></li>
+            <li><a href="{idgs:site_url:}/free/check-id"><span>Cek Banned</span></a></li>
+            <li><a href="http://idgs.in/f{idgs:module[forum]:}" target="_blank"><span>Forum</span></a></li>
+          </ul>
+        </div>
+      </li>
+      
+      <li class="topmenu-mobile-pub">
+        <a href="javascript:void(0)"><span>Public</span></a>
+        <div>
+          <ul>
+            <li><a href="{idgs:site_url:}/public"><span>Berita</span></a></li> 
+	  		<li><a href="{idgs:site_url:}/public/register"><span>Registrasi</span></a></li>
+            <li class="parent">
+              <a href="javascript:void(0)"><span>Donasi</span></a>
+              <ul>
+                <li><a href="{idgs:storeDonation:}"><span>Donasi ID</span></a></li>
+                <li><a href="{idgs:site_url:}/public/donation-id"><span>Donasi ID Pulsa</span></a></li>
+              </ul>
+            </li>
+            <li><a href="{idgs:site_url:}/public/confirm"><span>Konfirmasi</span></a></li>
+            <li><a href="{idgs:site_url:}/public/bot-id"><span>Bot ID</span></a></li>
+            <li><a href="{idgs:site_url:}/public/check-id"><span>Cek Banned</span></a></li>
+            <li><a href="http://idgs.in/f{idgs:module[forum]:}" target="_blank"><span>Forum</span></a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="topmenu-mobile-parser"><a href="http://www.indogamers.com/download/game/204/warcraft-iii-indogamers/"><span>Download</span></a></li>
+      <li class="topmenu-mobile-parser"><a href="http://dota.indogamers.com/parser"><span>Parser</span></a></li>
+      <li class="topmenu-mobile-parser"><a href="http://webstats.indogamers.com/"><span>Webstats</span></a></li>
+    </ul>
+  </div>
+  <div class="topmenu-mobile-overlay">
+</menu>
+]]>
+</header></template>

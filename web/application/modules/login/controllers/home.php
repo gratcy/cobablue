@@ -30,9 +30,9 @@ class Home extends MY_Controller {
 							$this -> settings_model -> __update_users($login[0] -> uid, array('ulastlogin' => ip2long($_SERVER['REMOTE_ADDR']) . '*' . time()),1);
 							
 							if ($remember == 1)
-								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => true), time()+60*60*24*100);
+								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar, 'uexpire' => $login[0] -> uexpire, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => true), time()+60*60*24*100);
 							else
-								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => false), 3600);
+								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar, 'uexpire' => $login[0] -> uexpire, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => false), 3600);
 
 							redirect(site_url('panel'));
 						}
@@ -42,7 +42,7 @@ class Home extends MY_Controller {
 						}
 					}
 					else {
-						__set_error_msg(array('error' => 'Please complete activation email !!!'));
+						__set_error_msg(array('error' => 'Please complete activation email <a href="'.site_url('reactive').'"><b>here</b></a>...'));
 						redirect(site_url('panel/login'));
 					}
 				}

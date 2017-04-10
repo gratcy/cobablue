@@ -1,9 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Antiblock</title>
+<title>NeverBlock - Browse the internet privately, anonymously and securely.</title>
+<meta name="description" content="NeverBlock - Browse the internet privately, anonymously and securely."/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width" />
+<link rel="image_src" href="<?php echo site_url('application/views/front/images/logo-share.png'); ?>" / >
+<link href="<?php echo site_url('application/views/front/images/favicon.ico'); ?>" rel="icon" type="image/ico" />
 <link href="<?php echo site_url('application/views/front/css/reset.css'); ?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo site_url('application/views/front/css/fonts.css'); ?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo site_url('application/views/front/css/rancak.css'); ?>" rel="stylesheet" type="text/css" />
@@ -28,6 +31,11 @@
     
     <menu>
       <ul class="clearenter">
+        <li class="next_btn menu-mobile-only"><a href="#index-welcome">Home</a></li>
+        <li class="next_btn menu-mobile-only"><a href="#index-info">Info</a></li>
+        <li class="next_btn menu-mobile-only"><a href="#index-works">How Neverblock Works</a></li>
+        <li class="next_btn menu-mobile-only"><a href="#index-feature">Features</a></li>
+        <li class="next_btn menu-mobile-only"><a href="#index-download">Download</a></li>
 		<?php if ($this -> memcachedlib -> login) : ?>
         <li><a href="<?php echo site_url('panel'); ?>">My Account</a></li>
         <li><a href="<?php echo site_url('panel/login/logout'); ?>">Logout</a></li>

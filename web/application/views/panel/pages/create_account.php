@@ -4,7 +4,7 @@
 
                 <div class="heading">
 
-                    <h3>Create VPN Account</h3>                    
+                    <h3>Create VPN Account (<span style="color:red">Reseller</span>)</h3>                    
 
                     <div class="resBtnSearch">
                         <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>

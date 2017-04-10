@@ -22,7 +22,7 @@ class auth extends controller {
 		
 		if ($ckey) {
 			$ck = $this -> models_auth -> __check_auth($ckey);
-			if (isset($ck[0])) {
+			if (isset($ck['aid'])) {
 				if ($key == $ck['akey'] && $skey == $ck['askey']) {
 					$identity = array($_SERVER['HTTP_USER_AGENT'],$_SERVER['HTTP_ACCEPT_ENCODING'],$_SERVER['HTTP_ACCEPT_LANGUAGE']);
 					$expire = time()+600;

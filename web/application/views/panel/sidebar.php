@@ -16,11 +16,13 @@
                         <?php endif; ?>
 						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
                         <li rel="user_transaction">
-                            <a href="#"><span class="icon16 icomoon-icon-cart"></span>Transaction<span class="notification blue">3</span></a>
+                            <a href="#"><span class="icon16 icomoon-icon-cart"></span>Transaction<span class="notification blue">5</span></a>
                             <ul class="sub">
                                 <li><a href="<?php echo site_url('panel/transaction');?>"><span class="icon16 icomoon-icon-file"></span>Transaction</a></li>
                                 <li><a href="<?php echo site_url('panel/transaction/topup');?>"><span class="icon16 icomoon-icon-arrow-up-right"></span>Top Up</a></li>
+                                <li><a href="<?php echo site_url('panel/topup-tutorial');?>"><span class="icon16 icomoon-icon-book"></span>Tutorial Top Up</a></li>
                                 <li><a href="<?php echo site_url('panel/transaction/confirm');?>"><span class="icon16 icomoon-icon-calculate-2"></span>Confirm Payment</a></li>
+								<li><a href="<?php echo site_url('panel/topup-tutorial');?>" ><span class="icon16 entypo-icon-help"></span>Payment Method</a></li>
                             </ul>
                         </li>
                         <li rel="refferal">
@@ -37,7 +39,9 @@
                         <li><a href="<?php echo site_url('panel/support');?>" ><span class="icon16 icomoon-icon-support"></span>Support</a></li>
                         <li><a href="<?php echo site_url('panel/download');?>" ><span class="icon16 icomoon-icon-download"></span>Download Application</a></li>
                         <li><a href="<?php echo site_url('panel/settings');?>" ><span class="icon16 icomoon-icon-user"></span>Profile</a></li>
+                        <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 1) : ?>
                         <li><a href="<?php echo site_url('panel/users');?>" ><span class="icon16 icomoon-icon-users"></span>Users</a></li>
+                        <?php endif; ?>
                         <li><a href="<?php echo site_url('panel/login/logout');?>" onclick="return confirm('<?php echo $this -> memcachedlib -> sesresult['uemail']; ?>, are you sure you want to logout?');"><span class="icon16 icomoon-icon-exit"></span>Logout</a></li>
                     </ul>
                 </div>

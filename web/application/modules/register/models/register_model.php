@@ -22,4 +22,9 @@ class Register_model extends CI_Model {
 		$this -> db -> select("* FROM users_tab WHERE uemail='".$email."'");
 		return $this -> db -> get() -> num_rows();
 	}
+
+	function __check_reff($ref) {
+		$this -> db -> select("* FROM users_tab WHERE urefcode='".$ref."'");
+		return $this -> db -> get() -> num_rows();
+	}
 }

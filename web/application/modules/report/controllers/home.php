@@ -16,8 +16,8 @@ class Home extends MY_Controller {
 			$view['to'] = date('Y-m-d', strtotime($to));
 		}
 		else {
-			$view['from'] = date('Y-m-d');
-			$view['to'] = date('Y-m-d', strtotime('-1 month'));
+			$view['from'] = date('Y-m-d', strtotime('-1 month'));
+			$view['to'] = date('Y-m-d');
 		}
 		$view['report'] = $this -> report_model -> __get_report($this -> memcachedlib -> sesresult['uid'],$view['from'],$view['to']);
 		$this->load->view('pages/report', $view);

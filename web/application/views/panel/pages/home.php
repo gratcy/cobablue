@@ -40,12 +40,13 @@ $lastlogin = explode('*', $this -> memcachedlib -> sesresult['ulastlogin']);
                                 <a href="#" class="minimize">Minimize</a>
                             </div>
                             <div class="panel-body" style="padding-bottom:0;">
-					<p>Hello <?php echo $this -> memcachedlib -> sesresult['uemail']; ?></p>
+					<p>Hello, <?php echo $this -> memcachedlib -> sesresult['uemail']; ?></p>
 					<p>Login Today <?php echo __get_date($this -> memcachedlib -> sesresult['ldate'],3) . ' with IP Address ' . long2ip($this -> memcachedlib -> sesresult['lip']); ?></p>
 					<p>Last Login <?php echo __get_date($lastlogin[1],3) . ' with IP Address ' . long2ip($lastlogin[0]); ?></p>
 					<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
 					<p>Rerreral Code: <b><a href="<?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?>"><?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?></a> (<?php echo $this -> memcachedlib -> sesresult['urefcode']; ?>)</b></p>
-					<p>Point: <b><?php echo $this -> memcachedlib -> sesresult['upoint']; ?></b></p>
+					<p>Point: <b><?php echo __get_point($this -> memcachedlib -> sesresult['uid']); ?></b></p>
+					<p>User Expire: <b><?php echo ($expire[0] -> uexpire < time() ? 'Expired' : date('d/m/Y H:i',$expire[0] -> uexpire)); ?></b></p>
 					<?php endif; ?>
 					</div>
 					</div>
@@ -113,9 +114,8 @@ $lastlogin = explode('*', $this -> memcachedlib -> sesresult['ulastlogin']);
                                     <table class="table table-bordered">
                                         <thead>
                                           <tr>
-                                            <th class="col-lg-1">Email</th>
+                                            <th>Email</th>
                                             <th>Ref Code</th>
-                                            <th>Transaction</th>
                                             <th class="col-lg-1">Status</th>
                                           </tr>
                                         </thead>
@@ -126,18 +126,6 @@ $lastlogin = explode('*', $this -> memcachedlib -> sesresult['ulastlogin']);
                                           <tr>
                                             <td><?php echo $v -> uemail; ?></td>
                                             <td><?php echo $v -> urefcode; ?></td>
-                                            <td>
-                                            <?php
-                                            $res = '';
-                                            $wew = $this -> panel_model -> __get_transaction($v -> uid);
-                                            foreach($wew as $k1 => $v1) :
-												$res .= 'No: '.$v1 -> tno . '<br />';
-												$res .= 'Total: '.__get_rupiah($v1 -> ttotal) . '<br /><br />';
-                                            endforeach;
-                                            echo $res;
-                                            $wew = array();
-                                            ?>
-                                            </td>
                                             <td><?php echo __get_status($v -> ustatus,1);?></td>
                                           </tr>
                                           <?php endforeach; ?>

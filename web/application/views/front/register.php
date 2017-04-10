@@ -39,7 +39,7 @@
       </div>
         </li>
         <li class="term full">
-          By clicking Sign Up, you agree to our <a href="#">Terms</a> and that you have read our <a href="#">Data Policy</a>.
+          By clicking Sign Up, you agree to our <a href="<?php echo site_url('page/tos'); ?>">Terms</a> and that you have read our <a href="<?php echo site_url('page/privacy-policy'); ?>">Data Policy</a>.
         </li>
         <li class="button full">
           <input name="register" class="btn" value="Register" type="submit" />
