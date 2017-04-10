@@ -45,7 +45,9 @@ $route['404_override'] = '';
 ################################################### FRONTEND ##################################################
 
 $route['register'] = 'register/home';
-$route['confirm'] = 'confirm/home';
+$route['confirm'] = 'confirm/home/index';
+$route['reactive'] = 'confirm/home/reactive';
+$route['page/(:any)'] = 'page/home/index/$1';
 $route['lostpwd'] = 'lostpwd/home/index';
 $route['lostpwd/setpwd'] = 'lostpwd/home/setpwd';
 
@@ -75,6 +77,7 @@ $route['panel/invite'] = 'invite/home';
 $route['panel/settings'] = 'settings/home';
 
 $route['panel/download'] = 'download/home';
+$route['panel/topup-tutorial'] = 'topuptutor/home';
 
 $route['panel/support/?(:num)?'] = 'support/home/index/$1';
 $route['panel/support/ticket'] = 'support/home/ticket';

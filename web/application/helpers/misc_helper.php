@@ -32,6 +32,18 @@ function __get_status($status, $type, $type2=1) {
 	}
 	return $res;
 }
+function __get_approved($status, $type) {
+	$data = array('No','Yes');
+	$res = '';
+	if ($type == 1) {
+		$res = $data[$status];
+	}
+	else {
+		foreach($data as $k => $v)
+			$res .= $v . ' <input type="radio" '.($status == $k ? 'checked="checked"' : '').' name="status" value="'.$k.'" />';
+	}
+	return $res;
+}
 
 function __get_status_transaction($status, $type) {
 	$data = array('Belum Dibayar','Sudah di Konfirmasi','Lunas');
@@ -174,7 +186,8 @@ function __get_bank($id,$type,$type2) {
 }
 
 function __get_duration($id,$type) {
-	$arr = array(6 => '6 Month', 12 => '1 Year', 18 => '1 &frac12; Year', 24 => '2 Year', 30 => '2 &frac12; Year', 36 => '3 Year');
+	//~ $arr = array(6 => '6 Month', 12 => '1 Year', 18 => '1 &frac12; Year', 24 => '2 Year', 30 => '2 &frac12; Year', 36 => '3 Year');
+	$arr = array(12 => '1 Year', 24 => '2 Year', 36 => '3 Year', 48 => '4 Year', 60 => '5 Year');
 	if ($type == 1) {
 		return $arr[$id];
 	}
@@ -187,12 +200,40 @@ function __get_duration($id,$type) {
 	}
 }
 
-function __send_email($to,$subject,$message) {
-	$headers = 'From: noreply@neverblock.me' . "\r\n" .
-		'Reply-To: noreply@neverblock.me' . "\r\n" .
-		'X-Mailer: PHP/' . phpversion();
+function __get_support_type($id,$type) {
+	$arr = array(1 => 'Support', 2 => 'Marketing');
+	if ($type == 1) {
+		return $arr[$id-1];
+	}
+	else {
+		$res = '<option value="">-- Chose One --</option>';
+		foreach($arr as $k => $v)
+			if (($id-1) == $k) $res .= '<option value="'.($k+1).'" selected>'.$v.'</option>';
+			else $res .= '<option value="'.($k+1).'">'.$v.'</option>';
+		return $res;
+	}
+}
 
-	return @mail($to, $subject, $message, $headers);
+function __send_email($to,$subject,$data,$tpl) {
+    //~ $CI =& get_instance();
+	//~ $wew = $CI -> load -> library('Mail', array('smtp_hostname' => 'smtp.elasticemail.com', 'smtp_username' => 'aziz.malik@mcs.co.id', 'smtp_password' => '910fe6e7-1042-44e6-bb78-79eaba824488', 'smtp_port' => 2525, 'protocol' => 'smtp'));
+	include(FCPATH . 'application/libraries/Mail.php');
+	$wew = new Mail(array('smtp_hostname' => 'smtp.elasticemail.com', 'smtp_username' => 'aziz.malik@mcs.co.id', 'smtp_password' => '910fe6e7-1042-44e6-bb78-79eaba824488', 'smtp_port' => 2525, 'protocol' => 'smtp'));
+	$wew -> setTo($to);
+	$wew -> setFrom('noreply@indogamers.com');
+	$wew -> setSender('noreply@indogamers.com');
+	$wew -> setReplyTo('noreply@indogamers.com');
+	$wew -> setSubject($subject);
+	foreach($data as $k => $v)
+		$$k = $v;
+	$tpl = file_get_contents($tpl);
+	$tpl = str_replace('{nvb:','$',$tpl);
+	$tpl = str_replace(':}','',$tpl);
+	$tpl = addslashes($tpl);
+	@eval("\$tpl = \"$tpl\";");
+	$wew -> setHtml($tpl);
+	$wew -> send();
+	return true;
 }
 
 function __get_from_support($name,$level,$clevel,$type) {
@@ -206,4 +247,15 @@ function __get_from_support($name,$level,$clevel,$type) {
 		else if ($clevel == 3) return 'Marketing';
 		else return $name;
 	}
+}
+
+function __api_key($str) {
+	return __get_salt(90) . md5($str . '__blu') . base64_encode(uniqid());
+}
+
+function __get_point($id) {
+	$CI =& get_instance();
+	$CI -> load -> model('users/users_model');
+	$poin = $CI -> users_model -> __get_point($id);
+	return $poin[0] -> upoint;
 }
