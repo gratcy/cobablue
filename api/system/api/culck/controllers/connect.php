@@ -22,7 +22,7 @@ class connect extends controller {
 					$res = array('status' => -2, 'message' => 'success');
 				}
 				else {
-					$res = array('status' => -1, 'message' => 'Your account has been expired !!!');	
+					$res = array('status' => -4, 'message' => 'Your account has been expired !!!');	
 				}
 			}
 		}
