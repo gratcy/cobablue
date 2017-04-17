@@ -140,7 +140,7 @@ class objectdb {
 			$cols = rtrim($cols, ',').')';
 			$values = rtrim($values, ',').')';
 			$sql = $this -> db_link -> prepare("INSERT INTO $table $cols VALUES $values");
-			$sql -> execute($arr);
+			$sql -> execute();
 			$this -> lastInsId = $this -> db_link -> lastInsertId();
 			return $this -> lastInsId;
 		}
