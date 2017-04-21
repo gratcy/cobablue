@@ -8,4 +8,9 @@ class Login_model extends CI_Model {
 		$this -> db -> select("a.*,b.uavatar FROM users_tab a LEFT JOIN users_profiles_tab b ON a.uid=b.uid WHERE a.uemail='".$uemail."' AND (a.ustatus=1 OR a.ustatus=0)");
 		return $this -> db -> get() -> result();
 	}
+	
+	function __get_openid($id) {
+		$this -> db -> select("* FROM users_tab WHERE uopenid=" . $id);
+		return $this -> db -> get() -> result();
+	}
 }

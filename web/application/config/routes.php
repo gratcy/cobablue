@@ -57,6 +57,7 @@ $route['panel'] = 'panel/home';
 
 $route['panel/login'] = 'login/home';
 $route['panel/login/logging'] = 'login/home/logging';
+$route['panel/login/logging_social'] = 'login/home/logging_social';
 $route['panel/login/logout'] = 'login/home/logout';
 
 $route['panel/confirmation/?(:num)?'] = 'confirmation/home/index/$1';

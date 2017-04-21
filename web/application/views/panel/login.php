@@ -94,6 +94,12 @@
                             <label><a href="<?php echo site_url('lostpwd');?>">Lost password!</a></label>
                         </div>
                         <button type="submit" class="btn btn-info right" id="loginBtn"><span class="icon16 icomoon-icon-enter white"></span> Login</button>
+                        <div style="clear:both;padding-top:20px"></div>
+                        <div class="checkbox right">
+                       <b>Or Connect With </b>
+                       <a href="<?php echo $fb_url; ?>" style="font-size:20px"><i class="icomoon-icon-facebook"></i></a>
+                       <a href="" style="font-size:20px"><i class="icomoon-icon-google"></i></a>
+                    </div>
                     </div>
                 </div><!-- End .form-group  -->
             </form>

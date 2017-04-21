@@ -108,6 +108,7 @@ function __get_salt() {
 }
 
 function __get_avatar($avatar,$type) {
+	if (preg_match('/graph\.facebook|googleusercontent\.com/i', $avatar)) return $avatar;
 	if ($type == 1)
 		return site_url('upload/avatar/' . $avatar);
 	else
@@ -220,9 +221,9 @@ function __send_email($to,$subject,$data,$tpl) {
 	include(FCPATH . 'application/libraries/Mail.php');
 	$wew = new Mail(array('smtp_hostname' => 'smtp.elasticemail.com', 'smtp_username' => 'aziz.malik@mcs.co.id', 'smtp_password' => '910fe6e7-1042-44e6-bb78-79eaba824488', 'smtp_port' => 2525, 'protocol' => 'smtp'));
 	$wew -> setTo($to);
-	$wew -> setFrom('noreply@indogamers.com');
-	$wew -> setSender('noreply@indogamers.com');
-	$wew -> setReplyTo('noreply@indogamers.com');
+	$wew -> setFrom('noreply@neverblock.me');
+	$wew -> setSender('noreply@neverblock.me');
+	$wew -> setReplyTo('noreply@neverblock.me');
 	$wew -> setSubject($subject);
 	foreach($data as $k => $v)
 		$$k = $v;
