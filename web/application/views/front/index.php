@@ -136,7 +136,52 @@ ethically). If you have found this web proxy useful and cool, please share it wi
     </ul>
     </div>
   </div>
+  
+  <div id="index-package">
+    <h1 class="title">Package</h1>
+    <ul class="clearenter">
       
+      <li class="package package-1">
+        <h2>Personal 1</h2>
+        <h5>IDR 100.000</h5>
+        <ul>
+          <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>1 Years</span></li>
+        </ul>
+        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+      </li>
+      
+      <li class="package package-2">
+        <h2>Personal 2</h2>
+        <h5>IDR 250.000</h5>
+        <ul>
+          <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>3 Years</span></li>
+        </ul>
+        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+      </li>
+      
+      <li class="package package-3">
+        <h2>Personal 3</h2>
+        <h5>IDR 450.000</h5>
+        <ul>
+          <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>5 Years</span></li>
+        </ul>
+        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+      </li>
+      
+      <li class="package package-4">
+        <h2>Retail</h2>
+        <h5>IDR 400.000</h5>
+        <ul>
+          <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>5 Years</span></li>
+          <li><i class="fa fa-star" aria-hidden="true"></i> <span>5 Point</span></li>
+          <li><i class="fa fa-users" aria-hidden="true"></i> <span>Reseller</span></li>
+        </ul>
+        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+      </li>
+      
+    </ul>
+  </div>
+  
   <div id="index-download">
     <h1 class="title">Download</h1>
     <ul class="clearenter">
@@ -154,7 +199,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
         </div>
       </li>
       <li class="dl-osx">
-        <a href="<?php echo site_url('application/views/front/file/neverblock-osx.pkg'); ?>" target="_blank">
+        <a href="<?php echo site_url('application/views/front/file/neverblock-osx.pkg?4'); ?>" target="_blank">
           <span class="dl-icon">
             <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-osxlogo.png'); ?>" />
             <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-osxlogo-hover.png'); ?>" />
@@ -162,12 +207,12 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <h5>OS X</h5>
         </a>
         <div class="tutorial-tombol">
-          <a href="<?php echo site_url('application/views/front/file/neverblock-osx.pkg'); ?>" target="_blank">Download</a>
+          <a href="<?php echo site_url('application/views/front/file/neverblock-osx.pkg?4'); ?>" target="_blank">Download</a>
           <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-osx.pdf'); ?>" target="_blank">Guide</a>
         </div>
       </li>
       <li class="dl-windows">
-        <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe'); ?>"  target="_blank">
+        <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe?4'); ?>"  target="_blank">
           <span class="dl-icon">
             <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-winlogo.png'); ?>" />
             <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-winlogo-hover.png'); ?>" />
@@ -175,7 +220,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <h5>Windows</h5>
         </a>
 		<div class="tutorial-tombol">
-          <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe'); ?>" target="_blank">Download</a>
+          <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe?4'); ?>" target="_blank">Download</a>
           <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-windows.pdf'); ?>" target="_blank">Guide</a>
         </div>
       </li>
@@ -261,7 +306,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
     <li class="next_btn floatbtn-info"><a href="#index-info"> <div><b>Info</b></div></a></li>
     <li class="next_btn floatbtn-works"><a href="#index-works"> <div><b>How Neverblock Works</b></div></a></li>
     <li class="next_btn floatbtn-feature"><a href="#index-feature"> <div><b>Features</b></div></a></li>
-    <!--<li class="next_btn floatbtn-package"><a href="#index-package"> <div><b>Package</b></div></a></li>-->
+    <li class="next_btn floatbtn-package"><a href="#index-package"> <div><b>Package</b></div></a></li>
     <li class="next_btn floatbtn-download"><a href="#index-download"> <div><b>Download</b></div></a></li>
     <!--<li class="next_btn floatbtn-contact"><a href="#index-contact"> <div><b>Contact Us</b></div></a></li>-->
   </ul>
