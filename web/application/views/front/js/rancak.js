@@ -91,3 +91,19 @@ $(window).load(function() {
   })();
 });
 /* end font */
+
+
+
+/* get tallest ul li */
+$(window).load(function(){
+   var maxHeight = -1;
+
+   $('#index-package > ul > li').each(function() {
+     maxHeight = maxHeight > $(this).find("ul").height() ? maxHeight : $(this).find("ul").height();
+   });
+
+   $('#index-package > ul > li').each(function() {
+     $(this).find("ul").height(maxHeight);
+   });
+ });
+/* end get tallest ul li */
