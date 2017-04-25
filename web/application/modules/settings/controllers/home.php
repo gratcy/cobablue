@@ -10,6 +10,7 @@ class Home extends MY_Controller {
 	function index() {
 		if ($_POST) {
 			$type = (int) $this -> input -> post('type');
+			$autopoin = (int) $this -> input -> post('autopoin');
 			$email = $this -> input -> post('email');
 			$oldpass = $this -> input -> post('oldpass');
 			$newpass = $this -> input -> post('newpass');
@@ -99,6 +100,7 @@ class Home extends MY_Controller {
 					}
 					
 					if ($this -> settings_model -> __update_users($this -> memcachedlib -> sesresult['uid'], $data,2)) {
+						$this -> settings_model -> __update_users($this -> memcachedlib -> sesresult['uid'],array('uauto' => $autopoin), 1);
 						__set_error_msg(array('info' => 'Profile successfully updated.'));
 						redirect(site_url('panel/settings'));
 					}

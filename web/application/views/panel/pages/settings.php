@@ -142,7 +142,12 @@
 												<div class="currentavatar">Current Avatar <br /><img width="150" src="<?php echo __get_avatar($detail[0] -> uavatar,2); ?>" class="image" /></div>
                                             </div>
                                         </div>
-
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="password">Auto Cut Poins, when expired.</label>
+                                            <div class="col-lg-9">
+											<?php echo __auto_cut_points($detail[0] -> uauto,2);?>
+                                            </div>
+                                        </div>
 
                                         <div class="form-group">
                                             <div class="col-lg-offset-3 col-lg-9">

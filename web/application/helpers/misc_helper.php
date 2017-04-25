@@ -32,6 +32,14 @@ function __get_status($status, $type, $type2=1) {
 	}
 	return $res;
 }
+
+function __auto_cut_points($id, $type) {
+	if ($type == 1)
+		return $id == 1 ? 'Yes' : 'No';
+	else
+		return $id == 1 ? '<p><input type="radio" name="autopoin" value="1" class="sOption" checked> <label for="rad01" > Yes</label></p> <p><input type="radio" name="autopoin" value="0" class="sOption"> <label for="rad02" > No</label></p>' : '<p><input type="radio" name="autopoin" value="1" class="sOption"> <label for="rad01" > Yes</label></p> <p><input type="radio" name="autopoin" value="0" class="sOption" checked> <label for="rad02" > No</label></p>';
+}
+
 function __get_approved($status, $type) {
 	$data = array('No','Yes');
 	$res = '';
