@@ -10,7 +10,7 @@ class Login_model extends CI_Model {
 	}
 	
 	function __get_openid($id) {
-		$this -> db -> select("* FROM users_tab WHERE uopenid=" . $id);
+		$this -> db -> select("* FROM users_tab WHERE ustatus=1 AND uopenid=" . $id);
 		return $this -> db -> get() -> result();
 	}
 }

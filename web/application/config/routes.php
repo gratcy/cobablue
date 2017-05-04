@@ -94,5 +94,10 @@ $route['panel/users/?(:num)?'] = 'users/home/index/$1';
 $route['panel/users/add'] = 'users/home/users_add';
 $route['panel/users/update/?(:num)?'] = 'users/home/users_update/$1';
 $route['panel/users/delete/(:num)'] = 'users/home/users_delete/$1';
+
+$route['panel/voucher/?(:num)?'] = 'voucher/home/index/$1';
+$route['panel/voucher/generate'] = 'voucher/home/voucher_generate';
+$route['panel/voucher/delete/(:num)'] = 'voucher/home/voucher_delete/$1';
+$route['panel/use-voucher'] = 'use_voucher/home';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

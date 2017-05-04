@@ -12,18 +12,20 @@ class Home extends MY_Controller {
 
 	function index($page) {
 		$keyword = $this -> input -> post('keyword');
+		$limit = 10;
 		
 		if ($keyword) {
 			$view['users'] = $this -> users_model -> __search_users($keyword);
 			$view['pages'] = '';
 		}
 		else {
-			$pager = $this -> pagination_lib -> pagination($this -> users_model -> __get_users(),3,10,site_url('panel/users'));
+			$pager = $this -> pagination_lib -> pagination($this -> users_model -> __get_users(),3,$limit,site_url('panel/users'));
 			$view['users'] = $this -> pagination_lib -> paginate();
 			$view['pages'] = $this -> pagination_lib -> pages();
 		}
 		
 		$view['page'] = (!$page ? 1 : (int) $page);
+		$view['limit'] = $limit;
 		$this->load->view('pages/users', $view);
 	}
 	

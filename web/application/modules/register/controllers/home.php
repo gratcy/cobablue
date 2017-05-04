@@ -42,32 +42,32 @@ class Home extends MY_Controller {
 			if ($response) {
 				if ($response["success"] == false) {
 					__set_error_msg(array('error' => 'Invalid security code !!!'));
-					redirect(site_url('register'));
+					redirect(site_url('register?ref=' . $ref));
 				}
 				else {
 					if (!$name || !$phone || !$email) {
 						__set_error_msg(array('error' => 'Data that you entered is incomplete !!!'));
-						redirect(site_url('register'));
+						redirect(site_url('register?ref=' . $ref));
 					}
 					else if (preg_match('/^[0-9\-\+]{8-20}$/', $phone)) {
 						__set_error_msg(array('error' => 'Invalid format phone number !!!'));
-						redirect(site_url('register'));
+						redirect(site_url('register?ref=' . $ref));
 					}
 					else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 						__set_error_msg(array('error' => 'Invalid email format !!!'));
-						redirect(site_url('register'));
+						redirect(site_url('register?ref=' . $ref));
 					}
 					else if (strlen($pass) < 6 && strlen($pass) > 20) {
 						__set_error_msg(array('error' => 'Password min 6 character and max 20 character !!!'));
-						redirect(site_url('register'));
+						redirect(site_url('register?ref=' . $ref));
 					}
 					else if ($cemail !== $email) {
 						__set_error_msg(array('error' => 'Email and confirm email is not match !!!'));
-						redirect(site_url('register'));
+						redirect(site_url('register?ref=' . $ref));
 					}
 					else if ($cpass !== $pass) {
 						__set_error_msg(array('error' => 'Password and confirm password is not match !!!'));
-						redirect(site_url('register'));
+						redirect(site_url('register?ref=' . $ref));
 					}
 					else {
 						$salt = __get_salt();
@@ -101,7 +101,7 @@ class Home extends MY_Controller {
 							}
 							else {
 								__set_error_msg(array('error' => 'Dissmiss input data !!!'));
-								redirect(site_url('register'));
+								redirect(site_url('register?ref=' . $ref));
 							}
 						}
 					}
@@ -109,7 +109,7 @@ class Home extends MY_Controller {
 			}
 			else {
 				__set_error_msg(array('error' => 'Dissmiss input data !!!'));
-				redirect(site_url('register'));
+				redirect(site_url('register?ref=' . $ref));
 			}
 		}
 		else {

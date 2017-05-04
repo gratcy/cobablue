@@ -27,7 +27,8 @@ class Home extends MY_Controller {
 					if ($token[0]) {
 						$rfid = $this -> confirm_model -> __get_refid($email);
 						if (isset($rfid[0] -> urefid)) {
-							$expire = strtotime('+2 week', $rfid[0] -> uexpire);
+							if ($rfid[0] -> uexpire < time()) $expire = strtotime('+2 week');
+							else $expire = strtotime('+2 week', $rfid[0] -> uexpire);
 							$this -> confirm_model -> __update_user($rfid[0] -> urefid, array('uexpire' => $expire),1);
 						}
 						

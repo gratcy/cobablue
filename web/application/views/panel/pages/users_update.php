@@ -56,6 +56,12 @@
                                             </div>
                                         </div>
                                          <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="placeholder">Points</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" placeholder="Points" name="point" value="<?php echo $detail[0] -> upoint;?>" readonly>
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Password</label>
                                             <div class="col-lg-9">
                                                 <input type="password" class="form-control" placeholder="Password" name="pass">

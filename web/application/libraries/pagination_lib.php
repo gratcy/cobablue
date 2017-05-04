@@ -17,14 +17,13 @@ class Pagination_lib {
 		$this -> limit = $row_per_page;
 		$this -> adjacents = $adjacents;
 		$this -> page_name = rtrim($page_name, '/');
-		
-		$pname = 'https://'.$_SERVER['HTTP_HOST'].rtrim($_SERVER['REQUEST_URI'],'/');
+		$pname = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].rtrim($_SERVER['REQUEST_URI'],'/');
 		$pname = str_replace($page_name,'', $pname);
 		
 		if($pname)
-			$this -> page = substr($pname,1);
+			$this -> page = (int) substr($pname,1);
 		else
-			$this -> page = '';
+			$this -> page = 0;
 	}
 
 	function paginate() {
@@ -70,7 +69,7 @@ class Pagination_lib {
 				if($this -> page < 1 + ($this -> adjacents * 2)) {
 					for ($counter = 1; $counter < 4 + ($this -> adjacents * 2); $counter++) {
 						if ($counter == $this -> page)
-							$pagination.= '<li><a>'.$counter.'</a></li>';
+							$pagination.= '<li class="active"><a>'.$counter.'</a></li>';
 						else
 							$pagination.= '<li><a href="'.$this -> page_name.'/'.$counter.'">'.$counter.'</a></li>';
 					}
@@ -84,7 +83,7 @@ class Pagination_lib {
 					$pagination.= '<li><span>...</a></li>';
 					for ($counter = $this -> page - $this -> adjacents; $counter <= $this -> page + $this -> adjacents; $counter++)	{
 						if ($counter == $this -> page)
-							$pagination.= '<li><a>'.$counter.'</a></li>';
+							$pagination.= '<li class="active"><a>'.$counter.'</a></li>';
 						else
 							$pagination.= '<li><a href="'.$this -> page_name.'/'.$counter.'">'.$counter.'</a></li>';
 					}
@@ -98,7 +97,7 @@ class Pagination_lib {
 					$pagination.= '<li><span>...</a></li>';
 					for ($counter = $lastpage - (2 + ($this -> adjacents * 2)); $counter <= $lastpage; $counter++) {
 						if ($counter == $this -> page)
-							$pagination.= '<li><a>'.$counter.'</a></li>';
+							$pagination.= '<li class="active"><a>'.$counter.'</a></li>';
 						else
 							$pagination.= '<li><a href="'.$this -> page_name.'/'.$counter.'">'.$counter.'</a></li>';					
 					}

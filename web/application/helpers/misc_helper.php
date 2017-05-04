@@ -107,9 +107,8 @@ function __set_pass($upass, $salt) {
 	return sha1(md5(sha1($upass, true)) . md5($salt));
 }
 
-function __get_salt() {
+function __get_salt($randStringLen = 64) {
 	 $charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-	 $randStringLen = 64;
 	 $randString = "";
 	 for ($i = 0; $i < $randStringLen; $i++) $randString .= $charset[mt_rand(0, strlen($charset) - 1)];
 	 return $randString;

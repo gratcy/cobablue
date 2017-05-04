@@ -147,7 +147,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
         <ul>
           <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>1 Years</span></li>
         </ul>
-        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+        <a class="buy-button" href="<?php echo site_url('https://neverblock.me/panel/transaction/topup'); ?>" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
       </li>
       
       <li class="package package-2">
@@ -156,7 +156,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
         <ul>
           <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>3 Years</span></li>
         </ul>
-        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+        <a class="buy-button" href="<?php echo site_url('https://neverblock.me/panel/transaction/topup'); ?>" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
       </li>
       
       <li class="package package-3">
@@ -165,7 +165,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
         <ul>
           <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>5 Years</span></li>
         </ul>
-        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+        <a class="buy-button" href="<?php echo site_url('https://neverblock.me/panel/transaction/topup'); ?>" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
       </li>
       
       <li class="package package-4">
@@ -176,7 +176,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <li><i class="fa fa-star" aria-hidden="true"></i> <span>5 Point</span></li>
           <li><i class="fa fa-users" aria-hidden="true"></i> <span>Reseller</span></li>
         </ul>
-        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+        <a class="buy-button" href="<?php echo site_url('panel/transaction/topup'); ?>" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
       </li>
       
     </ul>
