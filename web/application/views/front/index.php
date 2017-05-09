@@ -147,7 +147,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
         <ul>
           <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>1 Years</span></li>
         </ul>
-        <a class="buy-button" href="<?php echo site_url('https://neverblock.me/panel/transaction/topup'); ?>" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
       </li>
       
       <li class="package package-2">
@@ -156,7 +156,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
         <ul>
           <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>3 Years</span></li>
         </ul>
-        <a class="buy-button" href="<?php echo site_url('https://neverblock.me/panel/transaction/topup'); ?>" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
       </li>
       
       <li class="package package-3">
@@ -165,7 +165,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
         <ul>
           <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>5 Years</span></li>
         </ul>
-        <a class="buy-button" href="<?php echo site_url('https://neverblock.me/panel/transaction/topup'); ?>" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
       </li>
       
       <li class="package package-4">
@@ -176,7 +176,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <li><i class="fa fa-star" aria-hidden="true"></i> <span>5 Point</span></li>
           <li><i class="fa fa-users" aria-hidden="true"></i> <span>Reseller</span></li>
         </ul>
-        <a class="buy-button" href="<?php echo site_url('panel/transaction/topup'); ?>" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
+        <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
       </li>
       
     </ul>
@@ -186,7 +186,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
     <h1 class="title">Download</h1>
     <ul class="clearenter">
       <li class="dl-android">
-        <a href="https://play.google.com/store/apps/details?id=de.blinkt.bluenexia" target="_blank">
+        <a href="<?php echo $file[1] -> file; ?>" target="_blank">
           <span class="dl-icon">
             <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-androidlogo.png'); ?>" />
             <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-androidlogo-hover.png'); ?>" />
@@ -194,12 +194,12 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <h5>Android</h5>
         </a>
 		<div class="tutorial-tombol">
-          <a href="https://play.google.com/store/apps/details?id=de.blinkt.bluenexia" target="_blank">Download</a>
+          <a href="<?php echo $file[2] -> file; ?>" target="_blank">Download</a>
           <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-android.pdf'); ?>" target="_blank">Guide</a>
         </div>
       </li>
       <li class="dl-osx">
-        <a href="<?php echo site_url('application/views/front/file/neverblock-osx.pkg?4'); ?>" target="_blank">
+        <a href="<?php echo $file[3] -> file; ?>" target="_blank">
           <span class="dl-icon">
             <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-osxlogo.png'); ?>" />
             <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-osxlogo-hover.png'); ?>" />
@@ -207,12 +207,12 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <h5>OS X</h5>
         </a>
         <div class="tutorial-tombol">
-          <a href="<?php echo site_url('application/views/front/file/neverblock-osx.pkg?4'); ?>" target="_blank">Download</a>
+          <a href="<?php echo $file[4] -> file; ?>" target="_blank">Download</a>
           <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-osx.pdf'); ?>" target="_blank">Guide</a>
         </div>
       </li>
       <li class="dl-windows">
-        <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe?4'); ?>"  target="_blank">
+        <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe?5'); ?>"  target="_blank">
           <span class="dl-icon">
             <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-winlogo.png'); ?>" />
             <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-winlogo-hover.png'); ?>" />
@@ -220,7 +220,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <h5>Windows</h5>
         </a>
 		<div class="tutorial-tombol">
-          <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe?4'); ?>" target="_blank">Download</a>
+          <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe?5'); ?>" target="_blank">Download</a>
           <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-windows.pdf'); ?>" target="_blank">Guide</a>
         </div>
       </li>
