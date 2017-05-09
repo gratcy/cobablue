@@ -55,7 +55,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="password">Type</label>
+                                            <label class="col-lg-3 control-label" for="password">File Type</label>
+                                            <div class="col-lg-9">
+                                               <?php echo __get_upload_file_type($detail[0] -> ftype,2); ?>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="password">Upload Type</label>
                                             <div class="col-lg-9">
                                                <?php echo __get_upload_type(($detail[0] -> furl ? 0 : 1),2); ?>
                                             </div>

@@ -27,9 +27,10 @@ class Home extends MY_Controller {
 			$url = $this -> input -> post('url');
 			$version = $this -> input -> post('version');
 			$utype = (int) $this -> input -> post('utype');
+			$ftype = (int) $this -> input -> post('ftype');
 			$status = (int) $this -> input -> post('status');
 			
-			if (!$fname || !$version) {
+			if (!$fname || !$version || !$ftype) {
 				__set_error_msg(array('error' => 'Filename and Version incomplete !!!'));
 				redirect(site_url('panel/upload/add'));
 			}
@@ -38,7 +39,7 @@ class Home extends MY_Controller {
 				redirect(site_url('panel/upload/add'));
 			}
 			else {
-				$data = array('fname' => $fname, 'fstatus' => $status, 'fversion' => $version, 'fcreated' => json_encode(array('uid' => $this -> memcachedlib -> sesresult['uid'], 'udate' => date('Y-m-d H:i:s'))));
+				$data = array('ftype' => $ftype, 'fname' => $fname, 'fstatus' => $status, 'fversion' => $version, 'fcreated' => json_encode(array('uid' => $this -> memcachedlib -> sesresult['uid'], 'udate' => date('Y-m-d H:i:s'))));
 
 				$file_tmp = $_FILES['file']['tmp_name'];
 				if ($utype == 1 && $file_tmp) {
@@ -83,11 +84,12 @@ class Home extends MY_Controller {
 			$url = $this -> input -> post('url');
 			$version = $this -> input -> post('version');
 			$utype = (int) $this -> input -> post('utype');
+			$ftype = (int) $this -> input -> post('ftype');
 			$status = (int) $this -> input -> post('status');
 			$id = (int) $this -> input -> post('id');
 			
 			if ($id) {
-				if (!$fname || !$version) {
+				if (!$fname || !$version || !$ftype) {
 					__set_error_msg(array('error' => 'Filename and Version incomplete !!!'));
 					redirect(site_url('panel/upload/update/' . $id));
 				}
@@ -96,7 +98,7 @@ class Home extends MY_Controller {
 					redirect(site_url('panel/upload/update/' . $id));
 				}
 				else {
-					$data = array('fname' => $fname, 'fstatus' => $status, 'fversion' => $version, 'fupdated' => json_encode(array('uid' => $this -> memcachedlib -> sesresult['uid'], 'udate' => date('Y-m-d H:i:s'))));
+					$data = array('ftype' => $ftype, 'fname' => $fname, 'fstatus' => $status, 'fversion' => $version, 'fupdated' => json_encode(array('uid' => $this -> memcachedlib -> sesresult['uid'], 'udate' => date('Y-m-d H:i:s'))));
 					$file_tmp = $_FILES['file']['tmp_name'];
 					if ($utype == 1 && $file_tmp) {
 						$file_name = $_FILES['file']['name'];

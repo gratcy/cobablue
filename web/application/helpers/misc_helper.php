@@ -40,6 +40,19 @@ function __auto_cut_points($id, $type) {
 		return $id == 1 ? '<p><input type="radio" name="autopoin" value="1" class="sOption" checked> <label for="rad01" > Yes</label></p> <p><input type="radio" name="autopoin" value="0" class="sOption"> <label for="rad02" > No</label></p>' : '<p><input type="radio" name="autopoin" value="1" class="sOption"> <label for="rad01" > Yes</label></p> <p><input type="radio" name="autopoin" value="0" class="sOption" checked> <label for="rad02" > No</label></p>';
 }
 
+function __get_upload_file_type($id, $type) {
+	$data = array('Android','OSX','Windows','iOS');
+	$res = '';
+	if ($type == 1) {
+		$res = isset($data[$id-1]) ? $data[$id-1] : '';
+	}
+	else {
+		foreach($data as $k => $v)
+			$res .= $v . ' <input type="radio" '.($id-1 == $k ? 'checked="checked"' : '').' name="ftype" value="'.($k+1).'" />';
+	}
+	return $res;
+}
+
 function __get_upload_type($id, $type) {
 	if ($type == 1)
 		return $id == 1 ? 'File' : 'URL';
@@ -127,6 +140,10 @@ function __get_avatar($avatar,$type) {
 		return site_url('upload/avatar/' . $avatar);
 	else
 		return site_url('upload/avatar/small/' . $avatar);
+}
+
+function __get_url_file($file) {
+	return site_url('upload/files/' . $file);
 }
 
 function __imageresize($file, $dir, $fname) {
@@ -262,10 +279,6 @@ function __get_from_support($name,$level,$clevel,$type) {
 		else if ($clevel == 3) return 'Marketing';
 		else return $name;
 	}
-}
-
-function __get_url_file($file) {
-	return site_url('upload/files/' . $file);
 }
 
 function __api_key($str) {

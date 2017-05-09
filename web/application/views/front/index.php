@@ -194,12 +194,12 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <h5>Android</h5>
         </a>
 		<div class="tutorial-tombol">
-          <a href="<?php echo $file[2] -> file; ?>" target="_blank">Download</a>
+          <a href="<?php echo $file[1] -> file; ?>" target="_blank">Download</a>
           <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-android.pdf'); ?>" target="_blank">Guide</a>
         </div>
       </li>
       <li class="dl-osx">
-        <a href="<?php echo $file[3] -> file; ?>" target="_blank">
+        <a href="<?php echo $file[2] -> file; ?>" target="_blank">
           <span class="dl-icon">
             <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-osxlogo.png'); ?>" />
             <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-osxlogo-hover.png'); ?>" />
@@ -207,12 +207,12 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <h5>OS X</h5>
         </a>
         <div class="tutorial-tombol">
-          <a href="<?php echo $file[4] -> file; ?>" target="_blank">Download</a>
+          <a href="<?php echo $file[2] -> file; ?>" target="_blank">Download</a>
           <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-osx.pdf'); ?>" target="_blank">Guide</a>
         </div>
       </li>
       <li class="dl-windows">
-        <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe?5'); ?>"  target="_blank">
+        <a href="<?php echo $file[3] -> file; ?>"  target="_blank">
           <span class="dl-icon">
             <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-winlogo.png'); ?>" />
             <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-winlogo-hover.png'); ?>" />
@@ -220,12 +220,12 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <h5>Windows</h5>
         </a>
 		<div class="tutorial-tombol">
-          <a href="<?php echo site_url('application/views/front/file/neverblock-windows.exe?5'); ?>" target="_blank">Download</a>
+          <a href="<?php echo $file[3] -> file; ?>" target="_blank">Download</a>
           <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-windows.pdf'); ?>" target="_blank">Guide</a>
         </div>
       </li>
       <li class="dl-ios">
-        <a href="https://appsto.re/id/6Mhhib.i"  target="_blank">
+        <a href="<?php echo $file[4] -> file; ?>"  target="_blank">
           <span class="dl-icon">
             <img class="img-top" src="<?php echo site_url('application/views/front/images/icon-applelogo.png'); ?>" />
             <img class="img-bottom" src="<?php echo site_url('application/views/front/images/icon-applelogo-hover.png'); ?>" />

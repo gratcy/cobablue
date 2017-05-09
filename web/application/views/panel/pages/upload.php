@@ -42,6 +42,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <th>Name</th>
+                                            <th>Type</th>
                                             <th>File</th>
                                             <th>Version</th>
                                             <th>Status</th>
@@ -52,6 +53,7 @@
 										  <?php foreach($files as $k => $v) : ?>
                                           <tr>
 											  <td><?php echo $v -> fname; ?></td>
+											  <td><?php echo __get_upload_file_type($v -> ftype,1); ?></td>
 											  <td><a href="<?php echo ($v -> ffile ? __get_url_file($v -> ffile) : $v -> furl); ?>">Download</a></td>
 											  <td><?php echo $v -> fversion; ?></td>
 											  <td><?php echo __get_status($v -> fstatus,1); ?></td>
