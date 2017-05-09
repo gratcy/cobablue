@@ -8,12 +8,13 @@
                     <ul>
                         <li><a href="<?php echo site_url('panel');?>"><span class="icon16 icomoon-icon-home-6"></span>Dashboard</a></li>
 						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
-                        <li><a href="<?php echo site_url('panel/create_account');?>"><span class="icon16 icomoon-icon-transmission"></span>Create Account</a></li>
+                        <li><a href="<?php echo site_url('panel/create_account');?>"><span class="icon16 icomoon-icon-transmission"></span>Reseller</a></li>
                         <?php endif; ?>
                         <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 1) : ?>
                         <li><a href="<?php echo site_url('panel/product');?>" ><span class="icon16 icomoon-icon-quill"></span>Products</a></li>
                         <li><a href="<?php echo site_url('panel/confirmation');?>" ><span class="icon16 icomoon-icon-cart-checkout"></span>Confirmation</a></li>
                         <li><a href="<?php echo site_url('panel/voucher');?>" ><span class="icon16 icomoon-icon-vcard"></span>Voucher</a></li>
+                        <li><a href="<?php echo site_url('panel/upload');?>" ><span class="icon16 icomoon-icon-file-2"></span>Upload</a></li>
                         <?php endif; ?>
 						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
                         <li rel="user_transaction">

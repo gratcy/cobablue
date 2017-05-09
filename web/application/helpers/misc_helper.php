@@ -40,6 +40,13 @@ function __auto_cut_points($id, $type) {
 		return $id == 1 ? '<p><input type="radio" name="autopoin" value="1" class="sOption" checked> <label for="rad01" > Yes</label></p> <p><input type="radio" name="autopoin" value="0" class="sOption"> <label for="rad02" > No</label></p>' : '<p><input type="radio" name="autopoin" value="1" class="sOption"> <label for="rad01" > Yes</label></p> <p><input type="radio" name="autopoin" value="0" class="sOption" checked> <label for="rad02" > No</label></p>';
 }
 
+function __get_upload_type($id, $type) {
+	if ($type == 1)
+		return $id == 1 ? 'File' : 'URL';
+	else
+		return $id == 1 ? '<p><input type="radio" name="utype" value="1" class="sOption" checked> <label for="rad01" > File</label></p> <p><input type="radio" name="utype" value="0" class="sOption"> <label for="rad02" > URL</label></p>' : '<p><input type="radio" name="utype" value="1" class="sOption"> <label for="rad01" > File</label></p> <p><input type="radio" name="utype" value="0" class="sOption" checked> <label for="rad02" > URL</label></p>';
+}
+
 function __get_approved($status, $type) {
 	$data = array('No','Yes');
 	$res = '';
@@ -255,6 +262,10 @@ function __get_from_support($name,$level,$clevel,$type) {
 		else if ($clevel == 3) return 'Marketing';
 		else return $name;
 	}
+}
+
+function __get_url_file($file) {
+	return site_url('upload/files/' . $file);
 }
 
 function __api_key($str) {

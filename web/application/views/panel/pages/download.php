@@ -40,9 +40,9 @@
                                 <div class="panel-body noPad">
 									
                                     <table class="table table-bordered" id="checkAll">
-										<tr><td>Dekstop Application (Windows)</td><td style="width:10%;text-align:center"><a href="#" title="Download Dekstop Application (Windows)" class="tip"><span class="icon12 icomoon-icon-download"></span></a></tr>
-										<tr><td>Mobile Application (Android)</td><td style="width:10%;text-align:center"><a href="http://neverblock.me/application/views/front/file/neverblock-android.apk" title="Download Mobile Application (Android)" class="tip"><span class="icon12 icomoon-icon-download"></span></a></tr>
-										<tr><td>Mobile Application (iOS)</td><td style="width:10%;text-align:center"><a href="#" title="Download Mobile Application (iOS)" class="tip"><span class="icon12 icomoon-icon-download"></span></a></td></tr>
+										<?php foreach($data as $k => $v) : ?>
+										<tr><td><?php echo $v -> fname; ?></td><td style="width:10%;text-align:center"><a href="<?php echo ($v -> ffile ? __get_url_file($v -> ffile) : $v -> furl); ?>" title="Download <?php echo $v -> fname; ?>" class="tip"><span class="icon12 icomoon-icon-download"></span></a></tr>
+										<?php endforeach; ?>
 									</table>
 
                             </div><!-- End .panel -->

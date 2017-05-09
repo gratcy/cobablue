@@ -4,7 +4,7 @@
 
                 <div class="heading">
 
-                    <h3>Create VPN Account (<span style="color:red">Reseller</span>)</h3>                    
+                    <h3>Upload</h3>                    
 
                     <div class="resBtnSearch">
                         <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
@@ -14,13 +14,13 @@
                         <li>You are here:</li>
                         <li>
                             <a href="./" class="tip" title="back to dashboard">
-                                <span class="icon16 icomoon-icon-transmission"></span>
+                                <span class="icon16 icomoon-icon-file-2"></span>
                             </a> 
                             <span class="divider">
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
                             </span>
                         </li>
-                        <li class="active">Create VPN Account</li>
+                        <li class="active">Update File</li>
                     </ul>
 
                 </div><!-- End .heading-->
@@ -32,72 +32,64 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4>
-                                        <span class="icon16 icomoon-icon-users"></span>
-                                        <span>Add New VPN Account</span>
+                                        <span class="icon16 icomoon-icon-file-2"></span>
+                                        <span>Update File</span>
                                     </h4>
                                     <a href="#" class="minimize">Minimize</a>
                                 </div>
                                 <div class="panel-body">
 									
-                                    <form class="form-horizontal" id="resetpass" action="<?php echo site_url('panel/create_account');?>" role="form" method="post">
+                                    <form class="form-horizontal" action="<?php echo site_url('panel/upload/update');?>" role="form" method="post" enctype="multipart/form-data">
 			<?php echo __get_error_msg(); ?>
+			<input type="hidden" name="id" value="<?php echo $id; ?>">
                                          <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder"></label>
+                                            <label class="col-lg-3 control-label" for="placeholder">File Name</label>
                                             <div class="col-lg-9">
-												<b>Your points is <?php echo __get_point($this -> memcachedlib -> sesresult['uid']); ?></b>
+                                                <input type="text" class="form-control" placeholder="File Name" name="fname" value="<?php echo $detail[0] -> fname; ?>">
                                             </div>
                                         </div>
                                          <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder">Email</label>
+                                            <label class="col-lg-3 control-label" for="placeholder">Version</label>
                                             <div class="col-lg-9">
-                                                <input type="text" class="form-control" placeholder="Email" name="email">
-                                            </div>
-                                        </div>
-                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder">Duration</label>
-                                            <div class="col-lg-9">
-                                                <select name="duration" class="form-control">
-                                                <?php echo __get_duration(0,2); ?>
-                                                </select>
-                                                <br />
-                                                <span style="color:red"><i>1 point per year of duration</i></span>
-                                            </div>
-                                        </div>
-                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder">Price (*)</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control" placeholder="Price" name="price" onkeyup="formatharga(this.value,this)">
-                                            </div>
-                                        </div>
-                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder">Password</label>
-                                            <div class="col-lg-9">
-                                                <input type="password" class="form-control" placeholder="Password" name="pass">
-                                            </div>
-                                        </div>
-                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder">Confirm Password</label>
-                                            <div class="col-lg-9">
-                                                <input type="password" class="form-control" placeholder="Confirm Password" name="cpass">
+                                                <input type="text" class="form-control" placeholder="Version" name="version" value="<?php echo $detail[0] -> fversion; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="password">Description</label>
+                                            <label class="col-lg-3 control-label" for="password">Type</label>
                                             <div class="col-lg-9">
-                                                <textarea id="textarea1" name="desc" rows="3" class="form-control elastic"></textarea>
+                                               <?php echo __get_upload_type(($detail[0] -> furl ? 0 : 1),2); ?>
                                             </div>
                                         </div>
+                                         <div class="form-group furl" style="<?php echo ($detail[0] -> furl ? '' : 'display:none'); ?>">
+                                            <label class="col-lg-3 control-label" for="placeholder">URL</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" placeholder="URL" name="url" value="<?php echo $detail[0] -> furl; ?>">
+                                            </div>
+                                        </div>
+                                         <div class="form-group ffile" style="<?php echo ($detail[0] -> ffile ? '' : 'display:none'); ?>">
+                                            <label class="col-lg-3 control-label" for="placeholder">File</label>
+                                            <div class="col-lg-9">
+                                                <input type="file" class="form-control" name="file">
+                                                <br />
+                                                <br />
+                                            <p><a href="<?php echo __get_url_file($detail[0] -> ffile);?>">Download</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="password">Status</label>
+                                            <div class="col-lg-9">
+                                               <?php echo __get_status($detail[0] -> fstatus,2,2); ?>
+                                            </div>
+                                        </div>
+
+
                                         <div class="form-group">
                                             <div class="col-lg-offset-3 col-lg-9">
                                                 <button type="submit" class="btn btn-info"><span class="icon16 icomoon-icon-disk"></span> Submit</button>
                                                 <button type="button" class="btn btn-default" onclick="javascript: history.go(-1)"><span class="icon16 icomoon-icon-backspace-2"></span> Back</button>
                                             </div>
-                                        </div><!-- End .form-group  -->     
-                                        <div class="form-group">       
-                                            <div class="col-lg-offset-3 col-lg-9">       
-											<p><i>(*) Note : Optional, for your personal report selling</i></p>
-											</div>
-                                        </div>
+                                        </div><!-- End .form-group  -->                   
+
                                     </form>
                                     
                                  
@@ -110,3 +102,15 @@
 
                     </div><!-- End .row -->
                 <!-- Page end here -->
+<script>
+$('input[name="utype"]').change(function(){
+	if ($(this).val() == 1) {
+		$('.furl').hide();
+		$('.ffile').show();
+	}
+	else {
+		$('.ffile').hide();
+		$('.furl').show();
+	}
+})
+</script>

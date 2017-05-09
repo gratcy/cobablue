@@ -5,11 +5,11 @@ class Voucher_model extends CI_Model {
     }
     
     function __get_voucher() {
-		return 'SELECT a.*,b.uemail FROM voucher_tab a LEFT JOIN users_tab b ON a.vusedby=b.uid WHERE (a.vstatus=1 OR a.vstatus=3)';
+		return 'SELECT a.*,b.uemail FROM voucher_tab a LEFT JOIN users_tab b ON a.vusedby=b.uid WHERE (a.vstatus=1 OR a.vstatus=3) ORDER BY a.vid DESC';
 	}
 
 	function __search_voucher($email) {
-		$this -> db -> select("a.*,b.uemail FROM voucher_tab a LEFT JOIN users_tab b ON a.vusedby=b.uid WHERE (a.vstatus=1 OR a.vstatus=3) AND b.uemail LIKE '%".$email."%'");
+		$this -> db -> select("a.*,b.uemail FROM voucher_tab a LEFT JOIN users_tab b ON a.vusedby=b.uid WHERE (a.vstatus=1 OR a.vstatus=3) AND b.uemail LIKE '%".$email."%' ORDER BY a.vid DESC");
 		return $this -> db -> get() -> result();
 	}
 

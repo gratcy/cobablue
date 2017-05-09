@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'bluenexia';
-$db['default']['password'] = 'bluenexia321';
+$db['default']['username'] = 'gratcy';
+$db['default']['password'] = '';
 $db['default']['database'] = 'bluenexia_db';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
