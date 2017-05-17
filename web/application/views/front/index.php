@@ -311,3 +311,19 @@ ethically). If you have found this web proxy useful and cool, please share it wi
     <!--<li class="next_btn floatbtn-contact"><a href="#index-contact"> <div><b>Contact Us</b></div></a></li>-->
   </ul>
 </div>
+
+
+
+<div id="iklan_popoup_cache"></div>
+<script src="<?php echo site_url('application/views/front/js/popup_expire/popup_script.js'); ?>" type="text/javascript"></script> <!-- adv absolute close -->
+<script type='text/javascript' src='<?php echo site_url('application/views/front/js/popup_expire/popup_cookie.js'); ?>'></script> <!-- cookie -->
+<script>
+$(window).load(function() {
+    var popup_check_cookie = $.cookie("iklan_popup_cookie");	
+	if(popup_check_cookie != 1){
+	  $("#iklan_popoup_cache").html('<iframe id="iklan_popup_expire" src="https://www.youtube.com/embed/DVfeLO1RYyY?autoplay=1" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen></iframe>');
+	  $("iframe#iklan_popup_expire").iklan_popup_expire({img: "js/popup_expire/popup_close.png", css: "js/popup_expire/popup_style.css"});
+	}
+  
+});
+</script>
