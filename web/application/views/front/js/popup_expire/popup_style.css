@@ -1,0 +1,11 @@
+body > div#IklanIDGS_popup{position:fixed; z-index:100; top:180px;
+-moz-box-shadow:0 0 15px #424242; -webkit-box-shadow:0 0 15px #424242; box-shadow:0 0 15px #424242;}
+body > div#IklanIDGS_popup > span{padding:8px; background:rgba(255,255,255,1); display:inline-block; position:relative;}
+body > div#IklanIDGS_popup > span > *{position:absolute;}
+body > div#IklanIDGS_popup > span > #isi_iklan_popup, body > div#IklanIDGS_popup > span{height:360px; width:640px; text-align:center;}
+body > div#IklanIDGS_popup > span > img{top:-15px; right:-15px; z-index:10; cursor:pointer;}
+body > div#IklanIDGS_popup > span > img:hover{
+filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale"); /* Firefox 10+, Firefox on Android */
+filter: gray; /* IE6-9 */
+-webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */	
+}
