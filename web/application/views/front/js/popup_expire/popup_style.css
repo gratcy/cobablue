@@ -9,3 +9,7 @@ filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\
 filter: gray; /* IE6-9 */
 -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */	
 }
+
+@media screen and (max-width:1023px){
+  #IklanIDGS_popup{display:none;}
+}
