@@ -21,7 +21,7 @@
 		obj.closer.click(function(){
 			obj.all.remove();
 			obj.shadow.remove();
-			$.cookie("iklan_popup_cookie", 1,{expires:7});
+			$.cookie("iklan_popup_cookie", 1,{expires:1});
 		});
 	};
 }) (jQuery);
