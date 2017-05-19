@@ -322,7 +322,7 @@ $(window).load(function() {
     var popup_check_cookie = $.cookie("iklan_popup_cookie");	
 	if(popup_check_cookie != 1){
 	  $("#iklan_popoup_cache").html('<iframe id="iklan_popup_expire" src="https://www.youtube.com/embed/DVfeLO1RYyY?autoplay=1" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen></iframe>');
-	  $("iframe#iklan_popup_expire").iklan_popup_expire({img: "js/popup_expire/popup_close.png", css: "js/popup_expire/popup_style.css"});
+	  $("iframe#iklan_popup_expire").iklan_popup_expire({img: "https://neverblock.me/application/views/front/js/popup_expire/popup_close.png", css: "https://neverblock.me/application/views/front/js/popup_expire/popup_style.css"});
 	}
   
 });
