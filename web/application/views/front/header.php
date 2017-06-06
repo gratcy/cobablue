@@ -28,6 +28,18 @@
 <div class="menu-mobile-cover"></div>
 
 <header>
+  <div class="sticky-download">
+    <a href="javascript:void(0)" class="sd-close content_center" id="sd-close"><span>X</span></a>
+    <a href="javascript:void(0)" class="sd-right">
+      <div class="sd-icon content_center"><img src="<?php echo site_url('application/views/front/images/neverblock-icon-40.png'); ?>" /></div>
+      <div class="sd-info clearenter">
+        <b>Neverblock App</b>
+        <span>Install</span>
+        <div>Browse the internet privately, anonymously and securely.</div>
+      </div>
+    </a>
+  </div>
+
   <div class="menu-mobile">
     <input name="menu-show" id="menu-show" type="button" />
     <input name="menu-hide" id="menu-hide" type="button" style="display:none;" />
