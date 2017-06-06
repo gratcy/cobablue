@@ -107,3 +107,10 @@ $(window).load(function(){
    });
  });
 /* end get tallest ul li */
+
+
+$(window).load(function(){
+  $("#sd-close").click(function(){
+    $('.sticky-download').css("display","none");
+  })
+});
