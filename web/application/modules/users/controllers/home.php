@@ -71,7 +71,7 @@ class Home extends MY_Controller {
 					redirect(site_url('panel/users/add'));
 				}
 				else {
-					if ($this -> users_model -> __insert_users(array('ulevel' => $level, 'uemail' => $email, 'upass' => $pwd, 'usalt' => $salt, 'utype' => 1, 'ukey' => __api_key($email), 'uexpire' => strtotime('+7 days'), 'ustatus' => $status))) {
+					if ($this -> users_model -> __insert_users(array('ulevel' => $level, 'uemail' => $email, 'upass' => $pwd, 'usalt' => $salt, 'utype' => 1, 'ukey' => __api_key($email), 'uexpire' => strtotime('+7 days'), 'uregdate' => time(), 'ustatus' => $status))) {
 						$uid = $this -> db -> insert_id();
 						$this -> users_model -> __update_users($uid,array('urefcode' => $rcode[0] . $uid),1);
 						$this -> users_model -> __update_users($uid,array('ufullname' => $name, 'ucountry' => $country, 'ucity' => $city, 'upostal' => $postal, 'uaddr' => $addr, 'uphone' => $phone, 'uttl' => $tmpt.'*'.strtotime($tgl)),2);

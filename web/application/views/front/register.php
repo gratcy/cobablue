@@ -38,6 +38,9 @@
           <div class="g-recaptcha" data-sitekey="6Le2UxkTAAAAAF3MwydlfwgtO-lM-YZoW5-nvowi"></div>
       </div>
         </li>
+        <li class="term full" style="color:red">
+          Free VPN access VIP for 2 weeks. Unblock website encrypt your internet traffic, Wifi and Hacker Protection
+        </li>
         <li class="term full">
           By clicking Sign Up, you agree to our <a href="<?php echo site_url('page/tos'); ?>">Terms</a> and that you have read our <a href="<?php echo site_url('page/privacy-policy'); ?>">Data Policy</a>.
         </li>

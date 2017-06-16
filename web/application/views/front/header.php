@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <script>
@@ -24,13 +25,19 @@
 <script type="text/javascript" src="<?php echo site_url('application/views/front/js/jquery-migrate-1.2.1.min.js'); ?>"></script>       
 </head>
 <body>
+<?php if (!preg_match('/mobile/i',$_SERVER['HTTP_USER_AGENT'])) : ?>
 <div class="se-pre-con"></div>
+<?php endif; ?>
 <div class="menu-mobile-cover"></div>
 
 <header>
   <div class="sticky-download">
-    <a href="javascript:void(0)" class="sd-close content_center" id="sd-close"><span>X</span></a>
-    <a href="javascript:void(0)" class="sd-right">
+    <a href="javascript:void(0)" class="sd-close content_center" id="sd-close"><span>x</span></a>
+    <?php if (!preg_match('/Mac/i', $_SERVER['HTTP_USER_AGENT'])) : ?>
+    <a href="https://play.google.com/store/apps/details?id=de.blinkt.bluenexia" class="sd-right">
+	<?php else : ?>
+    <a href="https://appsto.re/id/6Mhhib.i" class="sd-right">
+	<?php endif; ?>
       <div class="sd-icon content_center"><img src="<?php echo site_url('application/views/front/images/neverblock-icon-40.png'); ?>" /></div>
       <div class="sd-info clearenter">
         <b>Neverblock App</b>

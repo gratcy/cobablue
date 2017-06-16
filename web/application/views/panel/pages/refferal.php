@@ -42,6 +42,7 @@
                                         <thead>
                                           <tr>
                                             <th class="ch">#</th>
+                                            <th>Reg Date</th>
                                             <th>Email</th>
                                             <th>Ref Code</th>
                                             <th class="col-lg-1">Status</th>
@@ -54,6 +55,7 @@
 											?>
                                           <tr>
                                             <td><?php echo ($page * $i); ?>.</td>
+                                            <td><?php echo __get_date($v -> uregdate,1); ?></td>
                                             <td><?php echo $v -> uemail; ?></td>
                                             <td><?php echo $v -> urefcode; ?></td>
                                             <td><?php echo __get_status($v -> ustatus,1);?></td>

@@ -25,6 +25,6 @@ class Register_model extends CI_Model {
 
 	function __check_reff($ref) {
 		$this -> db -> select("* FROM users_tab WHERE urefcode='".$ref."'");
-		return $this -> db -> get() -> num_rows();
+		return $this -> db -> get() -> result();
 	}
 }

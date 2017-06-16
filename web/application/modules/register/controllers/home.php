@@ -80,7 +80,7 @@ class Home extends MY_Controller {
 						}
 						else {
 							$ckref = $this -> register_model -> __check_reff($ref);
-							if ($this -> register_model -> __insert_user(array('ulevel' => 4, 'uemail' => $cemail, 'upass' => $pwd, 'usalt' => $salt, 'urefid' => $ckref[0] -> uid, 'ukey' => __api_key($email), 'uexpire' => strtotime('+7 days'), 'utype' => 1))) {
+							if ($this -> register_model -> __insert_user(array('ulevel' => 4, 'uemail' => $cemail, 'upass' => $pwd, 'usalt' => $salt, 'urefid' => (isset($ckref[0] -> uid) ? $ckref[0] -> uid : 0), 'ukey' => __api_key($email), 'uexpire' => strtotime('+14 days'), 'utype' => 1, 'uregdate' => time()))) {
 								$uid = $this -> db -> insert_id();
 								$this -> register_model -> __update_user($uid, array('urefcode' => $rcode[0] . $uid),1);
 								$this -> register_model -> __update_user($uid, array('ufullname' => $name),2);

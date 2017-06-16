@@ -32,17 +32,17 @@ $(document).ready(function() {
       <li>
         <img src="<?php echo site_url('application/views/front/images/icon-fitur-video.png'); ?>" />
         <h5>Video from anywhere</h5>
-        <p>Watch the content you want from any country on earth.</p>
+        <p>Watch the content you want from any country on earth</p>
       </li>
       <li>
         <img src="<?php echo site_url('application/views/front/images/icon-fitur-unblock.png'); ?>" />
         <h5>Secure websites access</h5>
-        <p>Browse safely without blocked by any hackers.</p>
+        <p>Browse safely without blocked by any hackers</p>
       </li>
       <li>
         <img src="<?php echo site_url('application/views/front/images/icon-fitur-easy.png'); ?>" />
         <h5>Easy To Use</h5>
-        <p>You can secure your connection in one click.</p>
+        <p>You can secure your connection in one click</p>
       </li>
     </ul>
   </div>
@@ -76,7 +76,7 @@ $(document).ready(function() {
       <li class="content right">
         <h5>Access All Website</h5>
         <p>As every online web proxy, this free proxy service may allow you to access websites anonymously,
-bypass website blocks/filters and browse websites blocked in your computer or mobile device.</p>
+bypass website blocks/filters and browse websites blocked in your computer or mobile device</p>
       </li>
     </ul>
     
@@ -87,7 +87,7 @@ bypass website blocks/filters and browse websites blocked in your computer or mo
       <li class="content left">
         <h5>Fast Proxy Servers</h5>
         <p>This proxy runs on very fast web servers that are capable of handling more than 200Mb/s of bandwidth.
-This allows you to browse websites anonymously and very quickly, with almost no delays or slowdowns.</p>
+This allows you to browse websites anonymously and very quickly, with almost no delays or slowdowns</p>
       </li>
     </ul>
     
@@ -98,7 +98,7 @@ This allows you to browse websites anonymously and very quickly, with almost no 
       <li class="content right">
         <h5>Sysops-Friendly</h5>
         <p>This free web proxy can be useful not only for regular Internet users, but also for System and Network
-Administrators to test if a website is online, verify if a website is blocked in a network, and much more.</p>
+Administrators to test if a website is online, verify if a website is blocked in a network, and much more</p>
       </li>
     </ul>
     
@@ -109,7 +109,7 @@ Administrators to test if a website is online, verify if a website is blocked in
       <li class="content left">
         <h5>Improve Anonymity</h5>
         <p>Improve your online anonymity by hiding/obfuscating your real IP address while visiting websites. For
-100% online anonymity we recommend you to buy a professional and reliable VPN service.</p>
+100% online anonymity we recommend you to buy a professional and reliable VPN service</p>
       </li>
     </ul>
     
@@ -120,7 +120,7 @@ Administrators to test if a website is online, verify if a website is blocked in
       <li class="content right">
         <h5>Web Proxy Benefits</h5>
         <p>With a web proxy you can be anonymous online, hide your IP address, hide your traces online, visit
-websites anonymously, save Internet bandwidth. Use this service ethically and read out terms.</p>
+websites anonymously, save Internet bandwidth. Use this service ethically and read out terms</p>
       </li>
     </ul>
     
@@ -131,7 +131,7 @@ websites anonymously, save Internet bandwidth. Use this service ethically and re
       <li class="content left">
         <h5>Free Web Proxy</h5>
         <p>Yes, this web proxy is completely free to use and we don't ask you anything in exchange (except to use it
-ethically). If you have found this web proxy useful and cool, please share it with your friends.</p>
+ethically). If you have found this web proxy useful and cool, please share it with your friends</p>
       </li>
     </ul>
     </div>

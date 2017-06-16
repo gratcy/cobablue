@@ -64,7 +64,9 @@ class Memcachedlib {
 	}
 
 	function __privileges() {
-		
+		if ($this -> _ci -> uri -> segment(1) == 'register' || $this -> _ci -> uri -> segment(1) == 'lostpwd') {
+			if ($this -> login == true) redirect(site_url());
+		}
 	}
 	
 	function add($key, $value, $expiration=false,$keyGlobal=false) {
