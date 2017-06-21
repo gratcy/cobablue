@@ -43,12 +43,14 @@
                                     <input type="hidden" name="type" value="1">
 										<div id="msg"></div>
                                         
+									<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4 || $this -> memcachedlib -> sesresult['ulevel'] == 3) : ?>
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Refferal URL</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" placeholder="Refferal URL" value="<?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?>" name="refcode" readonly>
                                             </div>
                                         </div>
+                                        <?php endif; ?>
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Email</label>
                                             <div class="col-lg-9">

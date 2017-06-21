@@ -4,7 +4,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Home extends MY_Controller {
 	function __construct() {
 		parent::__construct();
-		if ($this -> memcachedlib -> sesresult['ulevel'] != 1) redirect(site_url('panel'));
 		$this -> load -> library('pagination_lib');
 		$this -> load -> model('upload_model');
 	}

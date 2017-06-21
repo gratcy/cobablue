@@ -45,7 +45,7 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="password">Email</label>
                                             <div class="col-lg-9">
-                                                <textarea id="textarea1" name="desc" rows="8" class="form-control elastic" placeholder="Input your contact email to sent invitation."></textarea>
+                                                <textarea id="textarea1" name="invite" rows="8" class="form-control elastic" placeholder="Input your contact email to sent invitation."><?php echo $invitation; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">

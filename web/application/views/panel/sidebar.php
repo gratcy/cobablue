@@ -12,8 +12,12 @@
                         <?php endif; ?>
                         <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 1) : ?>
                         <li><a href="<?php echo site_url('panel/product');?>" ><span class="icon16 icomoon-icon-quill"></span>Products</a></li>
+                        <?php endif; ?>
+                        <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 1 || $this -> memcachedlib -> sesresult['ulevel'] == 3) : ?>
                         <li><a href="<?php echo site_url('panel/confirmation');?>" ><span class="icon16 icomoon-icon-cart-checkout"></span>Confirmation</a></li>
                         <li><a href="<?php echo site_url('panel/voucher');?>" ><span class="icon16 icomoon-icon-vcard"></span>Voucher</a></li>
+                        <?php endif; ?>
+                        <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 1) : ?>
                         <li><a href="<?php echo site_url('panel/upload');?>" ><span class="icon16 icomoon-icon-file-2"></span>Upload</a></li>
                         <?php endif; ?>
 						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
@@ -29,6 +33,8 @@
                             </ul>
                         </li>
                         <li><a href="<?php echo site_url('panel/use-voucher');?>" ><span class="icon16 icomoon-icon-vcard"></span>Voucher</a></li>
+                        <?php endif; ?>
+						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4 || $this -> memcachedlib -> sesresult['ulevel'] == 3) : ?>
                         <li rel="refferal">
                             <a href="#"><span class="icon16 icomoon-icon-tree-2"></span>Refferal<span class="notification green">2</span></a>
                             <ul class="sub">

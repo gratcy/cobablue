@@ -6,7 +6,6 @@ class Home extends MY_Controller {
 		parent::__construct();
 		$this -> load -> model('voucher_model');
 		$this -> load -> library('pagination_lib');
-		if ($this -> memcachedlib -> sesresult['ulevel'] != 1) redirect(site_url('panel'));
 	}
 
 	function index($page) {
@@ -30,7 +29,7 @@ class Home extends MY_Controller {
 		$code = strtoupper(__get_salt(10));
 		$ck = $this -> voucher_model -> __check_voucher($code);
 		if (!$ck[0]) {
-			return $this -> voucher_model -> __insert_voucher(array('vcode' => $code, 'vday' => $day, 'vexpire' => strtotime($expired), 'vstatus' => 1));
+			return $this -> voucher_model -> __insert_voucher(array('vuid' => $this -> memcachedlib -> sesresult['uid'], 'vdatecreated' => time(), 'vcode' => $code, 'vday' => $day, 'vexpire' => strtotime($expired), 'vstatus' => 1));
 		}
 		else {
 			return $this -> generator($code);

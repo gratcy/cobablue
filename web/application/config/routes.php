@@ -44,6 +44,7 @@ $route['404_override'] = '';
 
 ################################################### FRONTEND ##################################################
 
+$route['(never|block)'] = 'home/rewrite/$1';
 $route['register'] = 'register/home';
 $route['confirm'] = 'confirm/home/index';
 $route['reactive'] = 'confirm/home/reactive';

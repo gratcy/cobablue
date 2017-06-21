@@ -6,7 +6,6 @@ class Home extends MY_Controller {
 		parent::__construct();
 		$this -> load -> model('product_model');
 		$this -> load -> library('pagination_lib');
-		if ($this -> memcachedlib -> sesresult['ulevel'] != 1) redirect(site_url('panel'));
 	}
 
 	function index($page) {

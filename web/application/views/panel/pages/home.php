@@ -43,8 +43,10 @@ $lastlogin = explode('*', $this -> memcachedlib -> sesresult['ulastlogin']);
 					<p>Hello, <?php echo $this -> memcachedlib -> sesresult['uemail']; ?></p>
 					<p>Login Today <?php echo __get_date($this -> memcachedlib -> sesresult['ldate'],3) . ' with IP Address ' . long2ip($this -> memcachedlib -> sesresult['lip']); ?></p>
 					<p>Last Login <?php echo __get_date($lastlogin[1],3) . ' with IP Address ' . long2ip($lastlogin[0]); ?></p>
-					<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
+					<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4 || $this -> memcachedlib -> sesresult['ulevel'] == 3) : ?>
 					<p>Referral Code: <b><a href="<?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?>"><?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?></a> (<?php echo $this -> memcachedlib -> sesresult['urefcode']; ?>)</b></p>
+					<?php endif; ?>
+					<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
 					<p>Point: <b><?php echo __get_point($this -> memcachedlib -> sesresult['uid']); ?></b></p>
 					<p>User Expire: <b><?php echo ($expire[0] -> uexpire < time() ? 'Expired' : date('d/m/Y H:i',$expire[0] -> uexpire)); ?></b></p>
 					<?php endif; ?>

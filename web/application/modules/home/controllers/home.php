@@ -18,4 +18,8 @@ class Home extends MY_Controller {
 		$view['file'] = $data;
 		$this->load->view('index', $view);
 	}
+	
+	function rewrite($url) {
+		redirect(site_url('register/?ref=' . $url));
+	}
 }

@@ -67,6 +67,27 @@ class Memcachedlib {
 		if ($this -> _ci -> uri -> segment(1) == 'register' || $this -> _ci -> uri -> segment(1) == 'lostpwd') {
 			if ($this -> login == true) redirect(site_url());
 		}
+		
+		if (preg_match('/^upload|product/i', $this -> _ci -> uri -> segment(2))) {
+			if ($this -> sesresult['ulevel'] != 1) redirect(site_url('panel'));
+		}
+		
+		if (preg_match('/^report|transaction|topup\-tutorial/i', $this -> _ci -> uri -> segment(2))) {
+			if ($this -> sesresult['ulevel'] != 4) redirect(site_url('panel'));
+		}
+		
+		if (preg_match('/^refferal|invite/i', $this -> _ci -> uri -> segment(2))) {
+			if ($this -> sesresult['ulevel'] != 4 && $this -> sesresult['ulevel'] != 3) redirect(site_url('panel'));
+		}
+		
+		if (preg_match('/^use\-voucher/i', $this -> _ci -> uri -> segment(2))) {
+			if ($this -> sesresult['ulevel'] != 4) redirect(site_url('panel'));
+		}
+		else {
+			if (preg_match('/^confirmation|voucher/i', $this -> _ci -> uri -> segment(2))) {
+				if ($this -> sesresult['ulevel'] != 1 && $this -> sesresult['ulevel'] != 2 && $this -> sesresult['ulevel'] != 3) redirect(site_url('panel'));
+			}
+		}
 	}
 	
 	function add($key, $value, $expiration=false,$keyGlobal=false) {
