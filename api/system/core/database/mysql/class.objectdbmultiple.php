@@ -122,7 +122,7 @@ class objectdb {
 		foreach ($data as $key=>$value) $sql .= $key . "=". "'$value'" . ",";
 		$sql = rtrim($sql,",");
 		$sql = $this -> db_link -> prepare($sql . " WHERE $kondisi");
-		return $sql -> execute($arr);
+		return $sql -> execute();
 	}
 
 	function insert_array($table,$data){

@@ -85,22 +85,32 @@ class Home extends MY_Controller {
 			}
 			else {
 				$detail = $this -> transaction_model -> __get_transaction_by_tno($tno);
-				if ($detail[0]) {
-					if ($this -> transaction_model -> __insert_confirm(array('ttid' => $detail[0] -> tid, 'tdate' => time(), 'tabank' => $bank, 'tano' => $ano, 'taname' => $aname, 'tmbank' => $mbank, 'ttotal' => $total, 'tdesc' => $desc, 'tstatus' => 0))) {
-						
-						$this -> transaction_model -> __update_transaction($detail[0] -> tid, array('tstatus' => 1));
-						
-						__set_error_msg(array('info' => 'Transaction succesfully confirm.'));
-						redirect(site_url('panel/transaction'));
-					}
-					else {
-						__set_error_msg(array('error' => 'Invalid input data !!!'));
-						redirect(site_url('panel/transaction/confirm'));
-					}
+				if ($detail[0] -> tstatus == 1) {
+					__set_error_msg(array('error' => 'Transaction has been confirmed !!!'));
+					redirect(site_url('panel/transaction/confirm'));
+				}
+				else if ($detail[0] -> tstatus == 2) {
+					__set_error_msg(array('error' => 'Transaction has been approved !!!'));
+					redirect(site_url('panel/transaction/confirm'));
 				}
 				else {
-					__set_error_msg(array('error' => 'Ivalid Transaction No. !!!'));
-					redirect(site_url('panel/transaction/confirm'));
+					if ($detail[0]) {
+						if ($this -> transaction_model -> __insert_confirm(array('ttid' => $detail[0] -> tid, 'tdate' => time(), 'tabank' => $bank, 'tano' => $ano, 'taname' => $aname, 'tmbank' => $mbank, 'ttotal' => $total, 'tdesc' => $desc, 'tstatus' => 0))) {
+							
+							$this -> transaction_model -> __update_transaction($detail[0] -> tid, array('tstatus' => 1));
+							
+							__set_error_msg(array('info' => 'Transaction succesfully confirm.'));
+							redirect(site_url('panel/transaction'));
+						}
+						else {
+							__set_error_msg(array('error' => 'Invalid input data !!!'));
+							redirect(site_url('panel/transaction/confirm'));
+						}
+					}
+					else {
+						__set_error_msg(array('error' => 'Ivalid Transaction No. !!!'));
+						redirect(site_url('panel/transaction/confirm'));
+					}
 				}
 			}
 		}

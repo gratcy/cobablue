@@ -85,7 +85,7 @@
                                         </tbody>
                                     </table>
                                     <div id="pgboth">
-                        <div class="col-lg-10">
+                        <div class="col-lg-12">
 <div class="dataTables_paginate paging_bootstrap pagination right">
 <?php echo $pages; ?>
 </div>
