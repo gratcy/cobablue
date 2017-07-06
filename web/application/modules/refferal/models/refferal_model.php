@@ -5,7 +5,7 @@ class Refferal_model extends CI_Model {
     }
     
     function __get_refferal($uid) {
-		return "SELECT uid,uemail,urefcode,uregdate,ustatus FROM users_tab WHERE urefid=" . $uid;
+		return "SELECT uid,uemail,urefcode,uregdate,ustatus,uexpire FROM users_tab WHERE urefid=" . $uid;
 	}
 	
 	function __get_transaction($uid) {

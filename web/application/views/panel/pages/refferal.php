@@ -44,6 +44,7 @@
                                             <th class="ch">#</th>
                                             <th>Reg Date</th>
                                             <th>Email</th>
+                                            <th>Premium</th>
                                             <th>Ref Code</th>
                                             <th class="col-lg-1">Status</th>
                                           </tr>
@@ -54,9 +55,10 @@
 											foreach($refferal as $k => $v) :
 											?>
                                           <tr>
-                                            <td><?php echo ($page * $i); ?>.</td>
+                                            <td><?php echo (($page == 1 ? $page * $i : ($page * $limit) - $limit + $i)); ?>.</td>
                                             <td><?php echo __get_date($v -> uregdate,1); ?></td>
                                             <td><?php echo $v -> uemail; ?></td>
+                                            <td><?php echo ($v -> uexpire > time() ? 'Yes' : 'No'); ?></td>
                                             <td><?php echo $v -> urefcode; ?></td>
                                             <td><?php echo __get_status($v -> ustatus,1);?></td>
                                           </tr>

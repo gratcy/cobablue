@@ -68,11 +68,11 @@ class Memcachedlib {
 			if ($this -> login == true) redirect(site_url());
 		}
 		
-		if (preg_match('/^upload|product/i', $this -> _ci -> uri -> segment(2))) {
+		if (preg_match('/^upload|product|reporting/i', $this -> _ci -> uri -> segment(2))) {
 			if ($this -> sesresult['ulevel'] != 1) redirect(site_url('panel'));
 		}
 		
-		if (preg_match('/^report|transaction|topup\-tutorial/i', $this -> _ci -> uri -> segment(2))) {
+		if (preg_match('/^report$|transaction|topup\-tutorial/i', $this -> _ci -> uri -> segment(2))) {
 			if ($this -> sesresult['ulevel'] != 4) redirect(site_url('panel'));
 		}
 		

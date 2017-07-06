@@ -46,6 +46,9 @@
 						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
                         <li><a href="<?php echo site_url('panel/report');?>"><span class="icon16 icomoon-icon-list"></span>Report Create Account</a></li>
                         <?php endif; ?>
+                        <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 1) : ?>
+                        <li><a href="<?php echo site_url('panel/reporting');?>" ><span class="icon16 iconic-icon-chart"></span>Report</a></li>
+                        <?php endif; ?>
                         <li><a href="<?php echo site_url('panel/support');?>" ><span class="icon16 icomoon-icon-support"></span>Support</a></li>
                         <li><a href="<?php echo site_url('panel/download');?>" ><span class="icon16 icomoon-icon-download"></span>Download Application</a></li>
                         <li><a href="<?php echo site_url('panel/settings');?>" ><span class="icon16 icomoon-icon-user"></span>Profile</a></li>
