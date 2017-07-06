@@ -54,19 +54,14 @@
                           <!-- one slide -->
                           <div class="topup-tutor-list">
                             <div class="leading-image">
-                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-topup/1.png'); ?>" />
+                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-reseller/1.png'); ?>" />
                             </div>
                                         
                             <div class="topup-tutor-desc">
                               <ul class="clearenter">
                                 <li class="number"><b class="content_center"><span>1</span></b></li>
-                                <li class="info indonesia">Klik di bagian kiri pada bar navigasi pada gambar kerajang bertuliskan <b>Transaction</b> seperti contoh gambar di atas.</li>
-                                <li class="info english">Click at <b>Transaction</b> on the navigation bar on the left side.</li>
-                              </ul>
-                              <ul class="clearenter">
-                                <li class="number"><b class="content_center"><span>2</span></b></li>
-                                <li class="info indonesia">Setelah muncul <b>gambar di atas</b>, klik <b>Top Up</b> yang berada di bagian bawah dari Transaction atau yang berada di dalam table transaksi.</li>
-                                <li class="info english">You will be directed into that page <b>(see picture above)</b>, then click <b>Top Up</b> on the left side below Transaction or on Transaction Table.</li>
+                                <li class="info indonesia">Masuk ke dashboard Neverblock kamu. <i>(Pastikan kamu masih memiliki point untuk penjualan VPN kepada konsumer)</i>.</li>
+                                <li class="info english">Please log in into your Neverblock dashboard. <i>(Make sure that you have point for selling VPN to your consumer)</i>.</li>
                               </ul>
                             </div>
                           </div>  
@@ -75,19 +70,14 @@
                           <!-- one slide -->
                           <div class="topup-tutor-list">
                             <div class="leading-image clearenter">
-                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-topup/2.png'); ?>" />
+                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-reseller/2.png'); ?>" />
                             </div>
                                         
                             <div class="topup-tutor-desc">
                               <ul class="clearenter">
-                                <li class="number"><b class="content_center"><span>3</span></b></li>
-                                <li class="info indonesia">Setelah muncul halaman seperti gambar di atas, pilih paket yang ingin Anda gunakan.</li>
-                                <li class="info english">You will find package page. Then choose what packet you want to purchase.</li>
-                              </ul>
-                              <ul class="clearenter">
-                                <li class="number"><b class="content_center"><span>4</span></b></li>
-                                <li class="info indonesia">Untuk reseller, perhitungan tahun dapat dilihat dari point yang ada di akun. Sebagai contoh, pada harga di atas tertera Rp. 400.000, - 5 point, maka reseller akan mendapatkan 5 tahun yang nantinya akan bebas didistribusikan kepada konsumer oleh reseller.</li>
-                                <li class="info english">Notes for reseller, 5 points on the right side means years of active. If resellers buy that package Rp. 400.000 – 5 points, so they will get 5 years that can distribute to consumer.</li>
+                                <li class="number"><b class="content_center"><span>2</span></b></li>
+                                <li class="info indonesia">Masuk ke halaman <b>reseller</b> yang ada di bagian kiri.</li>
+                                <li class="info english">Click <b>reseller</b> button on the left bar.</li>
                               </ul>
                             </div>
                           </div>  
@@ -96,45 +86,39 @@
                           <!-- one slide -->
                           <div class="topup-tutor-list">
                             <div class="leading-image clearenter">
-                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-topup/3.png'); ?>" />
+                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-reseller/3.png'); ?>" />
                             </div>
                                         
                             <div class="topup-tutor-desc">
                               <ul class="clearenter">
+                                <li class="number"><b class="content_center"><span>3</span></b></li>
+                                <li class="info indonesia">Isi email konsumen yang telah didaftarkan.</li>
+                                <li class="info english">Fill consumer mail that want to register.</li>
+                              </ul>
+                              <ul class="clearenter">
+                                <li class="number"><b class="content_center"><span>4</span></b></li>
+                                <li class="info indonesia">Pilih <b>durasi</b> waktu yang dibeli oleh konsumen. <i>(1 point berlaku untuk 1 tahun, begitu juga seterusnya)</i>.</li>
+                                <li class="info english">4.	Choose the <b>duration</b> that user want. <i>(1 point has one year period, 2 points have two years period and so on)</i>.</li>
+                              </ul>
+                              <ul class="clearenter">
                                 <li class="number"><b class="content_center"><span>5</span></b></li>
-                                <li class="info indonesia">Jika sudah memilih paket mana yang ingin Anda gunakan <b>(gambar di atas hanya sebagai contoh)</b> maka akan muncul halaman seperti ini.</li>
-                                <li class="info english">If you already choose what package that you will use, you will be directed into that page <b>(see example above)</b>.</li>
+                                <li class="info indonesia">Pada bagian <b>Price</b>, isilah sesuai dengan harga konsumer.</li>
+                                <li class="info english">On the <b>Price</b>, fill its price as your price set for consumer.</li>
                               </ul>
                               <ul class="clearenter">
                                 <li class="number"><b class="content_center"><span>6</span></b></li>
-                                <li class="info indonesia">Pada bagian <b>Notes</b> bisa Anda kosongkan alias bersifat optional.</li>
-                                <li class="info english">You can empty <b>Notes</b> column if you think there is no information added.</li>
+                                <li class="info indonesia">Gunakan password yang mudah untuk pengguna. <i>(contoh: 123456)</i>.</li>
+                                <li class="info english">Use easy password for consumer,  <i>(for example; 123456)</i>.</li>
                               </ul>
                               <ul class="clearenter">
                                 <li class="number"><b class="content_center"><span>7</span></b></li>
-                                <li class="info indonesia">Jika sudah klik <b>Submit</b></li>
-                                <li class="info english">Then Click <b>Submit</b></li>
+                                <li class="info indonesia">Pada bagian description bisa dikosongkan, atau bisa ditambahkan catatan untuk konsumer.</li>
+                                <li class="info english">On the description, you can empty or adding note for your consumer.</li>
                               </ul>
-                            </div>
-                          </div>  
-                          <!-- end one slide -->
-                          
-                          <!-- one slide -->
-                          <div class="topup-tutor-list">
-                            <div class="leading-image clearenter">
-                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-topup/4.png'); ?>" />
-                            </div>
-                                        
-                            <div class="topup-tutor-desc">
                               <ul class="clearenter">
                                 <li class="number"><b class="content_center"><span>8</span></b></li>
-                                <li class="info indonesia">Jika sudah melakukan <b>submit</b> maka akan muncul halaman seperti gambar di atas.</li>
-                                <li class="info english">After you did <b>submit</b>, you will find that page.</li>
-                              </ul>
-                              <ul class="clearenter">
-                                <li class="number"><b class="content_center"><span>9</span></b></li>
-                                <li class="info indonesia">Langkah selanjutnya adalah klik gambar <b>keranjang</b> untuk menyelesaikan transaksi, atau jika ingin merubah atau membatalkan transaksi bisa klik pada gambar <b>tong sampah</b>.</li>
-                                <li class="info english">To finish transaction click on <b>basket</b> button, or if you want to change or cancel transaction, you can click <b>trash</b> button.</li>
+                                <li class="info indonesia">Pastikan semua data telah benar, kemudian klik <b>Submit</b></li>
+                                <li class="info english">After fill all column, please make sure that the data is correct, and click <b>Submit</b></li>
                               </ul>
                             </div>
                           </div>  
@@ -143,61 +127,19 @@
                           <!-- one slide -->
                           <div class="topup-tutor-list">
                             <div class="leading-image clearenter">
-                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-topup/5.png'); ?>" />
+                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-reseller/4.png'); ?>" />
                             </div>
                                         
                             <div class="topup-tutor-desc">
                               <ul class="clearenter">
-                                <li class="number"><b class="content_center"><span>10</span></b></li>
-                                <li class="info indonesia">Jika sudah melakukan klik pada gambar <b>keranjang</b>, langkah selanjutnya adalah melakukan konfirmasi pembayaran seperti yang tertera pada gambar di atas.</li>
-                                <li class="info english">After clicking on <b>basket</b> button, then you need to confirm your purchase.</li>
-                              </ul>
-                              <ul class="clearenter">
-                                <li class="number"><b class="content_center"><span>11</span></b></li>
-                                <li class="info indonesia">Isi data-data pembayaran sesuai dengan data diri Anda, jika sudah selesai kemudian klik <b>submit</b>.</li>
-                                <li class="info english">Fill your data and then click <b>submit</b>.</li>
-                              </ul>
-                              <ul class="clearenter">
-                                <li class="number"><b class="content_center"><span>12</span></b></li>
-                                <li class="info indonesia">Lakukan transfer sesuai jumlah yang tertera ke bank yang dituju.</li>
-                                <li class="info english">Transfer amount of money into bank that you have choose</li>
+                                <li class="number"><b class="content_center"><span>9</span></b></li>
+                                <li class="info indonesia">Setelah selesai, maka akun akan terdaftar otomatis dan point anda akan berkurang sesuai dengan yang telah didaftarkan tadi.</li>
+                                <li class="info english">After finished, your consumer account will registered automatically and your point will reduce.</li>
                               </ul>
                             </div>
                           </div>  
-                          <!-- end one slide -->    
-                          
-                          <!-- one slide -->
-                          <div class="topup-tutor-list">
-                            <div class="leading-image clearenter">
-                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-topup/6.png'); ?>" />
-                            </div>
-                                        
-                            <div class="topup-tutor-desc">
-                              <ul class="clearenter">
-                                <li class="number"><b class="content_center"><span>13</span></b></li>
-                                <li class="info indonesia">Jika sudah melakukan proses transfer, maka sistem Neverblock akan mendeteksi pembayaran Anda dan mengkonfirmasi dana yang masuk.</li>
-                                <li class="info english">If you have transferred, Neverblock will detect and confirm your payment.</li>
-                              </ul>
-                            </div>
-                          </div>  
-                          <!-- end one slide --> 
-                          
-                          <!-- one slide -->
-                          <div class="topup-tutor-list">
-                            <div class="leading-image clearenter">
-                              <img itemprop="image" src="<?php echo site_url('application/views/panel/assets/images/tutorial-topup/7.png'); ?>" />
-                            </div>
-                                        
-                            <div class="topup-tutor-desc">
-                              <ul class="clearenter">
-                                <li class="number"><b class="content_center"><span>14</span></b></li>
-                                <li class="info indonesia">Jika sudah terkonfirmasi, maka periode penggunaan layanan Neverblock Anda akan diperpanjang dan Anda akan mendapatkan point seperti yang ada pada gambar di atas.</li>
-                                <li class="info english">After finish, your account will be extended and you will get point.</li>
-                              </ul>
-                            </div>
-                          </div>  
-                          <!-- end one slide -->    
-                                
+                          <!-- end one slide -->
+                                 
                         </div>
                         
                         <link href="<?php echo site_url('application/views/panel/assets/css/tutorial-topup.css'); ?>" rel="stylesheet" type="text/css" /> 
