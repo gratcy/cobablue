@@ -135,11 +135,15 @@ function __get_salt($randStringLen = 64) {
 }
 
 function __get_avatar($avatar,$type) {
-	if (preg_match('/graph\.facebook|googleusercontent\.com/i', $avatar)) return $avatar;
-	if ($type == 1)
-		return site_url('upload/avatar/' . $avatar);
+	if (!empty($avatar)) {
+		if (preg_match('/graph\.facebook|googleusercontent\.com/i', $avatar)) return $avatar;
+		if ($type == 1)
+			return site_url('upload/avatar/' . $avatar);
+		else
+			return site_url('upload/avatar/small/' . $avatar);
+	}
 	else
-		return site_url('upload/avatar/small/' . $avatar);
+		return site_url('application/views/panel/assets/images/avatar3.jpeg');
 }
 
 function __get_url_file($file) {

@@ -60,11 +60,11 @@
     
     <menu>
       <ul class="clearenter">
-        <li class="next_btn menu-mobile-only"><a href="#index-welcome">Home</a></li>
-        <li class="next_btn menu-mobile-only"><a href="#index-info">Info</a></li>
-        <li class="next_btn menu-mobile-only"><a href="#index-works">How Neverblock Works</a></li>
-        <li class="next_btn menu-mobile-only"><a href="#index-feature">Features</a></li>
-        <li class="next_btn menu-mobile-only"><a href="#index-download">Download</a></li>
+        <li class="next_btn menu-mobile-only"><a href="<?php echo ($_SERVER['REQUEST_URI'] == '/' ? '' : site_url('/'))?>#index-welcome">Home</a></li>
+        <li class="next_btn menu-mobile-only"><a href="<?php echo ($_SERVER['REQUEST_URI'] == '/' ? '' : site_url('/'))?>#index-info">Info</a></li>
+        <li class="next_btn menu-mobile-only"><a href="<?php echo ($_SERVER['REQUEST_URI'] == '/' ? '' : site_url('/'))?>#index-works">How Neverblock Works</a></li>
+        <li class="next_btn menu-mobile-only"><a href="<?php echo ($_SERVER['REQUEST_URI'] == '/' ? '' : site_url('/'))?>#index-feature">Features</a></li>
+        <li class="next_btn menu-mobile-only"><a href="<?php echo ($_SERVER['REQUEST_URI'] == '/' ? '' : site_url('/'))?>#index-download">Download</a></li>
 		<?php if ($this -> memcachedlib -> login) : ?>
         <li><a href="<?php echo site_url('panel'); ?>">My Account</a></li>
         <li><a href="<?php echo site_url('panel/login/logout'); ?>">Logout</a></li>
