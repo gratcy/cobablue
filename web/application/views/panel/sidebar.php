@@ -8,7 +8,20 @@
                     <ul>
                         <li><a href="<?php echo site_url('panel');?>"><span class="icon16 icomoon-icon-home-6"></span>Dashboard</a></li>
 						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
-                        <li><a href="<?php echo site_url('panel/create_account');?>"><span class="icon16 icomoon-icon-transmission"></span>Reseller</a></li>
+                        <li><a href="#"><span class="icon16 icomoon-icon-transmission"></span>Reseller</a>
+                        	<ul class="sub">
+                                <li>
+                                  <a href="<?php echo site_url('panel/create_account');?>">
+                                    <span class="icon16 icomoon-icon-tags"></span>Reseller
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="<?php echo site_url('panel/reseller-tutorial');?>">
+                                    <span class="icon16 icomoon-icon-book"></span>Tutorial Reseller
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
                         <?php endif; ?>
                         <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 1) : ?>
                         <li><a href="<?php echo site_url('panel/product');?>" ><span class="icon16 icomoon-icon-quill"></span>Products</a></li>
@@ -28,7 +41,6 @@
                                 <li><a href="<?php echo site_url('panel/transaction/confirm');?>"><span class="icon16 icomoon-icon-calculate-2"></span>Confirm Payment</a></li>
                                 <li><a href="<?php echo site_url('panel/transaction/topup');?>"><span class="icon16 icomoon-icon-arrow-up-right"></span>Top Up</a></li>
                                 <li><a href="<?php echo site_url('panel/topup-tutorial');?>"><span class="icon16 icomoon-icon-book-2"></span>Tutorial Top Up</a></li>
-                                <li><a href="<?php echo site_url('panel/reseller-tutorial');?>"><span class="icon16 icomoon-icon-book"></span>Tutorial Reseller</a></li>
 								<li><a href="<?php echo site_url('panel/topup-tutorial');?>" ><span class="icon16 entypo-icon-help"></span>Payment Method</a></li>
                             </ul>
                         </li>

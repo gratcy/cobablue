@@ -20,7 +20,7 @@
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
                             </span>
                         </li>
-                        <li class="active">Top Up</li>
+                        <li class="active">Reseller</li>
                     </ul>
 
                 </div><!-- End .heading-->
