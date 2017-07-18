@@ -46,10 +46,13 @@ class Home extends MY_Controller {
 					}
 					else
 						$tfrom = time();
-					$tto = strtotime('+1 year', $tfrom);
+					$pd = $this -> product_model -> __get_product_detail($product);
+					$tto = strtotime('+'.$pd[0] -> pyear.' year', $tfrom);
 				}
 				
-				if ($this -> transaction_model -> __insert_transaction(array('tuid' => $this -> memcachedlib -> sesresult['uid'], 'ttype' => $ptype, 'tno' => $tno, 'tdate' => time(), 'tpid' => $product, 'tfrom' => $tfrom, 'tto' => $tto, 'ttotal' => $total, 'tpoint' => $point, 'tstatus' => 0))) {
+				$arr = array('tuid' => $this -> memcachedlib -> sesresult['uid'], 'ttype' => $ptype, 'tno' => $tno, 'tdate' => time(), 'tpid' => $product, 'tfrom' => $tfrom, 'tto' => $tto, 'ttotal' => $total, 'tpoint' => $point, 'tstatus' => 0);
+				
+				if ($this -> transaction_model -> __insert_transaction($arr)) {
 					__set_error_msg(array('info' => 'Transaction succesfully added.'));
 					redirect(site_url('panel/transaction'));
 				}

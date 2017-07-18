@@ -206,7 +206,7 @@ function __get_user_level($id,$type) {
 
 function __get_bank($id,$type,$type2) {
 	if ($type2 == 1)
-		$arr = array('BCA', 'Mandiri', 'BRI', 'CIMB');
+		$arr = array('BCA', 'Mandiri', 'BRI', 'BNI', 'CIMB');
 	else
 		$arr = array('BCA', 'Mandiri');
 	if ($type == 1) {

@@ -53,15 +53,15 @@
                                             </div>
                                         </div>
                                          <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder">Bank Account Number</label>
+                                            <label class="col-lg-3 control-label" for="placeholder">Your Bank Account Number</label>
                                             <div class="col-lg-9">
-                                                <input type="text" class="form-control" placeholder="Account Number" name="ano">
+                                                <input type="text" class="form-control" placeholder="Your Bank Account Number" name="ano">
                                             </div>
                                         </div>
                                          <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder">Bank Account Name</label>
+                                            <label class="col-lg-3 control-label" for="placeholder">Your Bank Account Name</label>
                                             <div class="col-lg-9">
-                                                <input type="text" class="form-control" placeholder="Account Name" name="aname">
+                                                <input type="text" class="form-control" placeholder="Your Bank Account Name" name="aname">
                                             </div>
                                         </div>
                                          <div class="form-group">
@@ -71,7 +71,7 @@
                                             </div>
                                         </div>
                                          <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="placeholder">Max Hidden Bank</label>
+                                            <label class="col-lg-3 control-label" for="placeholder">NeverBlock Bank</label>
                                             <div class="col-lg-9">
                                                 <select class="form-control" name="mbank"><?php echo __get_bank(0,2,2); ?></select>
                                             </div>

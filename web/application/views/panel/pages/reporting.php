@@ -44,7 +44,7 @@
                                 <div class="panel-body noPad">
 									
                                 <div class="panel-body">
-									<form action="<?php echo site_url('panel/report');?>" method="post">
+									<form action="<?php echo site_url('panel/reporting');?>" method="post">
                                          <div class="form-group" style="margin-top:-10px">
                                             <label class="col-lg-2 control-label" for="placeholder" style="line-height:22pt">Sort Date</label>
                                             <div class="col-lg-4">

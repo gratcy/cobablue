@@ -8,7 +8,7 @@
                     <ul>
                         <li><a href="<?php echo site_url('panel');?>"><span class="icon16 icomoon-icon-home-6"></span>Dashboard</a></li>
 						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
-                        <li><a href="#"><span class="icon16 icomoon-icon-transmission"></span>Reseller</a>
+                        <li rel="reseller"><a href="#"><span class="icon16 icomoon-icon-transmission"></span>Reseller</a>
                         	<ul class="sub">
                                 <li>
                                   <a href="<?php echo site_url('panel/create_account');?>">
@@ -75,12 +75,16 @@
         </div><!-- End #sidebar -->
 
 <script type="text/javascript">
-	if (/\/transaction|topup\-tutorial|reseller\-tutorial/.test(window.location.href) === true) {
+	if (/\/transaction|topup\-tutorial/.test(window.location.href) === true) {
 		$('li[rel="user_transaction"] > a').addClass('drop');
 		$('li[rel="user_transaction"] > .sub').css({'display': 'block'});
 	}
 	else if (/\/refferal|invite/.test(window.location.href) === true) {
 		$('li[rel="refferal"] > a').addClass('drop');
 		$('li[rel="refferal"] > .sub').css({'display': 'block'});
+	}
+	else if (/\/reseller-tutorial|create_account/.test(window.location.href) === true) {
+		$('li[rel="reseller"] > a').addClass('drop');
+		$('li[rel="reseller"] > .sub').css({'display': 'block'});
 	}
 </script>
