@@ -95,7 +95,7 @@
     <div id="header">
         <nav class="navbar navbar-default" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="<?php echo site_url('panel/');?>" title="Never Block Panel">Never Block<span class="slogan">Panel</span></a>
+                <a class="navbar-brand" href="<?php echo site_url('panel/');?>" title="Never Block Panel">Neverblock<span class="slogan">Panel</span></a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon16 icomoon-icon-arrow-4"></span>

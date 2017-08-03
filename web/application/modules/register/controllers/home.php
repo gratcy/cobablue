@@ -89,7 +89,7 @@ class Home extends MY_Controller {
 								$this -> register_model -> __insert_token(array('tuid' => $uid, 'ttype' => 1, 'tkey' => $key, 'tstatus' => 1));
 								
 								$to = $email;
-								$subject = "Email Confirmation Activation Account Anti Block";
+								$subject = "Email Confirmation Activation Account Neverblock";
 								$data = array();
 								$data['link'] = site_url('confirm?email=' . $cemail . '&key=' . $key);
 								$data['email'] = $cemail;

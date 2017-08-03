@@ -19,7 +19,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po
   </ul>
   
   <ul class="footer-copyright clearenter">
-    <li>NeverBlock &copy; 2016 - <?php echo date('Y'); ?> All Right Reserved</li>
+    <li>PT. Kaisar Artha Putera &copy; 2016 - <?php echo date('Y'); ?> All Right Reserved</li>
   </ul>
   
 </footer>
