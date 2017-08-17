@@ -25,9 +25,9 @@ class Home extends MY_Controller {
 			$year = (int) $this -> input -> post('year');
 			$ptype = (int) $this -> input -> post('ptype');
 			$desc = $this -> input -> post('desc');
-			
+
 			if (!$product || !$total) {
-				__set_error_msg(array('error' => 'Product must be choose !!!'));
+				__set_error_msg(array('error' => 'Produk harus dipilih !!!'));
 				redirect(site_url('panel/transaction/topup'));
 			}
 			else {
@@ -53,11 +53,34 @@ class Home extends MY_Controller {
 				$arr = array('tuid' => $this -> memcachedlib -> sesresult['uid'], 'ttype' => $ptype, 'tno' => $tno, 'tdate' => time(), 'tpid' => $product, 'tfrom' => $tfrom, 'tto' => $tto, 'ttotal' => $total, 'tpoint' => $point, 'tstatus' => 0);
 				
 				if ($this -> transaction_model -> __insert_transaction($arr)) {
-					__set_error_msg(array('info' => 'Transaction succesfully added.'));
+					$APIUrl = $this -> config -> load('neverblock', true);
+					
+					$ch = curl_init();
+					$fields = array('pid' => $product, 'norderid'=> $ttrans, 'tno' => $tno, 'ipaddr' => $_SERVER['REMOTE_ADDR'], 'email' => $this -> memcachedlib -> sesresult['uemail']);
+					$postvars = '';
+					foreach($fields as $key => $value) {
+						$postvars .= $key . "=" . $value . "&";
+					}
+					$url = $APIUrl['neverblock']['api'] . "?api=whmcs&act=order";
+					curl_setopt($ch,CURLOPT_URL,$url);
+					curl_setopt($ch,CURLOPT_POST, 1);
+					curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
+					curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,3);
+					curl_setopt($ch,CURLOPT_TIMEOUT, 20);
+					$response = curl_exec($ch);
+					$response = json_decode($response, true);
+					$totalhash = (isset($response['totalhash']) ? $response['totalhash'] : 0);
+					$invoice_id = (isset($response['invoice_id']) ? $response['invoice_id'] : 0);
+					curl_close ($ch);
+					
+					$this -> transaction_model -> __update_transaction($ttrans, array('ttotalhash' => $totalhash, 'tapiinv' => $invoice_id), 1);
+					
+					__set_error_msg(array('info' => 'Transaksi sukses dilakukan.'));
 					redirect(site_url('panel/transaction'));
 				}
 				else {
-					__set_error_msg(array('error' => 'Invalid input data !!!'));
+					__set_error_msg(array('error' => 'Kesalahan input data !!!'));
 					redirect(site_url('panel/transaction'));
 				}
 			}
@@ -124,7 +147,30 @@ class Home extends MY_Controller {
 	}
 	
 	function delete($id) {
+		$inv = $this -> transaction_model -> __get_transaction_detail($id);
 		if ($this -> transaction_model -> __update_transaction($id, array('tstatus' => 3),1)) {
+			$invId = (int) $inv[0] -> tapiinv;
+			if ($invId > 0) {
+				$APIUrl = $this -> config -> load('neverblock', true);
+				
+				$ch = curl_init();
+				$fields = array('invoiceid' => $invId);
+				$postvars = '';
+				foreach($fields as $key => $value) {
+					$postvars .= $key . "=" . $value . "&";
+				}
+				$url = $APIUrl['neverblock']['api'] . "?api=whmcs&act=order&det=cancel_order";
+				curl_setopt($ch,CURLOPT_URL,$url);
+				curl_setopt($ch,CURLOPT_POST, 1);
+				curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
+				curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,3);
+				curl_setopt($ch,CURLOPT_TIMEOUT, 20);
+				$response = curl_exec($ch);
+				$response = json_decode($response, true);
+				curl_close ($ch);
+			}
+				
 			__set_error_msg(array('info' => 'Transaction succesfully canceled.'));
 			redirect(site_url('panel/transaction'));
 		}

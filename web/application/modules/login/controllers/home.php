@@ -125,25 +125,25 @@ class Home extends MY_Controller {
 		if ($id && $email) {
 			$r = $this -> login_model -> __get_openid($id);
 			if ($r[0]) {
-				$this -> settings_model -> __update_users($r[0] -> uid, array('ulastlogin' => ip2long($_SERVER['HTTP_X_REAL_IP']) . '*' . time()), 1);
-				$this -> memcachedlib -> add('__login', array('uid' => $r[0] -> uid, 'uemail' => $email, 'ulevel' => 4,'urefcode' => $r[0] -> urefcode, 'uavatar' => $avatar, 'uexpire' => $r[0] -> uexpire, 'upoint' => 0, 'ulastlogin' => ip2long($_SERVER['HTTP_X_REAL_IP']) . '*' . time(), 'ldate' => time(), 'lip' => ip2long($_SERVER['HTTP_X_REAL_IP']), 'skey' => md5(sha1('4'.$email) . 'hidden'), 'remember' => true), time()+60*60*24*100);
+				$this -> settings_model -> __update_users($r[0] -> uid, array('ulastlogin' => ip2long($_SERVER['REMOTE_ADDR']) . '*' . time()), 1);
+				$this -> memcachedlib -> add('__login', array('uid' => $r[0] -> uid, 'uemail' => $email, 'ulevel' => 4,'urefcode' => $r[0] -> urefcode, 'uavatar' => $avatar, 'uexpire' => $r[0] -> uexpire, 'upoint' => 0, 'ulastlogin' => ip2long($_SERVER['REMOTE_ADDR']) . '*' . time(), 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1('4'.$email) . 'hidden'), 'remember' => true), time()+60*60*24*100);
 			}
 			else {
 				$login = $this -> login_model -> __get_login($email);
 				if ($login[0]) {
-					$arr = array('uopenid' => $id, 'uopenidtype' => $uopenidtype, 'ulastlogin' => ip2long($_SERVER['HTTP_X_REAL_IP']) . '*' . time());
+					$arr = array('uopenid' => $id, 'uopenidtype' => $uopenidtype, 'ulastlogin' => ip2long($_SERVER['REMOTE_ADDR']) . '*' . time());
 					if ($login[0] -> ustatus == 0) $arr = array_merge(array('ustatus' => 1), $arr);
 					$this -> settings_model -> __update_users($login[0] -> uid, $arr, 1);
 					$this -> settings_model -> __update_users($login[0] -> uid, array('uavatar' => $avatar), 2);
-					$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $email, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $avatar, 'uexpire' => $login[0] -> uexpire, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['HTTP_X_REAL_IP']), 'skey' => md5(sha1($login[0] -> ulevel.$email) . 'hidden'), 'remember' => true), time()+60*60*24*100);
+					$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $email, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $avatar, 'uexpire' => $login[0] -> uexpire, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$email) . 'hidden'), 'remember' => true), time()+60*60*24*100);
 				}
 				else {
 					$rcode = explode('@',$email);
-					$this -> register_model -> __insert_user(array('ulevel' => 4, 'uemail' => $email, 'uexpire' => strtotime('+7 days'), 'ukey' => __api_key($email), 'uopenid' => $id, 'uopenidtype' => $uopenidtype, 'ulastlogin' => ip2long($_SERVER['HTTP_X_REAL_IP']) . '*' . time(), 'ustatus' => 1));
+					$this -> register_model -> __insert_user(array('ulevel' => 4, 'uemail' => $email, 'uexpire' => strtotime('+7 days'), 'ukey' => __api_key($email), 'uopenid' => $id, 'uopenidtype' => $uopenidtype, 'ulastlogin' => ip2long($_SERVER['REMOTE_ADDR']) . '*' . time(), 'ustatus' => 1));
 					$uid = $this -> db -> insert_id();
 					$this -> register_model -> __update_user($uid, array('urefcode' => $rcode[0] . $uid),1);
 					$this -> register_model -> __update_user($uid, array('ufullname' => $name,'uavatar' => $avatar, 'ugender' => $gender),2);
-					$this -> memcachedlib -> add('__login', array('uid' => $uid, 'uemail' => $email, 'ulevel' => 4,'urefcode' => $rcode[0].$uid, 'uavatar' => $avatar, 'uexpire' => strtotime('+7 days'), 'upoint' => 0, 'ulastlogin' => ip2long($_SERVER['HTTP_X_REAL_IP']) . '*' . time(), 'ldate' => time(), 'lip' => ip2long($_SERVER['HTTP_X_REAL_IP']), 'skey' => md5(sha1('4'.$email) . 'hidden'), 'remember' => true), time()+60*60*24*100);
+					$this -> memcachedlib -> add('__login', array('uid' => $uid, 'uemail' => $email, 'ulevel' => 4,'urefcode' => $rcode[0].$uid, 'uavatar' => $avatar, 'uexpire' => strtotime('+7 days'), 'upoint' => 0, 'ulastlogin' => ip2long($_SERVER['REMOTE_ADDR']) . '*' . time(), 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1('4'.$email) . 'hidden'), 'remember' => true), time()+60*60*24*100);
 				}
 			}
 			redirect(site_url('panel'));
@@ -170,12 +170,12 @@ class Home extends MY_Controller {
 				if ($login) {
 					if ($login[0] -> ustatus == 1) {
 						if (__set_pass($upass,$login[0] -> usalt) == $login[0] -> upass) {
-							$this -> settings_model -> __update_users($login[0] -> uid, array('ulastlogin' => ip2long($_SERVER['HTTP_X_REAL_IP']) . '*' . time()),1);
+							$this -> settings_model -> __update_users($login[0] -> uid, array('ulastlogin' => ip2long($_SERVER['REMOTE_ADDR']) . '*' . time()),1);
 							
 							if ($remember == 1)
-								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar, 'uexpire' => $login[0] -> uexpire, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['HTTP_X_REAL_IP']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => true), time()+60*60*24*100);
+								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar, 'uexpire' => $login[0] -> uexpire, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => true), time()+60*60*24*100);
 							else
-								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar, 'uexpire' => $login[0] -> uexpire, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['HTTP_X_REAL_IP']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => false), 3600);
+								$this -> memcachedlib -> add('__login', array('uid' => $login[0] -> uid, 'uemail' => $uemail, 'ulevel' => $login[0] -> ulevel,'urefcode' => $login[0] -> urefcode, 'uavatar' => $login[0] -> uavatar, 'uexpire' => $login[0] -> uexpire, 'upoint' => $login[0] -> upoint, 'ulastlogin' => $login[0] -> ulastlogin, 'ldate' => time(), 'lip' => ip2long($_SERVER['REMOTE_ADDR']), 'skey' => md5(sha1($login[0] -> ulevel.$uemail) . 'hidden'), 'remember' => false), 3600);
 
 							redirect(site_url('panel'));
 						}

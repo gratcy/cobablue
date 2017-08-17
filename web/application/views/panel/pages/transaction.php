@@ -50,6 +50,7 @@
                                             <th>Date</th>
                                             <th>Period / Points</th>
                                             <th>Price</th>
+                                            <th>Description</th>
                                             <th class="col-lg-2">Status</th>
                                             <th style="width:10%">Action</th>
                                           </tr>
@@ -67,6 +68,12 @@
                                             <td><?php echo __get_date($v -> tdate,3); ?></td>
                                             <td><?php echo ($v -> ptype == 0 ? __get_date($v -> tfrom,1) .' - ' . __get_date($v -> tto,1) : 'Retail (' . $v -> tpoint .' Points)'); ?></td>
                                             <td><?php echo __get_rupiah($v -> ttotal); ?></td>
+                                            <td>
+												<?php if ($v -> ttotalhash > $v -> ttotal && $v -> tapiinv > 0) : ?>
+												Mohon sebelumnya dituliskan berita: <b>INVOICE-<?php echo $v -> tapiinv; ?></b> pada kolom berita transfer.
+												<br /> Atau jika via ATM silahkan transfer dengan jumlah: <b><?php echo __get_rupiah($v -> ttotalhash); ?></b>.
+												<?php endif; ?>
+                                            </td>
                                             <td><?php echo __get_status_transaction($v -> tstatus,1); ?></td>
                                             <td>
                                             <div class="controls center">

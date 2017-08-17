@@ -76,7 +76,7 @@ class Home extends MY_Controller {
 	
 	function delete($id) {
 		if ($this -> transaction_model -> __update_transaction($id, array('tstatus' => 3),1)) {
-			$this -> transaction_model -> __update_transaction($id, array('tstatus' => 2),1);
+			$this -> transaction_model -> __update_transaction($id, array('tstatus' => 2),2);
 			$this -> confirmation_model -> __update_confirmation($id, array('cstatus' => 0));
 			__set_error_msg(array('info' => 'Confirmation succesfully canceled.'));
 			redirect(site_url('panel/confirmation'));

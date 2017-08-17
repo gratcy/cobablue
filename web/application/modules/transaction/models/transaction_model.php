@@ -5,7 +5,7 @@ class Transaction_model extends CI_Model {
     }
     
     function __get_transaction($uid) {
-		return "SELECT a.tid,a.tno,a.tdate,a.tfrom,a.tto,a.ttotal,a.tstatus,a.tpoint,b.ptype,b.pname FROM transaction_tab a LEFT JOIN product_tab b ON a.tpid=b.pid WHERE a.tstatus!=3 AND a.tuid=" . $uid . " ORDER BY a.tid DESC";
+		return "SELECT a.tid,a.tno,a.tdate,a.tfrom,a.tto,a.ttotal,a.ttotalhash,a.tapiinv,a.tstatus,a.tpoint,b.ptype,b.pname FROM transaction_tab a LEFT JOIN product_tab b ON a.tpid=b.pid WHERE a.tstatus!=3 AND a.tuid=" . $uid . " ORDER BY a.tid DESC";
 	}
 	
 	function __insert_transaction($data) {
@@ -25,6 +25,11 @@ class Transaction_model extends CI_Model {
 	
 	function __insert_confirm($data) {
 		return $this -> db -> insert('transaction_confirm_tab', $data);
+	}
+	
+	function __get_transaction_detail($tid) {
+		$this -> db -> select("* FROM transaction_tab WHERE tid=".$tid);
+		return $this -> db -> get() -> result();
 	}
 	
 	function __get_transaction_by_tno($tno) {
