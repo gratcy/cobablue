@@ -1,6 +1,6 @@
 <h1>Login</h1>
 
-<form action="http://api.neverblock.me/?api=culck&act=login&det=logging" method="post">
+<form action="http://localhost:2929/?api=culck&act=login&det=logging" method="post">
 Token: <input type="text" name="token"><br />
 Email: <input type="text" name="email"><br />
 Password: <input type="text" name="passwd"><br />
@@ -10,7 +10,7 @@ Password: <input type="text" name="passwd"><br />
 
 <h1>Register</h1>
 
-<form action="http://api.neverblock.me/?api=culck&act=register" method="post">
+<form action="http://localhost:2929/?api=culck&act=register" method="post">
 Token: <input type="text" name="token"><br />
 Name: <input type="text" name="name"><br />
 Email: <input type="text" name="email"><br />

@@ -6,6 +6,7 @@ class objectdb {
 	
 	function __construct($dbname='', $reconnect='') {
 		global $db;
+		if (!$dbname) return false;
 		$dbname = $dbname ? $dbname : 'default';
 		$this -> debug = $db[$dbname]['dbdebug'];
 		$reconnect = true;
@@ -45,6 +46,7 @@ class objectdb {
 			self::error(1);
 		}
 		else {
+			var_dump($sql);
 			$sql = $this -> db_link -> query($sql);
 			$sql -> execute();
 			if (!$sql)
