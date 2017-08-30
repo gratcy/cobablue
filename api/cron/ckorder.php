@@ -11,6 +11,18 @@ $db['whmcs']['dbdatabase'] = 'dapur01_whmc371';
 
 $mainLink = new mysqli($db['main']['dbhost'],$db['main']['dbuser'],$db['main']['dbpassword'],$db['main']['dbdatabase']);
 
+function __get_user_point($id) {
+	global $mainLink;
+	$data = $mainLink -> query('SELECT upoint FROM users_tab WHERE uid=' . $id);
+	return $data->fetch_object();
+}
+
+function __get_product_poin($id) {
+	global $mainLink;
+	$data = $mainLink -> query('SELECT ppoint FROM product_tab WHERE (pstatus=1 OR pstatus=0) AND pid=' . $id);
+	return $data->fetch_object();
+}
+
 function __check_billing($invId) {
 	global $db;
 	$whmcsLink = new mysqli($db['whmcs']['dbhost'],$db['whmcs']['dbuser'],$db['whmcs']['dbpassword'],$db['whmcs']['dbdatabase']);
@@ -37,7 +49,7 @@ function __check_confirmation($id) {
 	return (count($arr) > 0 ? true : false);
 }
 
-$order = $mainLink -> query('SELECT tid,tuid,tfrom,tto,ttotal,tapiinv FROM transaction_tab WHERE tstatus=0 AND twhmcs=0 AND tapiinv>0 AND ttotalhash > 0');
+$order = $mainLink -> query('SELECT tid,ttype,tpid,tuid,tfrom,tto,ttotal,tapiinv FROM transaction_tab WHERE tstatus=0 AND twhmcs=0 AND tapiinv>0 AND ttotalhash > 0');
 while ($row = $order->fetch_object()) {
 	if (__check_billing($row -> tapiinv) == 'paid') {
 		var_dump($row);
@@ -49,7 +61,17 @@ while ($row = $order->fetch_object()) {
 		if (!__check_confirmation($row -> tid)) $mainLink -> query('INSERT INTO confirmation_tab (cuid,ctid,cdate,cstatus) VALUES ('.$row -> tuid.', '.$row -> tid.', '.time().', 1)');
 		
 		$mainLink -> query('UPDATE transaction_tab SET twhmcs=1,tstatus=2 WHERE tid=' . $row -> tid);
-		$mainLink -> query('UPDATE users_tab SET uexpire="'.$row -> tto.'" WHERE uid=' . $row -> tuid);
+		
+		if ($row -> ttype == 1) {
+		    $ppoint = __get_product_poin($row -> tpid);
+            $upoint = __get_user_point($row -> tuid);
+            $total = $upoint ->  upoint + $ppoint -> ppoint;
+            
+            $mainLink -> query('UPDATE users_tab SET upoint='.$total.' WHERE uid=' . $row -> tuid);
+		}
+		else {
+			$mainLink -> query('UPDATE users_tab SET uexpire="'.$row -> tto.'" WHERE uid=' . $row -> tuid);
+		}
 	}
 }
 

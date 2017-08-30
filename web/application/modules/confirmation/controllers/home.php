@@ -42,10 +42,11 @@ class Home extends MY_Controller {
 						if (strtotime($expire) > time() && $ptype == 0) {
 							$this -> users_model -> __update_users($uid, array('uexpire' => strtotime($expire)),1);	
 						}
+						
 						if ($ptype == 1 && $product > 0) {
 							$pp = $this -> product_model -> __get_product_detail($product);
 							$up = $this -> users_model -> __get_point($uid);
-							$this -> users_model -> __update_users($uid, array('upoint' => $up[0] -> upoint+$pp[0] -> ppoint),1);	
+							$this -> users_model -> __update_users($uid, array('upoint' => $up[0] -> upoint+$pp[0] -> ppoint),1);
 						}
 						
 						$this -> confirmation_model -> __insert_confirmation(array('cuid' => $this -> memcachedlib -> sesresult['uid'], 'ctid' => $id, 'cdate' => time(), 'cdesc' => $desc, 'cstatus' => 1));

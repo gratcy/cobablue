@@ -4,7 +4,7 @@
 
                 <div class="heading">
 
-                    <h3>Confirm Payment</h3>                    
+                    <h3>Manual Confirmation</h3>                    
 
                     <div class="resBtnSearch">
                         <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
@@ -20,7 +20,7 @@
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
                             </span>
                         </li>
-                        <li class="active">Confirm Payment</li>
+                        <li class="active">Manual Confirmation</li>
                     </ul>
 
                 </div><!-- End .heading-->
@@ -33,7 +33,7 @@
                                 <div class="panel-heading">
                                     <h4>
                                         <span class="icon16 icomoon-icon-calculate-2"></span>
-                                        <span>Confirm Payment</span>
+                                        <span>Manual Confirmation</span>
                                     </h4>
                                     <a href="#" class="minimize">Minimize</a>
                                 </div>

@@ -53,8 +53,8 @@ class order extends controller {
 				
 				$this -> models_order -> __insert_order(array('userid' => $apiUID, 'orderid' => $oid, 'packageid' => $pid, 'regdate' => $date, 'paymentmethod' => 'bankbca', 'firstpaymentamount' => $total, 'amount' => $total, 'billingcycle' => 'Annually', 'nextduedate' => $date, 'nextinvoicedate' => $date, 'domainstatus' => 'Pending'),2);
 				
-				$closest = $this -> models_invoice -> __get_closest($total);
-				$totalhash = $closest['jumlah'] + 1;
+				//~ $closest = $this -> models_invoice -> __get_closest($total);
+				$totalhash = $total + $invoiceid;
 				
 				$desc = $pid.' - '.$r['pname'] . ' - ' . $r['pdesc'];
 				$this -> models_invoice -> __insert_invoice(array('userid' => $apiUID, 'type' => 'Hosting', 'relid' => $invoiceid, 'description' => $desc, 'invoiceid' => $invoiceid, 'amount' => $total, 'duedate' => $date, 'paymentmethod' => 'bankbca', 'notes' => 'Di order oleh '.$email.' dengan transaksi ID #' . $tno),2);

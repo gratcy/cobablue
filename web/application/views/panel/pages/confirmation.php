@@ -4,7 +4,7 @@
 
                 <div class="heading">
 
-                    <h3>Confirmation</h3>                    
+                    <h3>Manual Confirmation</h3>                    
 
                     <div class="resBtnSearch">
                         <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
@@ -20,7 +20,7 @@
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
                             </span>
                         </li>
-                        <li class="active">Confirmation</li>
+                        <li class="active">Manual Confirmation</li>
                     </ul>
 
                 </div><!-- End .heading-->
@@ -33,7 +33,7 @@
                                 <div class="panel-heading">
                                     <h4>
                                         <span class="icon16 icomoon-icon-cart-checkout"></span>
-                                        <span>Confirmation</span>
+                                        <span>Manual Confirmation</span>
                                     </h4>
                                     <a href="#" class="minimize">Minimize</a>
                                 </div>
@@ -47,6 +47,7 @@
                                             <th class="col-lg-1">Email</th>
                                             <th class="col-lg-1">Product</th>
                                             <th class="col-lg-2">Transaction No.</th>
+                                            <th class="col-lg-2">WHMCS</th>
                                             <th class="col-lg-2">Bank Account</th>
                                             <th>Date</th>
                                             <th>Period / Points</th>
@@ -65,6 +66,7 @@
                                             <td><?php echo $v -> uemail; ?></td>
                                             <td><?php echo $v -> pname; ?></td>
                                             <td>#<?php echo $v -> tno; ?></td>
+                                            <td>#Invoice <?php echo $v -> tapiinv; ?></td>
                                             <td>Bank: <?php echo __get_bank($v -> tabank,1,1);?><br />Acc No.: <?php echo $v -> tano; ?><br />Acc Name: <?php echo $v -> taname; ?></td>
                                             <td><?php echo __get_date($v -> tdate,3); ?></td>
                                             <td><?php echo ($v -> ptype == 0 ? __get_date($v -> tfrom,1) .' - ' . __get_date($v -> tto,1) : 'Retail (' . $v -> tpoint .' Points)'); ?></td>
