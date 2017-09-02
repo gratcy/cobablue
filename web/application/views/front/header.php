@@ -13,7 +13,19 @@
 </script>
 <head>
 <title>NeverBlock - Browse the internet privately, anonymously and securely.</title>
-<meta name="description" content="NeverBlock - Browse the internet privately, anonymously and securely."/>
+<meta http-equiv="Pragma" content="no-cache">
+<meta name="rating" content="general" /> 
+<meta name="spiders" content="all" /> 
+<meta name="robots" content="all" />
+<meta name="description" content="NeverBlock - Browse the internet privately, anonymously and securely." itemprop="description" />
+<meta name="keywords" content="Internet Cepat, VPN Cepat, VPN Gratis, VPN Murah, VPN Indonesia, Neverblock" itemprop="keywords" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="NeverBlock - Browse the internet privately, anonymously and securely." />
+<meta property="og:description" content="NeverBlock - Browse the internet privately, anonymously and securely" />
+<meta property="og:url" content="https://neverblock.me" />
+<meta property="og:site_name" content="Neverblock" />
+<meta property="fb:app_id" content="358014467899296" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width" />
 <link rel="image_src" href="<?php echo site_url('application/views/front/images/logo-share.png'); ?>" / >
@@ -57,7 +69,9 @@
     <div class="logo display_center">
       <a href="<?php echo site_url(); ?>"><img src="<?php echo site_url('application/views/front/images/logo.png'); ?>" /></a>
     </div>
-    
+    <?php
+    //~ var_dump($_SERVER);die;
+    ?>
     <menu>
       <ul class="clearenter">
         <li class="next_btn menu-mobile-only"><a href="<?php echo ($_SERVER['REQUEST_URI'] == '/' ? '' : site_url('/'))?>#index-welcome">Home</a></li>

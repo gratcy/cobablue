@@ -9,7 +9,7 @@ class Confirmation_model extends CI_Model {
 	}
 	
     function __get_confirmation_detail($id) {
-		$this -> db -> select('a.*,b.tid as tcid,b.tabank,b.tano,b.taname,b.tapiinv,b.tmbank,b.ttotal,c.ptype FROM transaction_tab a INNER JOIN transaction_confirm_tab b ON a.tid=b.ttid LEFT JOIN product_tab c ON a.tpid=c.pid WHERE a.tid=' . $id);
+		$this -> db -> select('a.*,b.tid as tcid,b.tabank,b.tano,b.taname,a.tapiinv,b.tmbank,b.ttotal,c.ptype FROM transaction_tab a INNER JOIN transaction_confirm_tab b ON a.tid=b.ttid LEFT JOIN product_tab c ON a.tpid=c.pid WHERE a.tid=' . $id);
 		return $this -> db -> get() -> result();
 	}
 	

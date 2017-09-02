@@ -114,11 +114,11 @@
                             </ul>
                             <ul class="clearenter">
                               <li class="kode"><b>Account Number</b></li>
-                              <li class="isi">8650095767</li>
+                              <li class="isi">8650666080</li>
                             </ul>
                             <ul class="clearenter">
                               <li class="kode"><b>Name</b></li>
-                              <li class="isi">Agus Suryadi</li>
+                              <li class="isi">Kawi</li>
                             </ul>
                             <ul class="clearenter">
                               <li class="kode"><b>Branch</b></li>
@@ -126,7 +126,7 @@
                             </ul>
                           </div>
                         </li>
-                        
+                        <!--
                         <li class="mandiri">
                           <div>
                             <div class="logo"><img src="<?php echo site_url('application/views/panel/assets/images/mandiri.jpg'); ?>" /></div>
@@ -148,7 +148,7 @@
                             </ul>
                           </div>
                         </li>
-                        
+                        -->
                       </ul>
                     </div>
                     <!-- end payment method -->
