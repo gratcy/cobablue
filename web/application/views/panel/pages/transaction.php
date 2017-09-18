@@ -51,7 +51,8 @@
                                             <th>Period / Points</th>
                                             <th>Price</th>
                                             <th>Description</th>
-                                            <th class="col-lg-2">Status</th>
+                                            <th>Due Date</th>
+                                            <th class="col-lg-1">Status</th>
                                             <th style="width:10%">Action</th>
                                           </tr>
                                         </thead>
@@ -74,10 +75,11 @@
 												<br /> Atau jika via ATM silahkan transfer dengan jumlah: <b><?php echo __get_rupiah($v -> ttotalhash); ?></b>.
 												<?php endif; ?>
                                             </td>
-                                            <td><?php echo __get_status_transaction($v -> tstatus,1); ?></td>
+                                            <td><?php echo __get_date($v -> tduedate,3); ?></td>
+                                            <td><?php echo ($v -> tduedate < time() && $v -> tstatus != 2 ? 'Expired' : __get_status_transaction($v -> tstatus,1)); ?></td>
                                             <td>
                                             <div class="controls center">
-												<?php if ($v -> tstatus == 0) : ?>
+												<?php if ($v -> tstatus == 0 && $v -> tduedate > time()) : ?>
                                                     <a href="<?php echo site_url('panel/transaction/confirm/?tno=' . $v -> tno); ?>" title="Confirm Transaction" class="tip"><span class="icon12 icomoon-icon-cart"></span></a>
                                                     <a href="<?php echo site_url('panel/transaction/delete/' . $v -> tid); ?>" title="Cancel Transaction" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
                                                     <?php else: ?>
