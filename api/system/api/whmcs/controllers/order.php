@@ -34,6 +34,8 @@ class order extends controller {
 		$apiUID = (int) $conf['whmcs']['user']['id'];
 		$apiName = $conf['whmcs']['user']['name'];
 		$date = date('Y-m-d');
+		$dateDue = date('Y-m-d', strtotime('+2 day'));
+		$dateDueN = date('Y-m-d', strtotime('+3 day'));
 		$dateL = date('Y-m-d H:i:s');
 		$totalhash = 0;
 		
@@ -44,20 +46,20 @@ class order extends controller {
 			if ($r) {
 				parent::database('whmcs', true);
 				$total = $r['pprice'];
-				$this -> models_invoice -> __insert_invoice(array('userid' => $apiUID, 'date' => $date, 'duedate' => $date, 'subtotal' => $total, 'total' => $total, 'status' => 'Unpaid', 'paymentmethod' => 'bankbca', 'notes' => 'Di order oleh '.$email.' dengan transaksi ID #' . $tno),1);
+				$this -> models_invoice -> __insert_invoice(array('userid' => $apiUID, 'date' => $date, 'duedate' => $dateDue, 'subtotal' => $total, 'total' => $total, 'status' => 'Unpaid', 'paymentmethod' => 'bankbca', 'notes' => 'Di order oleh '.$email.' dengan transaksi ID #' . $tno),1);
 				$invoiceid = $this -> models_invoice -> last_id();
 				
 				$this -> models_order -> __insert_order(array('userid' => $apiUID, 'ordernum' => __randomNumber(10), 'date' => $date, 'orderdata' => 'a:0:{}', 'amount' => $total, 'status' => 'Pending', 'paymentmethod' => 'bankbca', 'invoiceid' => $invoiceid, 'ipaddress' => $ipaddr, 'norderid' => $norderid),1);
 				$oid = $this -> models_order -> last_id();
 				$this -> models_log -> __insert_log(array('date' => $dateL, 'description' => 'New Order Placed - Order ID: '.$oid.' - User ID: ' . $apiUID, 'user' => 'client', 'userid' => $apiUID, 'ipaddr' => $ipaddr));
 				
-				$this -> models_order -> __insert_order(array('userid' => $apiUID, 'orderid' => $oid, 'packageid' => $pid, 'regdate' => $date, 'paymentmethod' => 'bankbca', 'firstpaymentamount' => $total, 'amount' => $total, 'billingcycle' => 'Annually', 'nextduedate' => $date, 'nextinvoicedate' => $date, 'domainstatus' => 'Pending'),2);
+				$this -> models_order -> __insert_order(array('userid' => $apiUID, 'orderid' => $oid, 'packageid' => $pid, 'regdate' => $date, 'paymentmethod' => 'bankbca', 'firstpaymentamount' => $total, 'amount' => $total, 'billingcycle' => 'Annually', 'nextduedate' => $dateDueN, 'nextinvoicedate' => $date, 'domainstatus' => 'Pending'),2);
 				
 				//~ $closest = $this -> models_invoice -> __get_closest($total);
 				$totalhash = $total + $invoiceid;
 				
 				$desc = $pid.' - '.$r['pname'] . ' - ' . $r['pdesc'];
-				$this -> models_invoice -> __insert_invoice(array('userid' => $apiUID, 'type' => 'Hosting', 'relid' => $invoiceid, 'description' => $desc, 'invoiceid' => $invoiceid, 'amount' => $total, 'duedate' => $date, 'paymentmethod' => 'bankbca', 'notes' => 'Di order oleh '.$email.' dengan transaksi ID #' . $tno),2);
+				$this -> models_invoice -> __insert_invoice(array('userid' => $apiUID, 'type' => 'Hosting', 'relid' => $invoiceid, 'description' => $desc, 'invoiceid' => $invoiceid, 'amount' => $total, 'duedate' => $dateDue, 'paymentmethod' => 'bankbca', 'notes' => 'Di order oleh '.$email.' dengan transaksi ID #' . $tno),2);
 				$this -> models_invoice -> __insert_invoice(array('invoice' => $invoiceid, 'jumlah' => $totalhash, 'process' => 0, 'time' => time(), 'expired' => 0),3);
 				
 				$this -> models_log -> __insert_log(array('date' => $dateL, 'description' => 'Created Invoice - Invoice ID: ' . $invoiceid, 'user' => 'client', 'userid' => $apiUID, 'ipaddr' => $ipaddr));

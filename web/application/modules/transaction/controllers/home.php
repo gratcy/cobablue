@@ -74,7 +74,7 @@ class Home extends MY_Controller {
 					$invoice_id = (isset($response['invoice_id']) ? $response['invoice_id'] : 0);
 					curl_close ($ch);
 					
-					$this -> transaction_model -> __update_transaction($ttrans, array('ttotalhash' => $totalhash, 'tapiinv' => $invoice_id), 1);
+					$this -> transaction_model -> __update_transaction($ttrans, array('ttotalhash' => $totalhash, 'tapiinv' => $invoice_id, 'tduedate' => strtotime('+2 days')), 1);
 					
 					__set_error_msg(array('info' => 'Transaksi sukses dilakukan.'));
 					redirect(site_url('panel/transaction'));
