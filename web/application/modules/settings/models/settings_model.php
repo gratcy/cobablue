@@ -5,7 +5,7 @@ class Settings_model extends CI_Model {
     }
     
     function __get_profile($uid) {
-		$this -> db -> select("a.uauto,b.* FROM users_tab a LEFT JOIN users_profiles_tab b ON a.uid=b.uid WHERE a.uid=" . $uid, FALSE);
+		$this -> db -> select("a.uauto,a.upass,b.* FROM users_tab a LEFT JOIN users_profiles_tab b ON a.uid=b.uid WHERE a.uid=" . $uid, FALSE);
 		return $this -> db -> get() -> result();
 	}
     

@@ -35,13 +35,13 @@
                         <?php endif; ?>
 						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
                         <li rel="user_transaction">
-                            <a href="#"><span class="icon16 icomoon-icon-cart"></span>Transaction<span class="notification blue">5</span></a>
+                            <a href="#"><span class="icon16 icomoon-icon-cart"></span>Transaction<span class="notification blue">3</span></a>
                             <ul class="sub">
-                                <li><a href="<?php echo site_url('panel/transaction');?>"><span class="icon16 icomoon-icon-file"></span>Transaction</a></li>
-                                <li><a href="<?php echo site_url('panel/transaction/confirm');?>"><span class="icon16 icomoon-icon-calculate-2"></span>Manual Confirmation</a></li>
                                 <li><a href="<?php echo site_url('panel/transaction/topup');?>"><span class="icon16 icomoon-icon-arrow-up-right"></span>Top Up</a></li>
+                                <li><a href="<?php echo site_url('panel/transaction/confirm');?>"><span class="icon16 icomoon-icon-calculate-2"></span>Manual Confirmation</a></li>
+                                <li><a href="<?php echo site_url('panel/transaction');?>"><span class="icon16 icomoon-icon-file"></span>History Transaction</a></li>
                                <!-- <li><a href="<?php echo site_url('panel/topup-tutorial');?>"><span class="icon16 icomoon-icon-book-2"></span>Tutorial Top Up</a></li> -->
-								<li><a href="<?php echo site_url('panel/topup-tutorial');?>" ><span class="icon16 entypo-icon-help"></span>Payment Method</a></li>
+								<!-- <li><a href="<?php echo site_url('panel/topup-tutorial');?>" ><span class="icon16 entypo-icon-help"></span>Payment Method</a></li> -->
                             </ul>
                         </li>
                         <li><a href="<?php echo site_url('panel/use-voucher');?>" ><span class="icon16 icomoon-icon-vcard"></span>Voucher</a></li>

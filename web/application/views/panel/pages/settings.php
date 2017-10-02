@@ -57,6 +57,7 @@
                                                 <input type="text" class="form-control" placeholder="Email" value="<?php echo $this -> memcachedlib -> sesresult['uemail']; ?>" name="email" readonly>
                                             </div>
                                         </div>
+										<?php if (!empty($detail[0] -> upass)) : ?>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="password">Old Password</label>
                                             <div class="col-lg-9">
@@ -76,7 +77,6 @@
                                             </div>
                                         </div>
 
-
                                         <div class="form-group">
                                             <div class="col-lg-offset-3 col-lg-9">
                                                 <button type="submit" class="btn btn-info"><span class="icon16 icomoon-icon-disk"></span> Submit</button>
@@ -84,6 +84,7 @@
                                             </div>
                                         </div><!-- End .form-group  -->                   
 
+										<?php endif; ?>
                                     </form>
                                     
                                     <hr />

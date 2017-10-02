@@ -4,7 +4,7 @@
 
                 <div class="heading">
 
-                    <h3>Transaction</h3>                    
+                    <h3>History Transaction</h3>                    
 
                     <div class="resBtnSearch">
                         <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
@@ -20,7 +20,7 @@
                                 <span class="icon16 icomoon-icon-arrow-right-3"></span>
                             </span>
                         </li>
-                        <li class="active">Transaction</li>
+                        <li class="active">History Transaction</li>
                     </ul>
 
                 </div><!-- End .heading-->
@@ -33,7 +33,7 @@
                                 <div class="panel-heading">
                                     <h4>
                                         <span class="icon16 icomoon-icon-file"></span>
-                                        <span>Transaction</span>
+                                        <span>History Transaction</span>
                                     </h4>
                                     <a href="#" class="minimize">Minimize</a>
                                 </div>
@@ -71,8 +71,8 @@
                                             <td><?php echo __get_rupiah($v -> ttotal); ?></td>
                                             <td>
 												<?php if ($v -> ttotalhash > $v -> ttotal && $v -> tapiinv > 0) : ?>
-												Mohon sebelumnya dituliskan berita: <b>INVOICE-<?php echo $v -> tapiinv; ?></b> pada kolom berita transfer.
-												<br /> Atau jika via ATM silahkan transfer dengan jumlah: <b><?php echo __get_rupiah($v -> ttotalhash); ?></b>.
+												Internet Banking: tuliskan berita <b>INVOICE-<?php echo $v -> tapiinv; ?></b> pada kolom berita transfer.
+												<br /> ATM/M-Banking: transfer dengan jumlah <b><?php echo __get_rupiah($v -> ttotalhash); ?></b>,- (mohon sesuaikan dengan kode unik).
 												<?php endif; ?>
                                             </td>
                                             <td><?php echo __get_date($v -> tduedate,3); ?></td>
