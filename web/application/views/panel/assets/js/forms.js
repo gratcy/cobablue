@@ -96,8 +96,8 @@ $(document).ready(function() {
 	$('#timepicker').timeEntry('setTime', '22:15')
 
 	//------------- Select plugin -------------//
-	$("#select1").select2();
-	$("#select2").select2();
+	$("#select1").select2({width: '100%'});
+	$("#select2").select2({width: '100%'});
 
 	//--------------- Dual multi select ------------------//
 	$.configureBoxes();

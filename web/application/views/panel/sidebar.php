@@ -59,7 +59,13 @@
                         <li><a href="<?php echo site_url('panel/report');?>"><span class="icon16 icomoon-icon-list"></span>Report Create Account</a></li>
                         <?php endif; ?>
                         <?php if ($this -> memcachedlib -> sesresult['ulevel'] == 1) : ?>
-                        <li><a href="<?php echo site_url('panel/reporting');?>" ><span class="icon16 iconic-icon-chart"></span>Report</a></li>
+                        <li rel="reports">
+						<a href="#"><span class="icon16 icomoon-icon-pie-3"></span>Reporting<span class="notification blue">2</span></a>
+						<ul class="sub">
+                        <li><a href="<?php echo site_url('panel/reporting');?>" ><span class="icon16 iconic-icon-chart"></span>Report Registration</a></li>
+                        <li><a href="<?php echo site_url('panel/report_reseller');?>"><span class="icon16 icomoon-icon-pie-4"></span>Report Reseller</a></li>
+                        </ul>
+                        </li>
                         <?php endif; ?>
                         <li><a href="<?php echo site_url('panel/support');?>" ><span class="icon16 icomoon-icon-support"></span>Support</a></li>
                         <li><a href="<?php echo site_url('panel/download');?>" ><span class="icon16 icomoon-icon-download"></span>Download Application</a></li>

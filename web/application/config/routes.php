@@ -74,6 +74,7 @@ $route['panel/create_account'] = 'create_account/home/index';
 
 $route['panel/reporting'] = 'reporting/home/index';
 $route['panel/report'] = 'report/home/index';
+$route['panel/report_reseller'] = 'report_reseller/home/index';
 
 $route['panel/refferal/?(:num)?'] = 'refferal/home/index/$1';
 
