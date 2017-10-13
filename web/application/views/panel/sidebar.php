@@ -93,4 +93,8 @@
 		$('li[rel="reseller"] > a').addClass('drop');
 		$('li[rel="reseller"] > .sub').css({'display': 'block'});
 	}
+	else if (/\/report_reseller|reporting/.test(window.location.href) === true) {
+		$('li[rel="reports"] > a').addClass('drop');
+		$('li[rel="reports"] > .sub').css({'display': 'block'});
+	}
 </script>

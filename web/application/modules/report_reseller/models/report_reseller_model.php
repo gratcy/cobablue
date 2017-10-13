@@ -15,4 +15,9 @@ class Report_reseller_model extends CI_Model {
 		$this -> db -> select('a.uid, CONCAT_WS(\' - \',a.uemail,b.ufullname) as reseller FROM users_tab a JOIN users_profiles_tab b ON a.uid=b.uid JOIN users_tab c ON c.utype=2 AND c.urefid=b.uid WHERE a.utype=1 AND a.ustatus=1 GROUP BY a.uid', FALSE);
 		return $this -> db -> get() -> result();
 	}
+
+    function __get_reseller_detail($uid) {
+		$this -> db -> select('a.upoint,a.uemail,b.ufullname FROM users_tab a JOIN users_profiles_tab b ON a.uid=b.uid WHERE b.uid=' . $uid, FALSE);
+		return $this -> db -> get() -> result();
+	}
 }

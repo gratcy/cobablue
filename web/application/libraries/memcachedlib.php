@@ -68,7 +68,7 @@ class Memcachedlib {
 			if ($this -> login == true) redirect(site_url());
 		}
 		
-		if (preg_match('/^upload|product|reporting/i', $this -> _ci -> uri -> segment(2))) {
+		if (preg_match('/^upload|product|reporting|report_reseller/i', $this -> _ci -> uri -> segment(2))) {
 			if ($this -> sesresult['ulevel'] != 1) redirect(site_url('panel'));
 		}
 		

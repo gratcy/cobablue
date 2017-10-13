@@ -1,3 +1,5 @@
+<link href="<?php echo site_url('application/views/panel/assets/css/daterangepicker-bs3.css'); ?>" rel="stylesheet" type="text/css" /> 
+<script src="<?php echo site_url('application/views/panel/assets/js/daterangepicker.js'); ?>"></script>
         <!--Body content-->
         <div id="content" class="clearfix">
             <div class="contentwrapper"><!--Content wrapper-->
@@ -60,6 +62,19 @@
                                             </div>
                                         </div><!-- End .form-group  -->      
                                     </form>
+                                    <?php if (!empty($reseller_detail)) { ?>
+                                    <hr />
+                                         <div class="form-group">
+                                            <label class="col-lg-offset-1 col-lg-1 control-label" for="placeholder">Name</label>
+                                            <label class="col-lg-3 control-label" for="placeholder">: <?php echo $reseller_detail[0] -> ufullname; ?></label>
+											<div class="clear"></div>
+                                            <label class="col-lg-offset-1 col-lg-1 control-label" for="placeholder">Email</label>
+                                            <label class="col-lg-3 control-label" for="placeholder">: <?php echo $reseller_detail[0] -> uemail; ?></label>
+											<div class="clear"></div>
+                                            <label class="col-lg-offset-1 col-lg-1 control-label" for="placeholder">Point</label>
+                                            <label class="col-lg-3 control-label" for="placeholder">: <?php echo $reseller_detail[0] -> upoint; ?></label>
+                                        </div>
+                                        <?php } ?>
 								</div>
 							</div>
 								
@@ -106,3 +121,9 @@
                     </div><!-- End .row -->
                
                 <!-- Page end here -->
+
+<script type="text/javascript">
+$(function(){
+	$('#datesort').daterangepicker();
+});
+</script>

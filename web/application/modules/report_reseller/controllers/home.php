@@ -12,12 +12,13 @@ class Home extends MY_Controller {
 	function index() {
 		$reseller = 0;
 		if ($_POST) {
-			$reseller = $this -> input -> post('reseller');
+			$reseller = (int) $this -> input -> post('reseller');
 			$sort = explode(' - ', $this -> input -> post('datesort'));
 			$from = str_replace('/', '-', $sort[0]);
 			$to = str_replace('/', '-', $sort[1]);
 			$view['from'] = date('Y-m-d', strtotime($from));
 			$view['to'] = date('Y-m-d', strtotime($to));
+			$view['reseller_detail'] = $this -> report_reseller_model -> __get_reseller_detail($reseller);
 		}
 		else {
 			$view['from'] = date('Y-m-d', strtotime('-1 month'));

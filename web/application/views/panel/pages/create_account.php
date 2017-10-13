@@ -48,6 +48,43 @@
                                             </div>
                                         </div>
                                          <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="placeholder">Account</label>
+                                            <div class="col-lg-9">
+                                                New User <input type="radio" checked="checked" name="acc" value="1" />Existing User <input type="radio"  name="acc" value="2" /> 
+                                            </div>
+                                        </div>
+                                        <div id="existing-account" style="display:none;">
+                                         <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="placeholder">Email</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" placeholder="Email" name="eemail">
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="placeholder">Duration</label>
+                                            <div class="col-lg-9">
+                                                <select name="eduration" class="form-control">
+                                                <?php echo __get_duration(0,2); ?>
+                                                </select>
+                                                <br />
+                                                <span style="color:red"><i>1 point per year of duration</i></span>
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="placeholder">Price (*)</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" placeholder="Price" name="eprice" onkeyup="formatharga(this.value,this)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" for="password">Description</label>
+                                            <div class="col-lg-9">
+                                                <textarea id="textarea1" name="edesc" rows="3" class="form-control elastic"></textarea>
+                                            </div>
+                                        </div>
+										</div>
+                                        <div id="new-account">
+                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Email</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" placeholder="Email" name="email">
@@ -87,6 +124,7 @@
                                                 <textarea id="textarea1" name="desc" rows="3" class="form-control elastic"></textarea>
                                             </div>
                                         </div>
+                                        </div>
                                         <div class="form-group">
                                             <div class="col-lg-offset-3 col-lg-9">
                                                 <button type="submit" class="btn btn-info"><span class="icon16 icomoon-icon-disk"></span> Submit</button>
@@ -110,3 +148,15 @@
 
                     </div><!-- End .row -->
                 <!-- Page end here -->
+<script>
+$('input[name="acc"]').change(function(){
+	if ($(this).val() == 1) {
+		$('#new-account').show()
+		$('#existing-account').hide()
+	}
+	else {
+		$('#new-account').hide()
+		$('#existing-account').show()
+	}
+})
+</script>
