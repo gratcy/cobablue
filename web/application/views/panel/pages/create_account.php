@@ -57,7 +57,9 @@
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Email</label>
                                             <div class="col-lg-9">
-                                                <input type="text" class="form-control" placeholder="Email" name="eemail">
+                                                <select name="eemail" id="select1" class="nostyle">
+													<?php echo $accounts; ?>
+                                                </select>
                                             </div>
                                         </div>
                                          <div class="form-group">

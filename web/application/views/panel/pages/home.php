@@ -47,7 +47,7 @@ $lastlogin = explode('*', $this -> memcachedlib -> sesresult['ulastlogin']);
 					<p>Referral Code: <b><a href="<?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?>"><?php echo site_url('register/?ref='.$this -> memcachedlib -> sesresult['urefcode']); ?></a> (<?php echo $this -> memcachedlib -> sesresult['urefcode']; ?>)</b></p>
 					<?php endif; ?>
 					<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
-					<p>Point: <b><?php echo __get_point($this -> memcachedlib -> sesresult['uid']); ?></b></p>
+					<p>Points: <b><?php echo __get_point($this -> memcachedlib -> sesresult['uid']); ?></b></p>
 					<p>User Expire: <b><?php echo ($expire[0] -> uexpire < time() ? 'Expired' : date('d/m/Y H:i',$expire[0] -> uexpire)); ?></b></p>
 					<?php endif; ?>
 					</div>

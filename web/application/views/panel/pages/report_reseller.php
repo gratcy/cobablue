@@ -71,7 +71,7 @@
                                             <label class="col-lg-offset-1 col-lg-1 control-label" for="placeholder">Email</label>
                                             <label class="col-lg-3 control-label" for="placeholder">: <?php echo $reseller_detail[0] -> uemail; ?></label>
 											<div class="clear"></div>
-                                            <label class="col-lg-offset-1 col-lg-1 control-label" for="placeholder">Point</label>
+                                            <label class="col-lg-offset-1 col-lg-1 control-label" for="placeholder">Points</label>
                                             <label class="col-lg-3 control-label" for="placeholder">: <?php echo $reseller_detail[0] -> upoint; ?></label>
                                         </div>
                                         <?php } ?>

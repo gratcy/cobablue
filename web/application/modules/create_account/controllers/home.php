@@ -6,6 +6,7 @@ class Home extends MY_Controller {
 		parent::__construct();
 		$this -> load -> model('create_account_model');
 		$this -> load -> model('register/register_model');
+		$this -> load -> library('create_account_lib');
 	}
 
 	function index() {
@@ -108,7 +109,9 @@ class Home extends MY_Controller {
 			}
 			redirect(site_url('panel/create_account'));
 		}
-		else
-			$this->load->view('pages/create_account', array());
+		else {
+			$data['accounts'] = $this -> create_account_lib -> __get_accounts();
+			$this->load->view('pages/create_account', $data);
+		}
 	}
 }

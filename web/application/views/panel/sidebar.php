@@ -8,7 +8,7 @@
                     <ul>
                         <li><a href="<?php echo site_url('panel');?>"><span class="icon16 icomoon-icon-home-6"></span>Dashboard</a></li>
 						<?php if ($this -> memcachedlib -> sesresult['ulevel'] == 4) : ?>
-                        <li rel="reseller"><a href="#"><span class="icon16 icomoon-icon-transmission"></span>Reseller</a>
+                        <li rel="reseller"><a href="#"><span class="icon16 icomoon-icon-transmission"></span>Create Account</a>
                         	<ul class="sub">
                                 <li>
                                   <a href="<?php echo site_url('panel/create_account');?>">

@@ -173,7 +173,7 @@ ethically). If you have found this web proxy useful and cool, please share it wi
         <h5>IDR 400.000</h5>
         <ul>
           <li><i class="fa fa-clock-o" aria-hidden="true"></i> <span>5 Years</span></li>
-          <li><i class="fa fa-star" aria-hidden="true"></i> <span>5 Point</span></li>
+          <li><i class="fa fa-star" aria-hidden="true"></i> <span>5 Points</span></li>
           <li><i class="fa fa-users" aria-hidden="true"></i> <span>Reseller</span></li>
         </ul>
         <a class="buy-button" href="https://neverblock.me/panel/transaction/topup" target="_blank"><i class="fa fa-tag" aria-hidden="true"></i> <span>Buy</span></a>
