@@ -41,7 +41,7 @@ function __auto_cut_points($id, $type) {
 }
 
 function __get_upload_file_type($id, $type) {
-	$data = array('Android','OSX','Windows','iOS');
+	$data = array('Android','OSX','Windows x32','Windows x64','iOS');
 	$res = '';
 	if ($type == 1) {
 		$res = isset($data[$id-1]) ? $data[$id-1] : '';

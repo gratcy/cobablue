@@ -220,7 +220,8 @@ ethically). If you have found this web proxy useful and cool, please share it wi
           <h5>Windows</h5>
         </a>
 		<div class="tutorial-tombol">
-          <a href="<?php echo $file[3] -> file; ?>" target="_blank">Download</a>
+          <a href="<?php echo $file[3] -> file; ?>" target="_blank">Download x82</a>
+          <a href="<?php echo $file[5] -> file; ?>" target="_blank">Download x64</a>
           <a href="<?php echo site_url('application/views/front/file/tutorial_neverblock-windows.pdf'); ?>" target="_blank">Guide</a>
         </div>
       </li>
