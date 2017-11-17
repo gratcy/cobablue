@@ -110,8 +110,7 @@ class Home extends MY_Controller {
 			redirect(site_url('panel/create_account'));
 		}
 		else {
-			$data['accounts'] = $this -> create_account_lib -> __get_accounts();
-			$this->load->view('pages/create_account', $data);
+			$this->load->view('pages/create_account', '');
 		}
 	}
 }

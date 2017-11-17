@@ -57,9 +57,7 @@
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Email</label>
                                             <div class="col-lg-9">
-                                                <select name="eemail" id="select1" class="nostyle">
-													<?php echo $accounts; ?>
-                                                </select>
+                                                <input type="text" class="form-control" placeholder="Email Account" name="eemail" autocomplete="off">
                                             </div>
                                         </div>
                                          <div class="form-group">
@@ -89,7 +87,7 @@
                                          <div class="form-group">
                                             <label class="col-lg-3 control-label" for="placeholder">Email</label>
                                             <div class="col-lg-9">
-                                                <input type="text" class="form-control" placeholder="Email" name="email">
+                                                <input type="text" class="form-control" placeholder="Email" name="email" autocomplete="off">
                                             </div>
                                         </div>
                                          <div class="form-group">

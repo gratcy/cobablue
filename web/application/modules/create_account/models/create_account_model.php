@@ -10,12 +10,12 @@ class Create_account_model extends CI_Model {
 	}
     
     function __get_account_fake() {
-		$this -> db -> select("uemail FROM users_tab WHERE utype=2");
+		$this -> db -> select("uemail FROM users_tab");
 		return $this -> db -> get() -> result();
 	}
     
     function __get_user($email) {
-		$this -> db -> select("uid,uexpire FROM users_tab WHERE uemail='" . $email."'");
+		$this -> db -> select("uid,uexpire FROM users_tab WHERE ustatus=1 AND uemail='" . $email."'");
 		return $this -> db -> get() -> result();
 	}
 

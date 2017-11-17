@@ -254,7 +254,8 @@ function __send_email($to,$subject,$data,$tpl) {
     //~ $CI =& get_instance();
 	//~ $wew = $CI -> load -> library('Mail', array('smtp_hostname' => 'smtp.elasticemail.com', 'smtp_username' => 'aziz.malik@mcs.co.id', 'smtp_password' => '910fe6e7-1042-44e6-bb78-79eaba824488', 'smtp_port' => 2525, 'protocol' => 'smtp'));
 	include(FCPATH . 'application/libraries/Mail.php');
-	$wew = new Mail(array('smtp_hostname' => 'smtp.elasticemail.com', 'smtp_username' => 'aziz.malik@mcs.co.id', 'smtp_password' => '910fe6e7-1042-44e6-bb78-79eaba824488', 'smtp_port' => 2525, 'protocol' => 'smtp'));
+	//~ $wew = new Mail(array('smtp_hostname' => 'smtp.elasticemail.com', 'smtp_username' => 'aziz.malik@mcs.co.id', 'smtp_password' => '910fe6e7-1042-44e6-bb78-79eaba824488', 'smtp_port' => 2525, 'protocol' => 'smtp'));
+	$wew = new Mail(array('smtp_hostname' => 'localhost', 'smtp_port' => 25, 'protocol' => 'smtp'));
 	$wew -> setTo($to);
 	$wew -> setFrom('noreply@neverblock.me');
 	$wew -> setSender('noreply@neverblock.me');
